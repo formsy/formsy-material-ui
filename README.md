@@ -1,33 +1,34 @@
 # formsy-material-ui
 A [Formsy](https://github.com/christianalfoni/formsy-react) compatibility wrapper for [Material-UI](http://material-ui.com/) form components.
 
-##Usage
+## Usage
 
-###ES5:
+### ES6:
+
+```js
+let FMUI = require('formsy-material-ui');
+let { FormsyCheckbox, FormsyDate, FormsyRadio, FormsyRadioGroup, FormsySelect, FormsyText, FormsyTime, FormsyToggle } = FMUI;
+```
+
+### ES5:
 
 ```js
 VAR FMUI = require('formsy-material-ui');
-var FormsyCheckbox = FMUI.Checkbox;
-var FormsyDate = FMUI.Date;
-var FormsyRadio = FMUI.Radio;
-var FormsySelect = FMUI.Select;
-var FormsyText = FMUI.Text;
-var FormsyTime = FMUI.Time;
-var FormsyToggle = FMUI.Toggle;
+var FormsyCheckbox = FMUI.FormsyCheckbox;
+var FormsyDate = FMUI.FormsyDate;
+var FormsyRadio = FMUI.FormsyRadio;
+var FormsyRadioGroup = FMUI.FormsyRadioGroup;
+var FormsySelect = FMUI.FormsySelect;
+var FormsyText = FMUI.FormsyText;
+var FormsyTime = FMUI.FormsyTime;
+var FormsyToggle = FMUI.FormsyToggle;
 ```
 
-###ES6:
-
-```js
-let FMUI = require('formsy-material-ui');
-let {FormsyCheckbox, FormsyDate, FormsyRadioGroup, FormsySelect, FormsyText, FormsyTime, FormsyToggle } = FMUI;
-```
-
-###Example:
+### Example:
 
 ```jsx
 let FMUI = require('formsy-material-ui');
-let {FormsyCheckbox, FormsyDate, FormsyRadioGroup, FormsySelect, FormsyText, FormsyTime, FormsyToggle } = FMUI;
+let { FormsyCheckbox, FormsyDate, FormsyRadio, FormsyRadioGroup, FormsySelect, FormsyText, FormsyTime, FormsyToggle } = FMUI;
 let { RaisedButton } = MUI;
 
 NewEventForm = React.createClass({
@@ -186,13 +187,14 @@ NewEventForm = React.createClass({
 
 ## Known Issues
 
-`required` is not being enforced on directly on the SelectField component, 
+`required` is not being enforced directly on the SelectField component, 
 it does correctly affect `canSubmit` state however, so use that to disable the submit button as in the example above.
 
 ## Release History
 
 * 0.1.0 Initial release
 * 0.1.1 Fix exports
+* 0.1.2 Babelify same!
 
 ## Acknowledgements
 Based on an example from: https://github.com/rblakeley/pro-camper/blob/master/app/components/Form.js

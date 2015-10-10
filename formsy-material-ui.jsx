@@ -33,7 +33,7 @@ let FormsyCheckbox = React.createClass({
     return (
       <Checkbox
         {...this.props}
-        onChange={this.handleValueChange}
+        onCheck={this.handleValueChange}
         value={this.getValue()} />
     );
   }
@@ -53,7 +53,7 @@ let FormsyDate = React.createClass({
 });
 
 let FormsyRadio = React.createClass({
-  mixins: [ Formsy.Mixin, FormComponentMixin ],
+  mixins: [ Formsy.Mixin ],
 
   // Material-UI replaces any component inside RadioButtonGroup with RadioButton, so no need to render it here
   render: function () {}
@@ -99,7 +99,6 @@ let FormsyText = React.createClass({
       <TextField
         {...this.props}
         onChange={this.handleChange}
-        value={this.getValue()}
         errorText={this.getErrorMessage()} />
     );
   }

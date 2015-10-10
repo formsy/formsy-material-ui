@@ -39,8 +39,9 @@ var FormsyCheckbox = React.createClass({
   mixins: [Formsy.Mixin, FormComponentMixin],
 
   render: function render() {
+
     return React.createElement(Checkbox, _extends({}, this.props, {
-      onChange: this.handleValueChange,
+      onCheck: this.handleValueChange,
       value: this.getValue() }));
   }
 });
@@ -63,7 +64,7 @@ var FormsyDate = React.createClass({
 var FormsyRadio = React.createClass({
   displayName: 'FormsyRadio',
 
-  mixins: [Formsy.Mixin, FormComponentMixin],
+  mixins: [Formsy.Mixin],
 
   // Material-UI replaces any component inside RadioButtonGroup with RadioButton, so no need to render it here
   render: function render() {}
@@ -113,7 +114,6 @@ var FormsyText = React.createClass({
   render: function render() {
     return React.createElement(TextField, _extends({}, this.props, {
       onChange: this.handleChange,
-      value: this.getValue(),
       errorText: this.getErrorMessage() }));
   }
 });
@@ -145,6 +145,7 @@ module.exports = {
   FormsyCheckbox: FormsyCheckbox,
   FormsyDate: FormsyDate,
   FormsyRadio: FormsyRadio,
+  FormsyRadioGroup: FormsyRadioGroup,
   FormsySelect: FormsySelect,
   FormsyText: FormsyText,
   FormsyTime: FormsyTime,
