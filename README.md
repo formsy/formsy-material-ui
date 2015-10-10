@@ -192,6 +192,7 @@ it does correctly affect `canSubmit` state however, so use that to disable the s
 ## Release History
 
 * 0.1.0 Initial release
+* 0.1.1 Fix exports
 
 ## Acknowledgements
 Based on an example from: https://github.com/rblakeley/pro-camper/blob/master/app/components/Form.js

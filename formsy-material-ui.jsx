@@ -134,6 +134,7 @@ module.exports = {
   FormsyCheckbox: FormsyCheckbox,
   FormsyDate: FormsyDate,
   FormsyRadio: FormsyRadio,
+  FormsyRadioGroup: FormsyRadioGroup,
   FormsySelect: FormsySelect,
   FormsyText: FormsyText,
   FormsyTime: FormsyTime,
