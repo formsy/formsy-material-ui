@@ -1,5 +1,5 @@
 # formsy-material-ui
-A [Formsy](https://github.com/christianalfoni/formsy-react) compatibility wrapper for [Material-UI](http://material-ui.com/) form components.
+A [formsy-react](https://github.com/christianalfoni/formsy-react) compatibility wrapper for [Material-UI](http://material-ui.com/) form components.
 
 ## Usage
 
@@ -218,4 +218,4 @@ it does correctly affect `canSubmit` state however, so use that to disable the s
 
 ## Acknowledgements
 
-Based on an example from: https://github.com/rblakeley/pro-camper/blob/master/app/components/Form.js
+Based on an example from: [Ryan Blakeley](https://github.com/rblakeley)
