@@ -38,11 +38,18 @@ var FormsyCheckbox = React.createClass({
 
   mixins: [Formsy.Mixin, FormComponentMixin],
 
+  componentDidMount: function componentDidMount() {
+    this.setValue(this._checkbox.isChecked());
+  },
+
   render: function render() {
+    var _this = this;
 
     return React.createElement(Checkbox, _extends({}, this.props, {
-      onCheck: this.handleValueChange,
-      value: this.getValue() }));
+      ref: function (c) {
+        return _this._checkbox = c;
+      },
+      onCheck: this.handleValueChange }));
   }
 });
 
@@ -80,13 +87,13 @@ var FormsyRadioGroup = React.createClass({
   },
 
   render: function render() {
-    var _this = this;
+    var _this2 = this;
 
     return React.createElement(
       RadioButtonGroup,
       _extends({}, this.props, {
         ref: function (c) {
-          return _this._radio = c;
+          return _this2._radio = c;
         },
         onChange: this.handleValueChange }),
       this.props.children
@@ -134,10 +141,18 @@ var FormsyToggle = React.createClass({
 
   mixins: [Formsy.Mixin, FormComponentMixin],
 
+  componentDidMount: function componentDidMount() {
+    this.setValue(this._toggle.isToggled());
+  },
+
   render: function render() {
+    var _this3 = this;
+
     return React.createElement(Toggle, _extends({}, this.props, {
-      onToggle: this.handleValueChange,
-      value: this.getValue() }));
+      ref: function (c) {
+        return _this3._toggle = c;
+      },
+      onToggle: this.handleValueChange }));
   }
 });
 

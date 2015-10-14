@@ -28,13 +28,16 @@ let FormComponentMixin = {
 let FormsyCheckbox = React.createClass({
   mixins: [ Formsy.Mixin, FormComponentMixin ],
 
-  render: function () {
+  componentDidMount: function () {
+    this.setValue(this._checkbox.isChecked());
+  },
 
+  render: function () {
     return (
       <Checkbox
         {...this.props}
-        onCheck={this.handleValueChange}
-        value={this.getValue()} />
+        ref={(c) => this._checkbox = c}
+        onCheck={this.handleValueChange} />
     );
   }
 });
@@ -119,12 +122,16 @@ let FormsyTime = React.createClass({
 let FormsyToggle = React.createClass({
   mixins: [ Formsy.Mixin, FormComponentMixin ],
 
+  componentDidMount: function () {
+    this.setValue(this._toggle.isToggled());
+  },
+
   render: function () {
     return (
       <Toggle
         {...this.props}
-        onToggle={this.handleValueChange}
-        value={this.getValue()} />
+        ref={(c) => this._toggle = c}
+        onToggle={this.handleValueChange} />
     );
   }
 });
