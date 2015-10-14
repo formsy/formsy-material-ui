@@ -1,10 +1,15 @@
 'use strict';
 
-let React = require('react');
-let Formsy = require('formsy-react');
-let MUI = require('material-ui');
+const React = require('react');
+const Formsy = require('formsy-react');
 
-let { Checkbox, DatePicker, RadioButtonGroup, SelectField, TextField, TimePicker, Toggle } = MUI;
+const Checkbox = require('material-ui/lib/checkbox');
+const DatePicker = require('material-ui/lib/date-picker/date-picker');
+const RadioButtonGroup = require('material-ui/lib/radio-button-group');
+const SelectField = require('material-ui/lib/select-field');
+const TextField = require('material-ui/lib/text-field');
+const TimePicker = require('material-ui/lib/time-picker/time-picker');
+const Toggle = require('material-ui/lib/toggle');
 
 let FormComponentMixin = {
   propTypes: {

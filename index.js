@@ -4,15 +4,14 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 
 var React = require('react');
 var Formsy = require('formsy-react');
-var MUI = require('material-ui');
 
-var Checkbox = MUI.Checkbox;
-var DatePicker = MUI.DatePicker;
-var RadioButtonGroup = MUI.RadioButtonGroup;
-var SelectField = MUI.SelectField;
-var TextField = MUI.TextField;
-var TimePicker = MUI.TimePicker;
-var Toggle = MUI.Toggle;
+var Checkbox = require('material-ui/lib/checkbox');
+var DatePicker = require('material-ui/lib/date-picker/date-picker');
+var RadioButtonGroup = require('material-ui/lib/radio-button-group');
+var SelectField = require('material-ui/lib/select-field');
+var TextField = require('material-ui/lib/text-field');
+var TimePicker = require('material-ui/lib/time-picker/time-picker');
+var Toggle = require('material-ui/lib/toggle');
 
 var FormComponentMixin = {
   propTypes: {
