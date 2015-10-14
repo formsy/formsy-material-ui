@@ -6,14 +6,14 @@ A [Formsy](https://github.com/christianalfoni/formsy-react) compatibility wrappe
 ### ES6:
 
 ```js
-let FMUI = require('formsy-material-ui');
-let { FormsyCheckbox, FormsyDate, FormsyRadio, FormsyRadioGroup, FormsySelect, FormsyText, FormsyTime, FormsyToggle } = FMUI;
+const FMUI = require('formsy-material-ui');
+const { FormsyCheckbox, FormsyDate, FormsyRadio, FormsyRadioGroup, FormsySelect, FormsyText, FormsyTime, FormsyToggle } = FMUI;
 ```
 
 ### ES5:
 
 ```js
-VAR FMUI = require('formsy-material-ui');
+var FMUI = require('formsy-material-ui');
 var FormsyCheckbox = FMUI.FormsyCheckbox;
 var FormsyDate = FMUI.FormsyDate;
 var FormsyRadio = FMUI.FormsyRadio;
@@ -24,23 +24,27 @@ var FormsyTime = FMUI.FormsyTime;
 var FormsyToggle = FMUI.FormsyToggle;
 ```
 
-### Example:
+### Examples
 
+#### App
+[Example app](https://github.com/mbrookes/formsy-mui-demo)
+
+#### Code
 ```jsx
-let FMUI = require('formsy-material-ui');
-let { FormsyCheckbox, FormsyDate, FormsyRadio, FormsyRadioGroup, FormsySelect, FormsyText, FormsyTime, FormsyToggle } = FMUI;
-let { RaisedButton } = MUI;
+const FMUI = require('formsy-material-ui');
+const { FormsyCheckbox, FormsyDate, FormsyRadio, FormsyRadioGroup, FormsySelect, FormsyText, FormsyTime, FormsyToggle } = FMUI;
+const RaisedButton = require('material-ui/lib/raised-button');
 
-NewEventForm = React.createClass({
+const Form = React.createClass({
 
-  getDefaultProps: function () {
+  childContextTypes: {
+    muiTheme: React.PropTypes.object
+  },
+
+  getChildContext(){
     return {
-      errorMessages: {
-        wordsError: "Please only use letters",
-        numericError: "Please provide a number",
-        urlError: "Please provide a valid URL"
-      }
-    };
+      muiTheme: Styles.ThemeManager.getMuiTheme(Styles.LightRawTheme)
+    }
   },
 
   getInitialState: function () {
@@ -49,19 +53,10 @@ NewEventForm = React.createClass({
     };
   },
 
-  getStyles () {
-    return {
-      form: {
-        float: 'left',
-        margin: 16,
-        width: 320
-      },
-      submit: {
-        float: 'left',
-        clear: 'left',
-        marginTop: 32
-      }
-    };
+  errorMessages: {
+    wordsError: "Please only use letters",
+    numericError: "Please provide a number",
+    urlError: "Please provide a valid URL"
   },
 
   selectFieldItems: [
@@ -71,6 +66,17 @@ NewEventForm = React.createClass({
     { payload: 'weekends', text: 'Weekends' },
     { payload: 'weekly', text: 'Weekly' }
   ],
+
+  styles: {
+    paper: {
+      width: 300,
+      margin: 20,
+      padding: 20
+    },
+    submit: {
+      marginTop: 32
+    }
+  },
 
   enableButton: function () {
     this.setState({
@@ -86,7 +92,17 @@ NewEventForm = React.createClass({
 
   submitForm: function (model) {
     console.log("Model: ", model);
-    Dispatcher.dispatch( { actionType: "CREATE_NEW_EVENT", data: model } );
+    alert(
+      `Name:  ${model.name}\n
+      Chucked: ${model.chuck}\n
+      URL: ${model.url}\n
+      Frequency: ${model.frequency}\n
+      Date: ${model.date}\n
+      Time: ${model.time}\n
+      Agree: ${model.agree}\n
+      Toggle: ${model.toggle}\n
+      Speed: ${model.shipSpeed}\n
+    `);
   },
 
   notifyFormError: function (model) {
@@ -94,92 +110,93 @@ NewEventForm = React.createClass({
   },
 
   render: function () {
-    let styles = this.getStyles();
-    let { wordsError, numericError, urlError } = this.props.errorMessages;
+    let styles = this.styles;
+    let { wordsError, numericError, urlError } = this.errorMessages;
 
     return (
-      <div style={styles.form} className="none">
-        <Formsy.Form
-          onValid={this.enableButton}
-          onInvalid={this.disableButton}
-          onValidSubmit={this.submitForm}
-          onInvalidSubmit={this.notifyFormError}
-          style={styles.form}
-          mapping={this.mapInputs} >
+        <Paper style={styles.paper}>
+          <Formsy.Form
+            onValid={this.enableButton}
+            onInvalid={this.disableButton}
+            onValidSubmit={this.submitForm}
+            onInvalidSubmit={this.notifyFormError}
+            style={styles.form}
+            mapping={this.mapInputs} >
 
-          <FormsyText
-            name='eventName'
-            validations='isWords'
-            validationError={wordsError}
-            required
-            hintText="What is the name of the event?"
-            floatingLabelText="Event name" />
+              <FormsyText
+              name='name'
+              validations='isWords'
+              validationError={wordsError}
+              required
+              hintText="What is your name?"
+              floatingLabelText="Name" />
 
-          <FormsyText
-            name='organiser'
-            validations='isWords'
-            validationError={wordsError}
-            required
-            hintText="Who is organising this event?"
-            floatingLabelText="Organiser" />
+            <FormsyText
+              name='chuck'
+              validations='isNumeric'
+              validationError={numericError}
+              required
+              hintText="wood could a woodchuck chuck?"
+              floatingLabelText="How much" />
 
-          <FormsyText
-            name='locationName'
-            validations='isWords'
-            validationError={wordsError}
-            required
-            hintText="Where is the event being held?"
-            floatingLabelText="Location" />
+            <FormsyText
+              name='url'
+              validations='isUrl'
+              validationError={urlError}
+              required
+              hintText="Where can we find out more?"
+              floatingLabelText="URL" />
 
-          <FormsySelect
-            name='select'
-            required
-            floatingLabelText="Label"
-            menuItems={this.selectFieldItems}/>
+            <FormsySelect
+              name='frequency'
+              required
+              floatingLabelText="How often do you?"
+              menuItems={this.selectFieldItems}/>
 
-          <FormsyDate
-            name='date'
-            required
-            floatingLabelText="Date" />
+            <FormsyDate
+              name='date'
+              required
+              floatingLabelText="Date" />
 
-          <FormsyTime
-            name='time'
-            required
-            floatingLabelText="Time" />
+            <FormsyTime
+              name='time'
+              required
+              floatingLabelText="Time" />
 
-          <FormsyCheckbox
-            name='checkbox'
-            value={false}
-            label="Checkbox" />
-
-          <FormsyToggle
-            name='toggle'
-            value={false}
-            label="Toggle" />
-
-          <FormsyRadioGroup name="shipSpeed" defaultSelected="not_light">
-            <FormsyRadio
-              value="light"
-              label="prepare for light speed"
+            <FormsyCheckbox
+              name='agree'
+              label="Do you agree to disagree?"
+              defaultChecked={true}
               style={{marginBottom:16}} />
-            <FormsyRadio
-              value="not_light"
-              label="light speed too slow"
-              style={{marginBottom:16}}/>
-            <FormsyRadio
-              value="ludicrous"
-              label="go to ludicrous speed"
-              style={{marginBottom:16}}
-              disabled={true}/>
-          </FormsyRadioGroup>
 
-          <RaisedButton
-            style={styles.submit}
-            type="submit"
-            label="Submit"
-            disabled={!this.state.canSubmit} />
-        </Formsy.Form>
-      </div>
+            <FormsyToggle
+              name='toggle'
+              label="Toggle"
+              style={{marginBottom:16}} />
+
+            <FormsyRadioGroup name="shipSpeed" defaultSelected="not_light">
+              <FormsyRadio
+                value="light"
+                label="prepare for light speed"
+                style={{marginBottom:16}} />
+              <FormsyRadio
+                value="not_light"
+                label="light speed too slow"
+                style={{marginBottom:16}}/>
+              <FormsyRadio
+                value="ludicrous"
+                label="go to ludicrous speed"
+                style={{marginBottom:16}}
+                disabled={true}/>
+            </FormsyRadioGroup>
+
+            <RaisedButton
+              style={styles.submit}
+              type="submit"
+              label="Submit"
+              disabled={!this.state.canSubmit} />
+          </Formsy.Form>
+        </Paper>
     );
   }
 });
@@ -190,12 +207,15 @@ NewEventForm = React.createClass({
 `required` is not being enforced directly on the SelectField component, 
 it does correctly affect `canSubmit` state however, so use that to disable the submit button as in the example above.
 
+
 ## Release History
 
 * 0.1.0 Initial release
 * 0.1.1 Fix exports
 * 0.1.2 Babelify same!
+* 0.1.3 Fix Checkbox & Toggle to return value when unchanged, don't import all of MUI (!), update example in README.
+
 
 ## Acknowledgements
+
 Based on an example from: https://github.com/rblakeley/pro-camper/blob/master/app/components/Form.js
-         
