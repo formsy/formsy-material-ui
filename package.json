@@ -10,6 +10,9 @@
     "type": "git",
     "url": "git+https://github.com/mbrookes/formsy-material-ui.git"
   },
+  "dependencies": {
+    "formsy-react": "^0.17.0",
+  },
   "keywords": [
     "formsy",
     "MUI",
