@@ -1,5 +1,12 @@
 # formsy-material-ui
-A [formsy-react](https://github.com/christianalfoni/formsy-react) compatibility wrapper for [Material-UI](http://material-ui.com/) form components.
+[formsy-react](https://github.com/christianalfoni/formsy-react) is a form validation component for React forms.
+This is a wrapper for [Material-UI](http://material-ui.com/) form components to allow them to be used with formsy-react.
+
+## Installation
+
+`$ npm install formsy-material-ui`
+
+Note: For React 0.13.x compatibility, specify formsy-react 0.14.1 in your app.
 
 ## Usage
 
@@ -26,10 +33,10 @@ var FormsyToggle = FMUI.FormsyToggle;
 
 ### Examples
 
-#### App
-[Example app](https://github.com/mbrookes/formsy-mui-demo)
+#### Example App
+[Live demo](http://formsy-material-ui.meteor.com), code: [formsy-material-ui](https://github.com/mbrookes/formsy-mui-demo)
 
-#### Code
+#### Example Code
 ```jsx
 const FMUI = require('formsy-material-ui');
 const { FormsyCheckbox, FormsyDate, FormsyRadio, FormsyRadioGroup, FormsySelect, FormsyText, FormsyTime, FormsyToggle } = FMUI;
@@ -114,89 +121,89 @@ const Form = React.createClass({
     let { wordsError, numericError, urlError } = this.errorMessages;
 
     return (
-        <Paper style={styles.paper}>
-          <Formsy.Form
-            onValid={this.enableButton}
-            onInvalid={this.disableButton}
-            onValidSubmit={this.submitForm}
-            onInvalidSubmit={this.notifyFormError}
-            style={styles.form}
-            mapping={this.mapInputs} >
-
-              <FormsyText
-              name='name'
-              validations='isWords'
-              validationError={wordsError}
-              required
-              hintText="What is your name?"
-              floatingLabelText="Name" />
+      <Paper style={styles.paper}>
+        <Formsy.Form
+          onValid={this.enableButton}
+          onInvalid={this.disableButton}
+          onValidSubmit={this.submitForm}
+          onInvalidSubmit={this.notifyFormError}
+          style={styles.form}
+          mapping={this.mapInputs} >
 
             <FormsyText
-              name='chuck'
-              validations='isNumeric'
-              validationError={numericError}
-              required
-              hintText="wood could a woodchuck chuck?"
-              floatingLabelText="How much" />
+            name='name'
+            validations='isWords'
+            validationError={wordsError}
+            required
+            hintText="What is your name?"
+            floatingLabelText="Name" />
 
-            <FormsyText
-              name='url'
-              validations='isUrl'
-              validationError={urlError}
-              required
-              hintText="Where can we find out more?"
-              floatingLabelText="URL" />
+          <FormsyText
+            name='chuck'
+            validations='isNumeric'
+            validationError={numericError}
+            required
+            hintText="wood could a woodchuck chuck?"
+            floatingLabelText="How much" />
 
-            <FormsySelect
-              name='frequency'
-              required
-              floatingLabelText="How often do you?"
-              menuItems={this.selectFieldItems}/>
+          <FormsyText
+            name='url'
+            validations='isUrl'
+            validationError={urlError}
+            required
+            hintText="Where can we find out more?"
+            floatingLabelText="URL" />
 
-            <FormsyDate
-              name='date'
-              required
-              floatingLabelText="Date" />
+          <FormsySelect
+            name='frequency'
+            required
+            floatingLabelText="How often do you?"
+            menuItems={this.selectFieldItems}/>
 
-            <FormsyTime
-              name='time'
-              required
-              floatingLabelText="Time" />
+          <FormsyDate
+            name='date'
+            required
+            floatingLabelText="Date" />
 
-            <FormsyCheckbox
-              name='agree'
-              label="Do you agree to disagree?"
-              defaultChecked={true}
+          <FormsyTime
+            name='time'
+            required
+            floatingLabelText="Time" />
+
+          <FormsyCheckbox
+            name='agree'
+            label="Do you agree to disagree?"
+            defaultChecked={true}
+            style={{marginBottom:16}} />
+
+          <FormsyToggle
+            name='toggle'
+            label="Toggle"
+            style={{marginBottom:16}} />
+
+          <FormsyRadioGroup name="shipSpeed" defaultSelected="not_light">
+            <FormsyRadio
+              value="light"
+              label="prepare for light speed"
               style={{marginBottom:16}} />
+            <FormsyRadio
+              value="not_light"
+              label="light speed too slow"
+              style={{marginBottom:16}}/>
+            <FormsyRadio
+              value="ludicrous"
+              label="go to ludicrous speed"
+              style={{marginBottom:16}}
+              disabled={true}/>
+          </FormsyRadioGroup>
 
-            <FormsyToggle
-              name='toggle'
-              label="Toggle"
-              style={{marginBottom:16}} />
-
-            <FormsyRadioGroup name="shipSpeed" defaultSelected="not_light">
-              <FormsyRadio
-                value="light"
-                label="prepare for light speed"
-                style={{marginBottom:16}} />
-              <FormsyRadio
-                value="not_light"
-                label="light speed too slow"
-                style={{marginBottom:16}}/>
-              <FormsyRadio
-                value="ludicrous"
-                label="go to ludicrous speed"
-                style={{marginBottom:16}}
-                disabled={true}/>
-            </FormsyRadioGroup>
-
-            <RaisedButton
-              style={styles.submit}
-              type="submit"
-              label="Submit"
-              disabled={!this.state.canSubmit} />
-          </Formsy.Form>
-        </Paper>
+          <RaisedButton
+            style={styles.submit}
+            type="submit"
+            label="Submit"
+            disabled={!this.state.canSubmit} />
+        </Formsy.Form>
+      </Paper>
     );
   }
 });
@@ -214,8 +221,9 @@ it does correctly affect `canSubmit` state however, so use that to disable the s
 * 0.1.1 Fix exports
 * 0.1.2 Babelify same!
 * 0.1.3 Fix Checkbox & Toggle to return value when unchanged, don't import all of MUI (!), update example in README.
+* 0.1.4 Add formsy-react dependency (previously assumed it was already installed)
 
 
 ## Acknowledgements
 
-Based on an example from: [Ryan Blakeley](https://github.com/rblakeley)
+Based on an example from [Ryan Blakeley](https://github.com/rblakeley).
