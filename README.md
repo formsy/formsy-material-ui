@@ -157,6 +157,7 @@ it does correctly affect `canSubmit` state however, so use that to disable the s
 * 0.1.4 Add formsy-react dependency (previously assumed it was already installed)
 * 0.1.5 Add react-components keyword to package.json
 * 0.1.6 Correct live-demo URL
+* 0.2.0 Only validate textfield onBlur
 
 
 ## Acknowledgements
