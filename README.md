@@ -34,7 +34,7 @@ var FormsyToggle = FMUI.FormsyToggle;
 ### Examples
 
 #### Example App
-[Live demo](http://formsy-material-ui.meteor.com), code: [formsy-material-ui](https://github.com/mbrookes/formsy-mui-demo)
+[Live demo](http://formsy-mui-demo.meteor.com), code: [formsy-material-ui](https://github.com/mbrookes/formsy-mui-demo)
 
 #### Example Code
 ```jsx
