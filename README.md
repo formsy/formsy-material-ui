@@ -222,6 +222,7 @@ it does correctly affect `canSubmit` state however, so use that to disable the s
 * 0.1.2 Babelify same!
 * 0.1.3 Fix Checkbox & Toggle to return value when unchanged, don't import all of MUI (!), update example in README.
 * 0.1.4 Add formsy-react dependency (previously assumed it was already installed)
+* 0.1.5 Add react-components keyword to package.json
 
 
 ## Acknowledgements

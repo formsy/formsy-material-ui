@@ -1,6 +1,6 @@
 {
   "name": "formsy-material-ui",
-  "version": "0.1.4",
+  "version": "0.1.5",
   "description": "A formsy-react compatibility wrapper for Material-UI form components.",
   "main": "index.js",
   "scripts": {
@@ -25,7 +25,8 @@
     "MUI",
     "Material-UI",
     "React",
-    "jsx"
+    "jsx",
+    "react-component"
   ],
   "author": "Matt Brookes <npm@nospam.33m.co> (https://github.com/mbrookes)",
   "license": "MIT",
