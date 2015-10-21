@@ -119,7 +119,7 @@ var FormsyText = React.createClass({
 
   render: function render() {
     return React.createElement(TextField, _extends({}, this.props, {
-      onChange: this.handleChange,
+      onBlur: this.handleChange,
       errorText: this.getErrorMessage() }));
   }
 });
@@ -165,4 +165,3 @@ module.exports = {
   FormsyTime: FormsyTime,
   FormsyToggle: FormsyToggle
 };
-

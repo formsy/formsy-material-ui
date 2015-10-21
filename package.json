@@ -1,6 +1,6 @@
 {
   "name": "formsy-material-ui",
-  "version": "0.2.1",
+  "version": "0.2.2",
   "description": "A formsy-react compatibility wrapper for Material-UI form components.",
   "main": "index.js",
   "scripts": {
@@ -17,6 +17,12 @@
   ],
   "peerDependencies": {
     "formsy-react": ">=0.14.1 <1"
+  },
+  "devDependencies": {
+    "babel": "^5.0.0"
+  },
+  "scripts": {
+    "prepublish": "babel formsy-material-ui.jsx -o index.js"
   },
   "keywords": [
     "formsy",

@@ -159,7 +159,7 @@ it does correctly affect `canSubmit` state however, so use that to disable the s
 * 0.1.6 Correct live-demo URL
 * 0.2.0 Only validate textfield onBlur
 * 0.2.1 Convert dependencies to peerDependencies.
-
+* 0.2.2 Add prepublish script and associated dev dependency.
 
 ## Acknowledgements
 
