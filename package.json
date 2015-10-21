@@ -15,7 +15,7 @@
     "README.md",
     "LICENSE"
   ],
-  "dependencies": {
+  "peerDependencies": {
     "formsy-react": ">=0.14.1 <1"
   },
   "keywords": [
