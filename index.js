@@ -120,7 +120,8 @@ var FormsyText = React.createClass({
   render: function render() {
     return React.createElement(TextField, _extends({}, this.props, {
       onBlur: this.handleChange,
-      errorText: this.getErrorMessage() }));
+      errorText: this.getErrorMessage(),
+      value: this.getValue() }));
   }
 });
 

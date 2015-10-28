@@ -107,7 +107,8 @@ let FormsyText = React.createClass({
       <TextField
         {...this.props}
         onBlur={this.handleChange}
-        errorText={this.getErrorMessage()} />
+        errorText={this.getErrorMessage()}
+        value={this.getValue()} />
     );
   }
 });
