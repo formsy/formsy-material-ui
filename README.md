@@ -144,9 +144,7 @@ const Form = React.createClass({
 
 ## Known Issues
 
-`required` is not being enforced directly on the SelectField component, 
-it does correctly affect `canSubmit` state however, so use that to disable the submit button as in the example above.
-
+See [issues](https://github.com/mbrookes/formsy-material-ui/issues).
 
 ## Release History
 
