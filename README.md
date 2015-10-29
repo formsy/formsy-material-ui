@@ -158,6 +158,7 @@ See [issues](https://github.com/mbrookes/formsy-material-ui/issues).
 * 0.2.0 Only validate textfield onBlur
 * 0.2.1 Convert dependencies to peerDependencies.
 * 0.2.2 Add prepublish script and associated dev dependency.
+* 0.2.3 Fix Textfield initialization through this.refs.form.reset(model)
 
 ## Acknowledgements
 
