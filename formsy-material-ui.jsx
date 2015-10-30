@@ -94,7 +94,8 @@ let FormsySelect = React.createClass({
       <SelectField
         {...this.props}
         onChange={this.handleChange}
-        value={this.getValue()} />
+        value={this.getValue()}
+        errorText={this.getErrorMessage()} />
     );
   }
 });
@@ -106,7 +107,7 @@ let FormsyText = React.createClass({
     return (
       <TextField
         {...this.props}
-        onBlur={this.handleChange}
+        onChange={this.handleChange}
         errorText={this.getErrorMessage()}
         value={this.getValue()} />
     );
