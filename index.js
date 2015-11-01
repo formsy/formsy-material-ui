@@ -23,7 +23,7 @@ var FormComponentMixin = {
   },
 
   handleChange: function handleChange(event) {
-    this.setValue(event.currentTarget.value);
+    this.setValue(event.target.value);
   },
 
   handleValueChange: function handleValueChange(event, value) {

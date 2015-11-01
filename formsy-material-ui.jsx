@@ -21,7 +21,7 @@ let FormComponentMixin = {
   },
 
   handleChange: function (event) {
-    this.setValue(event.currentTarget.value);
+    this.setValue(event.target.value);
   },
 
   handleValueChange: function (event, value) {
