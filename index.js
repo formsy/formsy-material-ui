@@ -115,50 +115,11 @@ var FormsySelect = React.createClass({
 var FormsyText = React.createClass({
   displayName: 'FormsyText',
 
-  propTypes: {
-    name: React.PropTypes.string.isRequired,
-    validations: React.PropTypes.string,
-    validationError: React.PropTypes.string,
-    hintText: React.PropTypes.string,
-    floatingLabelText: React.PropTypes.string
-  },
-
-  handleChange: function handleChange(event) {
-    if(this.getErrorMessage() != null){
-      this.setValue(event.currentTarget.value);
-    }
-    else{
-      if (this.isValidValue(event.target.value)) {
-        this.setValue(event.target.value);
-      }
-      else{
-        this.setState({
-          _value: event.currentTarget.value,
-          _isPristine: false
-        });
-      }
-    }
-  },
-
-  handleValueChange: function handleValueChange(event, value) {
-    this.setValue(value);
-  },
-
-  handleBlur: function handleBlur(event) {
-    this.setValue(event.currentTarget.value);
-  },
-
-  handleEnterKeyDown: function handleEnterKeyDown(event) {
-    this.setValue(event.currentTarget.value);
-  },
-
-  mixins: [Formsy.Mixin],
+  mixins: [Formsy.Mixin, FormComponentMixin],
 
   render: function render() {
     return React.createElement(TextField, _extends({}, this.props, {
-      onChange: this.handleChange,
-      onBlur: this.handleBlur,
-      onEnterKeyDown:this.handleEnterKeyDown,
+      onBlur: this.handleChange,
       errorText: this.getErrorMessage(),
       value: this.getValue() }));
   }
