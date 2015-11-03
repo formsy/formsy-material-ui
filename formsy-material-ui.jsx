@@ -94,6 +94,7 @@ let FormsySelect = React.createClass({
       <SelectField
         {...this.props}
         onChange={this.handleChange}
+        errorText={this.getErrorMessage()}
         value={this.getValue()} />
     );
   }
