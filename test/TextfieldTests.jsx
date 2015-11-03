@@ -1,5 +1,3 @@
-// Based on example from: https://github.com/rblakeley/pro-camper/blob/master/app/components/Form.js
-
 injectTapEventPlugin();
 
 let { FormsyText } = FMUI;
@@ -73,16 +71,16 @@ TestForm = React.createClass({
 
           <span style={spanStyle}>Name only - all following have a name and some other combination of options.</span>
           <FormsyText
-            name='nameOnly' />
+            name='name' />
 
           <span style={spanStyle}>floatingLabelText</span>
           <FormsyText
-            name='Label'
+            name='label'
             floatingLabelText="Name" />
 
           <span style={spanStyle}>hintText</span>
           <FormsyText
-            name='Hint'
+            name='hint'
             hintText="Hint text"
             />
 
@@ -102,7 +100,7 @@ TestForm = React.createClass({
 
           <span style={spanStyle}>hintText, defaultValue</span>
           <FormsyText
-            name='hint-efault'
+            name='hint-default'
             hintText="Hint text"
             defaultValue="default"
             />
@@ -127,7 +125,7 @@ TestForm = React.createClass({
 
           <span style={spanStyle}>validation, validationError</span>
           <FormsyText
-            name='validation-validationError'
+            name='validation-error'
             validations='isWords'
             validationError={wordsError} />
 
@@ -139,16 +137,16 @@ TestForm = React.createClass({
 
           <span style={spanStyle}>validation, validationError, required</span>
           <FormsyText
-            name='validation-validationError-required'
+            name='validation-error-required'
             validations='isWords'
-            validationError="Please only use letters"
+            validationError={wordsError}
             required />
 
           <span style={spanStyle}>validation, validationError, required, hintText, label</span>
           <FormsyText
-            name='validation-validationError-required-hint-label'
+            name='validation-error-required-hint-label'
             validations='isWords'
-            validationError="Please only use letters"
+            validationError={wordsError}
             required
             hintText="What is your name?"
             floatingLabelText="Name" />
