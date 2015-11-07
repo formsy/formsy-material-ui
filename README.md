@@ -10,6 +10,8 @@ Note: For React 0.13.x compatibility, specify formsy-react 0.14.1 in your app.
 
 ## Usage
 
+Note for `FormsyText` you must use `value` instead of `defaultValue` to set a default value.
+
 ### ES6:
 
 ```js
@@ -81,62 +83,63 @@ const Form = React.createClass({
     let { wordsError } = this.errorMessages;
 
     return (
-        <Formsy.Form
-          onValid={this.enableButton}
-          onInvalid={this.disableButton}
-          onValidSubmit={this.submitForm} >
+      <Formsy.Form
+        onValid={this.enableButton}
+        onInvalid={this.disableButton}
+        onValidSubmit={this.submitForm} >
 
-           <FormsyText
-            name='name'
-            validations='isWords'
-            validationError={wordsError}
-            required
-            hintText="What is your name?"
-            floatingLabelText="Name" />
+         <FormsyText
+          name='name'
+          validations='isWords'
+          validationError={wordsError}
+          required
+          hintText="What is your name?"
+          value="Bob"
+          floatingLabelText="Name" />
 
-          <FormsySelect
-            name='frequency'
-            required
-            floatingLabelText="How often do you?"
-            menuItems={this.selectFieldItems}/>
+        <FormsySelect
+          name='frequency'
+          required
+          floatingLabelText="How often do you?"
+          menuItems={this.selectFieldItems}/>
 
-          <FormsyDate
-            name='date'
-            required
-            floatingLabelText="Date" />
+        <FormsyDate
+          name='date'
+          required
+          floatingLabelText="Date" />
 
-          <FormsyTime
-            name='time'
-            required
-            floatingLabelText="Time" />
+        <FormsyTime
+          name='time'
+          required
+          floatingLabelText="Time" />
 
-          <FormsyCheckbox
-            name='agree'
-            label="Do you agree to disagree?"
-            defaultChecked={true} />
+        <FormsyCheckbox
+          name='agree'
+          label="Do you agree to disagree?"
+          defaultChecked={true} />
 
-          <FormsyToggle
-            name='toggle'
-            label="Toggle" />
+        <FormsyToggle
+          name='toggle'
+          label="Toggle" />
 
-          <FormsyRadioGroup name="shipSpeed" defaultSelected="not_light">
-            <FormsyRadio
-              value="light"
-              label="prepare for light speed" />
-            <FormsyRadio
-              value="not_light"
-              label="light speed too slow" />
-            <FormsyRadio
-              value="ludicrous"
-              label="go to ludicrous speed"
-              disabled={true} />
-          </FormsyRadioGroup>
+        <FormsyRadioGroup name="shipSpeed" defaultSelected="not_light">
+          <FormsyRadio
+            value="light"
+            label="prepare for light speed" />
+          <FormsyRadio
+            value="not_light"
+            label="light speed too slow" />
+          <FormsyRadio
+            value="ludicrous"
+            label="go to ludicrous speed"
+            disabled={true} />
+        </FormsyRadioGroup>
 
-          <RaisedButton
-            type="submit"
-            label="Submit"
-            disabled={!this.state.canSubmit} />
-        </Formsy.Form>
+        <RaisedButton
+          type="submit"
+          label="Submit"
+          disabled={!this.state.canSubmit} />
+      </Formsy.Form>
     );
   }
 });
@@ -159,7 +162,8 @@ See [issues](https://github.com/mbrookes/formsy-material-ui/issues).
 * 0.2.1 Convert dependencies to peerDependencies.
 * 0.2.2 Add prepublish script and associated dev dependency to package.json.
 * 0.2.3 Fix textfield initialization through this.refs.form.reset(model) (@vijayrawatsan).
-* 0.2.4 Updated textfield handling (@vijayrawatsan), selectfield fix (@dmlinn),
+* 0.2.4 Updated textfield handling (@vijayrawatsan), selectfield fix (@dmlinn).
+* 0.2.5 (Unpublished). Fix issue #21 defaults?
 
 ## Acknowledgements
 

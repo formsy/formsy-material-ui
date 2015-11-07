@@ -128,10 +128,6 @@ let FormsyText = React.createClass({
     }
   },
 
-  handleValueChange: function handleValueChange(event, value) {
-    this.setValue(value);
-  },
-
   handleBlur: function handleBlur(event) {
     this.setValue(event.currentTarget.value);
   },
@@ -146,6 +142,7 @@ let FormsyText = React.createClass({
     return (
       <TextField
         {...this.props}
+        defaultValue={this.props.value}
         onChange={this.handleChange}
         onBlur={this.handleBlur}
         onEnterKeyDown={this.handleEnterKeyDown}
