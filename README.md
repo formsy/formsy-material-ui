@@ -1,4 +1,5 @@
-# formsy-material-ui
+# formsy-material-ui [![npm version](https://badge.fury.io/js/formsy-material-ui.svg)](https://badge.fury.io/js/formsy-material-ui)
+
 [formsy-react](https://github.com/christianalfoni/formsy-react) is a form validation component for React forms.
 This is a wrapper for [Material-UI](http://material-ui.com/) form components to allow them to be used with formsy-react.
 
