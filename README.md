@@ -163,7 +163,7 @@ See [issues](https://github.com/mbrookes/formsy-material-ui/issues).
 * 0.2.2 Add prepublish script and associated dev dependency to package.json.
 * 0.2.3 Fix textfield initialization through this.refs.form.reset(model) (@vijayrawatsan).
 * 0.2.4 Updated textfield handling (@vijayrawatsan), selectfield fix (@dmlinn).
-* 0.2.5 (Unpublished). Fix issue #21 defaults?
+* 0.2.5 Fix issue #21 Textfield defaultValue handling.
 
 ## Acknowledgements
 

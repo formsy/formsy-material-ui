@@ -108,6 +108,7 @@ var FormsySelect = React.createClass({
   render: function render() {
     return React.createElement(SelectField, _extends({}, this.props, {
       onChange: this.handleChange,
+      errorText: this.getErrorMessage(),
       value: this.getValue() }));
   }
 });
