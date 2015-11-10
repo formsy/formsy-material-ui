@@ -1,8 +1,8 @@
 {
   "name": "formsy-material-ui",
-  "version": "0.2.5",
+  "version": "0.3.0",
   "description": "A formsy-react compatibility wrapper for Material-UI form components.",
-  "main": "index.js",
+  "main": "lib/index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -13,6 +13,7 @@
   "files": [
     "index.js",
     "README.md",
+    "CHANGELOG.md",
     "LICENSE"
   ],
   "peerDependencies": {
@@ -22,7 +23,7 @@
     "babel": "^5.0.0"
   },
   "scripts": {
-    "prepublish": "babel formsy-material-ui.jsx -o index.js"
+    "prepublish": "babel ./src/ -d ./lib/"
   },
   "keywords": [
     "formsy",
