@@ -11,7 +11,24 @@ Note: For React 0.13.x compatibility, specify formsy-react 0.14.1 in your app.
 
 ## Usage
 
-Note for `FormsyText` you must use `value` instead of `defaultValue` to set a default value.
+Note: for `FormsyText` you must use `value` instead of `defaultValue` to set a default value.
+
+As of 0.3.0 the library is split into separate modules, so you can import only those needed for a particular form.
+This will save overhead particularly if you are not using the Date and / or Time components.
+
+```js
+var FormsyCheckbox = require('formsy-material-ui/lib/FormsyCheckbox');
+var FormsyDate = require('formsy-material-ui/lib/FormsyDate');
+var FormsyRadio = require('formsy-material-ui/lib/FormsyRadio');
+var FormsyRadioGroup = require('formsy-material-ui/lib/FormsyRadioGroup');
+var FormsySelect = require('formsy-material-ui/lib/FormsySelect');
+var FormsyText = require('formsy-material-ui/lib/FormsyText');
+var FormsyTime = require('formsy-material-ui/lib/FormsyTime');
+var FormsyToggle = require('formsy-material-ui/lib/FormsyToggle');
+```
+
+If you prefer you can import the whole library, and associated MUI components, by requiring `formsy-material-ui`
+this will have the same footprint, regardless of which components you chose to assign in the following line(s):
 
 ### ES6:
 
