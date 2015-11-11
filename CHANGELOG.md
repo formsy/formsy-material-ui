@@ -1,5 +1,9 @@
 ## Changelog
 
+=======
+* 0.3.2 Remove explicit files declaration from package.json (the npm docs lie!)
+* 0.3.1 Add ./lib/ to package.json.
+* 0.3.0 Split into separate files to allow individual import of MUI components
 * 0.2.5 Fix issue #21 Textfield defaultValue handling.
 * 0.2.4 Updated textfield handling (@vijayrawatsan), selectfield fix (@dmlinn).
 * 0.2.3 Fix textfield initialization through this.refs.form.reset(model) (@vijayrawatsan).
