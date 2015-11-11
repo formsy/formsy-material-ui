@@ -1,6 +1,5 @@
 ## Changelog
 
-=======
 * 0.3.2 Remove explicit files declaration from package.json (the npm docs lie!)
 * 0.3.1 Add ./lib/ to package.json.
 * 0.3.0 Split into separate files to allow individual import of MUI components
