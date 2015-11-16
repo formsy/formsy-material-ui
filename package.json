@@ -16,7 +16,6 @@
     "babel": "^5.0.0"
   },
   "scripts": {
-
     "test": "echo \"Error: no test specified\" && exit 1",
     "prepublish": "babel ./src -d ./lib"
   },
