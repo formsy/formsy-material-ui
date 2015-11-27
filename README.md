@@ -66,7 +66,7 @@ const Form = React.createClass({
 
   getInitialState: function () {
     return {
-      canSumbit: false
+      canSubmit: false
     };
   },
 
