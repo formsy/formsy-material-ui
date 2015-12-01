@@ -9,9 +9,13 @@ let FormsyDate = React.createClass({
   render: function () {
     return (
       <DatePicker
-        formatDate={(date) => date.toISOString().substring(0,10)}
+        // Sets the default date format to be ISO8601 (YYYY-MM-DD), accounting for current timezone
+        formatDate={(date) => (new Date(date.toDateString()+" 12:00:00 +0000")).toISOString().substring(0,10)}
         {...this.props}
-        onChange={this.handleValueChange} />
+        defaultValue={this.props.value}
+        onChange={this.handleValueChange}
+        errorText={this.getErrorMessage()}
+        value={this.getValue()} />
     );
   }
 });
