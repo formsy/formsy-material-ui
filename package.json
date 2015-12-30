@@ -35,5 +35,11 @@
   "bugs": {
     "url": "https://github.com/mbrookes/formsy-material-ui/issues"
   },
-  "homepage": "https://github.com/mbrookes/formsy-material-ui#readme"
+  "homepage": "https://github.com/mbrookes/formsy-material-ui#readme",
+  "dependencies": {
+    "material-ui": "^0.14.0",
+    "react": "^0.14.5",
+    "react-dom": "^0.14.5",
+    "react-tap-event-plugin": "^0.2.1"
+  }
 }

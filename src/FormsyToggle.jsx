@@ -1,9 +1,9 @@
-const React = require('react');
-const Formsy = require('formsy-react');
-const Toggle = require('material-ui/lib/toggle');
-const FormComponentMixin = require('./FormComponentMixin');
+import React              from 'react';
+import Formsy             from 'formsy-react';
+import Toggle             from 'material-ui/lib/toggle';
+import FormComponentMixin from './FormComponentMixin';
 
-let FormsyToggle = React.createClass({
+export default React.createClass({
   mixins: [ Formsy.Mixin, FormComponentMixin ],
 
   componentDidMount: function () {
@@ -19,5 +19,3 @@ let FormsyToggle = React.createClass({
     );
   }
 });
-
-module.exports = FormsyToggle;

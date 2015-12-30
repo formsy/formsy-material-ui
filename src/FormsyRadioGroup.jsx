@@ -1,9 +1,9 @@
-const React = require('react');
-const Formsy = require('formsy-react');
-const RadioButtonGroup = require('material-ui/lib/radio-button-group');
-const FormComponentMixin = require('./FormComponentMixin');
+import React              from 'react';
+import Formsy             from 'formsy-react';
+import RadioButtonGroup   from 'material-ui/lib/radio-button-group';
+import FormComponentMixin from './FormComponentMixin';
 
-let FormsyRadioGroup = React.createClass({
+export default React.createClass({
   mixins: [ Formsy.Mixin, FormComponentMixin ],
 
   componentDidMount: function () {
@@ -21,5 +21,3 @@ let FormsyRadioGroup = React.createClass({
     );
   }
 });
-
-module.exports = FormsyRadioGroup;

@@ -1,9 +1,9 @@
-const React = require('react');
-const Formsy = require('formsy-react');
-const Checkbox = require('material-ui/lib/checkbox');
-const FormComponentMixin = require('./FormComponentMixin');
+import React              from 'react';
+import Formsy             from 'formsy-react';
+import Checkbox           from 'material-ui/lib/checkbox';
+import FormComponentMixin from './FormComponentMixin';
 
-let FormsyCheckbox = React.createClass({
+export default React.createClass({
   mixins: [ Formsy.Mixin, FormComponentMixin ],
 
   componentDidMount: function () {
@@ -19,5 +19,3 @@ let FormsyCheckbox = React.createClass({
     );
   }
 });
-
-module.exports = FormsyCheckbox;

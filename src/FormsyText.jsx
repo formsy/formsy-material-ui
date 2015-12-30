@@ -1,8 +1,8 @@
-const React = require('react');
-const Formsy = require('formsy-react');
-const TextField = require('material-ui/lib/text-field');
+import React     from 'react';
+import Formsy    from 'formsy-react';
+import TextField from 'material-ui/lib/text-field';
 
-let FormsyText = React.createClass({
+export default React.createClass({
   mixins: [ Formsy.Mixin ],
 
   propTypes: {
@@ -48,5 +48,3 @@ let FormsyText = React.createClass({
     );
   }
 });
-
-module.exports = FormsyText;
