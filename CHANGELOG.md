@@ -1,5 +1,6 @@
 ## Changelog
 
+* 0.3.4 ES6 syntax and material-ui 0.14.0 compatibility
 * 0.3.3 Fix default (ISO8601 style) date for formatDate to respect client timezone
 * 0.3.2 Remove explicit files declaration from package.json (the npm docs lie!)
 * 0.3.1 Add ./lib/ to package.json.

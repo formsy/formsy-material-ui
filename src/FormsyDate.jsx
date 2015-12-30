@@ -1,9 +1,9 @@
-const React = require('react');
-const Formsy = require('formsy-react');
-const DatePicker = require('material-ui/lib/date-picker/date-picker');
-const FormComponentMixin = require('./FormComponentMixin');
+import React              from 'react';
+import Formsy             from 'formsy-react';
+import DatePicker         from 'material-ui/lib/date-picker/date-picker';
+import FormComponentMixin from './FormComponentMixin';
 
-let FormsyDate = React.createClass({
+export default React.createClass({
   mixins: [ Formsy.Mixin, FormComponentMixin ],
 
   render: function () {
@@ -19,5 +19,3 @@ let FormsyDate = React.createClass({
     );
   }
 });
-
-module.exports = FormsyDate;

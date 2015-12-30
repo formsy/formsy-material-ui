@@ -1,6 +1,6 @@
-const React = require('react');
+import React from 'react';
 
-module.exports = {
+export default {
 
   propTypes: {
     name: React.PropTypes.string.isRequired
