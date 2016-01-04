@@ -15,7 +15,8 @@ let FormsyCheckbox = React.createClass({
       <Checkbox
         {...this.props}
         ref={(c) => this._checkbox = c}
-        onCheck={this.handleValueChange} />
+        onCheck={this.handleValueChange}
+        checked={this.getValue()} />
     );
   }
 });
