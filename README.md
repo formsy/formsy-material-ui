@@ -9,7 +9,7 @@ This is a wrapper for [Material-UI](http://material-ui.com/) form components to 
 
 Note: For React 0.13.x compatibility, specify formsy-react 0.14.1 in your app.
 
-**NB**: material-ui 0.14.1 has an unintended breaking change that makes it incompatible with commonjs require(). Please use 0.14.0 until this is fixed.
+**NB**: Material-UI 0.14.1 introduced a regression that made it incompatible with CommonJS require(). Please use [Material-UI 0.14.2]( https://github.com/callemall/material-ui/releases/tag/v0.14.2) or above.
 
 ## Usage
 
