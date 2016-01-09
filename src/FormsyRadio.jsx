@@ -1,5 +1,5 @@
-const React = require('react');
-const Formsy = require('formsy-react');
+import React from 'react';
+import Formsy from 'formsy-react';
 
 let FormsyRadio = React.createClass({
   mixins: [ Formsy.Mixin ],
