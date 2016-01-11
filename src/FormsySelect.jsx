@@ -9,17 +9,29 @@ let FormsySelect = React.createClass({
     name: React.PropTypes.string.isRequired
   },
 
-  handleChange: function (event) {
-    this.setValue(event.target.value);
+  getInitialState: function () {
+    return {
+      hasChanged: false,
+    };
+  },
+
+  handleChange: function (event, index, value) {
+    this.setValue(value);
+    this.setState({hasChanged: true});
   },
 
   render: function () {
+    var value = this.state.hasChanged ? this.getValue() : this.props.value;
+
     return (
       <SelectField
         {...this.props}
         onChange={this.handleChange}
         errorText={this.getErrorMessage()}
-        value={this.getValue()} />
+        value={value}
+      >
+        {this.props.children}
+      </SelectField>
     );
   }
 });
