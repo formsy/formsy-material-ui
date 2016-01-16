@@ -76,12 +76,6 @@ const Form = React.createClass({
     wordsError: "Please only use letters"
   },
 
-  selectFieldItems: [
-    { payload: 'never', text: 'Never' },
-    { payload: 'nightly', text: 'Every Night' },
-    { payload: 'weeknights', text: 'Weeknights' }
-  ],
-
   enableButton: function () {
     this.setState({
       canSubmit: true
@@ -106,59 +100,72 @@ const Form = React.createClass({
       <Formsy.Form
         onValid={this.enableButton}
         onInvalid={this.disableButton}
-        onValidSubmit={this.submitForm} >
+        onValidSubmit={this.submitForm}
+      >
 
          <FormsyText
-          name='name'
-          validations='isWords'
-          validationError={wordsError}
-          required
-          hintText="What is your name?"
-          value="Bob"
-          floatingLabelText="Name" />
+           name='name'
+           validations='isWords'
+           validationError={wordsError}
+           required
+           hintText="What is your name?"
+           value="Bob"
+           floatingLabelText="Name"
+         />
 
-        <FormsySelect
-          name='frequency'
-          required
-          floatingLabelText="How often do you?"
-          menuItems={this.selectFieldItems}/>
+      <FormsySelect
+        name='frequency'
+        required
+        floatingLabelText="How often?">
+        <MenuItem value={'never'} primaryText="Never" />
+        <MenuItem value={'nightly'} primaryText="Every Night" />
+        <MenuItem value={'weeknights'} primaryText="Weeknights" />
+      </FormsySelect>
 
         <FormsyDate
           name='date'
           required
-          floatingLabelText="Date" />
+          floatingLabelText="Date"
+        />
 
         <FormsyTime
           name='time'
           required
-          floatingLabelText="Time" />
+          floatingLabelText="Time"
+        />
 
         <FormsyCheckbox
           name='agree'
           label="Do you agree to disagree?"
-          defaultChecked={true} />
+          defaultChecked={true}
+        />
 
         <FormsyToggle
           name='toggle'
-          label="Toggle" />
+          label="Toggle"
+        />
 
         <FormsyRadioGroup name="shipSpeed" defaultSelected="not_light">
           <FormsyRadio
             value="light"
-            label="prepare for light speed" />
+            label="prepare for light speed"
+          />
           <FormsyRadio
             value="not_light"
-            label="light speed too slow" />
+            label="light speed too slow"
+          />
           <FormsyRadio
             value="ludicrous"
             label="go to ludicrous speed"
-            disabled={true} />
+            disabled={true}
+          />
         </FormsyRadioGroup>
 
         <RaisedButton
           type="submit"
           label="Submit"
-          disabled={!this.state.canSubmit} />
+          disabled={!this.state.canSubmit}
+        />
       </Formsy.Form>
     );
   }
