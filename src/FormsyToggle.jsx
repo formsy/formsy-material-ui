@@ -1,10 +1,17 @@
 import React from 'react';
 import Formsy from 'formsy-react';
 import Toggle from 'material-ui/lib/toggle';
-import FormComponentMixin from './FormComponentMixin';
 
 let FormsyToggle = React.createClass({
-  mixins: [ Formsy.Mixin, FormComponentMixin ],
+  mixins: [ Formsy.Mixin ],
+
+  propTypes: {
+    name: React.PropTypes.string.isRequired
+  },
+
+  handleValueChange: function (event, value) {
+    this.setValue(value);
+  },
 
   componentDidMount: function () {
     this.setValue(this._toggle.isToggled());
@@ -15,7 +22,8 @@ let FormsyToggle = React.createClass({
       <Toggle
         {...this.props}
         ref={(c) => this._toggle = c}
-        onToggle={this.handleValueChange} />
+        onToggle={this.handleValueChange}
+      />
     );
   }
 });

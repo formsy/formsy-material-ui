@@ -44,7 +44,8 @@ let FormsyText = React.createClass({
         onBlur={this.handleBlur}
         onEnterKeyDown={this.handleEnterKeyDown}
         errorText={this.getErrorMessage()}
-        value={this.getValue()} />
+        value={this.getValue()}
+      />
     );
   }
 });

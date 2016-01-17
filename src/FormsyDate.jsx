@@ -1,10 +1,17 @@
 import React from 'react';
 import Formsy from 'formsy-react';
 import DatePicker from 'material-ui/lib/date-picker/date-picker';
-import FormComponentMixin from './FormComponentMixin';
 
 let FormsyDate = React.createClass({
-  mixins: [ Formsy.Mixin, FormComponentMixin ],
+  mixins: [ Formsy.Mixin ],
+
+  propTypes: {
+    name: React.PropTypes.string.isRequired
+  },
+
+  handleValueChange: function (event, value) {
+    this.setValue(value);
+  },
 
   render: function () {
     return (
@@ -15,7 +22,8 @@ let FormsyDate = React.createClass({
         defaultValue={this.props.value}
         onChange={this.handleValueChange}
         errorText={this.getErrorMessage()}
-        value={this.getValue()} />
+        value={this.getValue()}
+      />
     );
   }
 });

@@ -1,5 +1,6 @@
 ## Changelog
 
+* 0.3.5 Support composable SelctField (@rblakeley), update REDME SelectField example, remove mixin
 * 0.3.4 Fix for #35 - Treat MUI Checkbox as a controlled component to address MUI 0.14.0-rc2 regression
 * 0.3.3 Fix default (ISO8601 style) date for formatDate to respect client timezone
 * 0.3.2 Remove explicit files declaration from package.json (the npm docs lie!)
