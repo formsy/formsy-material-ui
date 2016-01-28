@@ -7,7 +7,9 @@ let FormsyText = React.createClass({
 
   propTypes: {
     name: React.PropTypes.string.isRequired,
-    value: React.PropTypes.string
+    value: React.PropTypes.string,
+    onFocus: React.PropTypes.func,
+    onBlur: React.PropTypes.func
   },
 
   handleChange: function handleChange(event) {
@@ -29,6 +31,7 @@ let FormsyText = React.createClass({
 
   handleBlur: function handleBlur(event) {
     this.setValue(event.currentTarget.value);
+    if (this.props.onBlur) this.props.onBlur(event);
   },
 
   handleEnterKeyDown: function handleEnterKeyDown(event) {
@@ -42,6 +45,7 @@ let FormsyText = React.createClass({
         defaultValue={this.props.value}
         onChange={this.handleChange}
         onBlur={this.handleBlur}
+        onFocus={this.props.onFocus}
         onEnterKeyDown={this.handleEnterKeyDown}
         errorText={this.getErrorMessage()}
         value={this.getValue()}
