@@ -172,6 +172,60 @@ const Form = React.createClass({
 });
 ```
 
+Material-ui provides a `.focus()` method for some its components, such as `TextField`.  formsy-material-ui components wrap Material-UI components, and if the underlying Material-UI component has a `.focus()` method, then the formsy-material-ui components will also expose a `.focus()` method, which just delegates to the underlying Material-UI component's `.focus()`.
+
+In the example below, we implement part of a chat-messaging application.  The component is a form that provides a text input and a submit button; users can enter their message in the input and send it with the submit button.  As a UX feature, we clear the form (`resetForm()`) and put the user's cursor back in the text field (`this.messageInput.focus()`) so that the user can easily begin to type his or her next message.  We set a React `ref` on the `FormsyText` component (setting it to `this.messageInput`) in order to have access to it and use `.focus()`.
+
+
+```jsx
+import React, { Component, PropTypes } from 'react'
+import { Form } from 'formsy-react'
+import RaisedButton from 'material-ui/lib/raised-button'
+import FormsyText from 'formsy-material-ui/lib/FormsyText'
+
+export default class ChatMessageForm extends Component {
+  constructor (props) {
+    super(props)
+    this.submit = this.submit.bind(this)
+    this.refMessageInput = c => this.messageInput = c
+  }
+
+  submit (model, resetForm) {
+    this.props.submitMessage(model.message)
+    resetForm()
+    this.messageInput.focus()
+  }
+
+  render () {
+    return (
+      <Form onValidSubmit={this.submit}>
+
+        <FormsyText
+         ref={this.refMessageInput}
+         name="message"
+         required
+         formNoValidate
+         hintText="What's on your mind?"
+         validations="isAlpha,minLength:1,maxLength:1000"
+        />
+
+        <RaisedButton
+         type="submit"
+         primary={true}
+         label="SEND"
+        />
+
+      </Form>
+    )
+  }
+}
+
+ChatMessageForm.propTypes = {
+  submitMessage: PropTypes.func.isRequired
+}
+```
+
+
 ## Known Issues
 
 See [issues](https://github.com/mbrookes/formsy-material-ui/issues).

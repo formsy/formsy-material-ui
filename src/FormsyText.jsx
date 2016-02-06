@@ -1,6 +1,7 @@
 import React from 'react';
 import Formsy from 'formsy-react';
 import TextField from 'material-ui/lib/text-field';
+import { _setMuiComponentAndMaybeFocus } from './utils';
 
 let FormsyText = React.createClass({
   mixins: [ Formsy.Mixin ],
@@ -38,10 +39,13 @@ let FormsyText = React.createClass({
     this.setValue(event.currentTarget.value);
   },
 
+  _setMuiComponentAndMaybeFocus: _setMuiComponentAndMaybeFocus,
+
   render: function () {
     return (
       <TextField
         {...this.props}
+        ref={this._setMuiComponentAndMaybeFocus}
         defaultValue={this.props.value}
         onChange={this.handleChange}
         onBlur={this.handleBlur}

@@ -1,6 +1,7 @@
 import React from 'react';
 import Formsy from 'formsy-react';
 import TimePicker from 'material-ui/lib/time-picker/time-picker';
+import { _setMuiComponentAndMaybeFocus } from './utils';
 
 let FormsyTime = React.createClass({
   mixins: [ Formsy.Mixin ],
@@ -13,10 +14,13 @@ let FormsyTime = React.createClass({
     this.setValue(value);
   },
 
+  _setMuiComponentAndMaybeFocus: _setMuiComponentAndMaybeFocus,
+
   render: function () {
     return (
       <TimePicker
         {...this.props}
+        ref={this._setMuiComponentAndMaybeFocus}
         onChange={this.handleValueChange}
       />
     );
