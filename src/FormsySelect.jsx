@@ -1,6 +1,7 @@
 import React from 'react';
 import Formsy from 'formsy-react';
 import SelectField from 'material-ui/lib/select-field';
+import { _setMuiComponentAndMaybeFocus } from './utils';
 
 let FormsySelect = React.createClass({
   mixins: [ Formsy.Mixin],
@@ -20,12 +21,15 @@ let FormsySelect = React.createClass({
     this.setState({hasChanged: true});
   },
 
+  _setMuiComponentAndMaybeFocus: _setMuiComponentAndMaybeFocus,
+
   render: function () {
     var value = this.state.hasChanged ? this.getValue() : this.props.value;
 
     return (
       <SelectField
         {...this.props}
+        ref={this._setMuiComponentAndMaybeFocus}
         onChange={this.handleChange}
         errorText={this.getErrorMessage()}
         value={value}
