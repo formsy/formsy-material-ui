@@ -12,6 +12,7 @@ let FormsyTime = React.createClass({
 
   handleValueChange: function (event, value) {
     this.setValue(value);
+    if (this.props.onChange) this.props.onChange(event, value);
   },
 
   _setMuiComponentAndMaybeFocus: _setMuiComponentAndMaybeFocus,
