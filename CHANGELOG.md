@@ -1,5 +1,6 @@
 ## Changelog
 
+* 0.3.8 Propagate events as onChange() (@magicalcows) bable 6 (@mbrookes)
 * 0.3.7 Expose a `.focus()` method (@py-in-the-sky)
 * 0.3.6 Add custom onBlur and onFocus handler support (@Aweary)
 * 0.3.5 Support composable SelctField (@rblakeley), update REDME SelectField example, remove mixin
