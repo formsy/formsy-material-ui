@@ -19,6 +19,7 @@ let FormsySelect = React.createClass({
   handleChange: function (event, index, value) {
     this.setValue(value);
     this.setState({hasChanged: true});
+    if (this.props.onChange) this.props.onChange(event, value, index);
   },
 
   _setMuiComponentAndMaybeFocus: _setMuiComponentAndMaybeFocus,

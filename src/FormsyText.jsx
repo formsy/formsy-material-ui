@@ -16,16 +16,19 @@ let FormsyText = React.createClass({
   handleChange: function handleChange(event) {
     if(this.getErrorMessage() != null){
       this.setValue(event.currentTarget.value);
+      if (this.props.onChange) this.props.onChange(event, event.currentTarget.value);
     }
     else{
       if (this.isValidValue(event.target.value)) {
         this.setValue(event.target.value);
+        if (this.props.onChange) this.props.onChange(event, event.target.value);
       }
       else{
         this.setState({
           _value: event.currentTarget.value,
           _isPristine: false
         });
+        if (this.props.onChange) this.props.onChange(event, event.currentTarget.value);
       }
     }
   },
@@ -37,6 +40,7 @@ let FormsyText = React.createClass({
 
   handleEnterKeyDown: function handleEnterKeyDown(event) {
     this.setValue(event.currentTarget.value);
+    if (this.props.onEnterKeyDown) this.props.onEnterKeyDown(event, event.currentTarget.value);
   },
 
   _setMuiComponentAndMaybeFocus: _setMuiComponentAndMaybeFocus,

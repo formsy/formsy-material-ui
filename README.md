@@ -53,6 +53,15 @@ var FormsyTime = FMUI.FormsyTime;
 var FormsyToggle = FMUI.FormsyToggle;
 ```
 
+### Events
+
+As of 0.3.8, components allow for `onChange` event handlers in props. They are fired when the value of the 
+component changes, regardless of the underlying handler (eg, `FomrsyToggle` uses `onToggle` internally, but we
+still use `onChange` in props to hook into the event.)
+The call back signatures for all `onChange` handlers conform to 
+ Material-UI's proposed [Standardized Callback Signatures](https://github.com/callemall/material-ui/issues/2957).  
+An example usage of this would be to use an `onChange` for the FormsySelect and receive notifications when it changes.
+
 ### Examples
 
 #### Example App
