@@ -24,7 +24,7 @@ let FormsyDate = React.createClass({
         formatDate={(date) => (new Date(date.toDateString()+" 12:00:00 +0000")).toISOString().substring(0,10)}
         {...this.props}
         ref={this._setMuiComponentAndMaybeFocus}
-        defaultValue={this.props.value}
+        defaultDate={this.props.value}
         onChange={this.handleValueChange}
         errorText={this.getErrorMessage()}
         value={this.getValue()}
