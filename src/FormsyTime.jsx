@@ -23,6 +23,8 @@ let FormsyTime = React.createClass({
         {...this.props}
         ref={this._setMuiComponentAndMaybeFocus}
         onChange={this.handleValueChange}
+        defaultTime={this.props.value}
+        value={this.getValue()}
       />
     );
   }
