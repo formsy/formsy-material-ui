@@ -54,7 +54,7 @@ let FormsyText = React.createClass({
         onChange={this.handleChange}
         onBlur={this.handleBlur}
         onFocus={this.props.onFocus}
-        onEnterKeyDown={this.handleEnterKeyDown}
+        onKeyDown={this.handleEnterKeyDown}
         errorText={this.getErrorMessage()}
         value={this.getValue()}
       />
