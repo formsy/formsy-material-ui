@@ -38,9 +38,9 @@ let FormsyText = React.createClass({
     if (this.props.onBlur) this.props.onBlur(event);
   },
 
-  handleEnterKeyDown: function handleEnterKeyDown(event) {
+  handleKeyDown: function handleKeyDown(event) {
     this.setValue(event.currentTarget.value);
-    if (this.props.onEnterKeyDown) this.props.onEnterKeyDown(event, event.currentTarget.value);
+    if (this.props.onKeyDown) this.props.onKeyDown(event, event.currentTarget.value);
   },
 
   _setMuiComponentAndMaybeFocus: _setMuiComponentAndMaybeFocus,
@@ -54,7 +54,7 @@ let FormsyText = React.createClass({
         onChange={this.handleChange}
         onBlur={this.handleBlur}
         onFocus={this.props.onFocus}
-        onKeyDown={this.handleEnterKeyDown}
+        onKeyDown={this.handleKeyDown}
         errorText={this.getErrorMessage()}
         value={this.getValue()}
       />
