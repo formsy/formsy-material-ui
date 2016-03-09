@@ -8,7 +8,7 @@ let FormsyText = React.createClass({
 
   propTypes: {
     name: React.PropTypes.string.isRequired,
-    value: React.PropTypes.string,
+    value: React.PropTypes.any,
     onFocus: React.PropTypes.func,
     onBlur: React.PropTypes.func
   },
