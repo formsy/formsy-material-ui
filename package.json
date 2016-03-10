@@ -1,6 +1,6 @@
 {
   "name": "formsy-material-ui",
-  "version": "0.3.8",
+  "version": "0.3.9",
   "description": "A formsy-react compatibility wrapper for Material-UI form components.",
   "main": "./lib/index.js",
   "scripts": {
@@ -11,6 +11,9 @@
   "repository": {
     "type": "git",
     "url": "git+https://github.com/mbrookes/formsy-material-ui.git"
+  },
+  "dependencies": {
+    "keycode": "^2.1.0"
   },
   "peerDependencies": {
     "formsy-react": ">=0.14.1 <1"
