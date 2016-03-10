@@ -1,4 +1,5 @@
 import React from 'react';
+import keycode from 'keycode';
 import Formsy from 'formsy-react';
 import TextField from 'material-ui/lib/text-field';
 import { _setMuiComponentAndMaybeFocus } from './utils';
@@ -38,6 +39,11 @@ let FormsyText = React.createClass({
     if (this.props.onBlur) this.props.onBlur(event);
   },
 
+  handleKeyDown: function handleKeyDown(event) {
+    if (keycode(event) === 'enter') this.handleEnterKeyDown(event);
+    if (this.props.onKeyDown) this.props.onKeyDown(event, event.currentTarget.value);
+  },
+
   handleEnterKeyDown: function handleEnterKeyDown(event) {
     this.setValue(event.currentTarget.value);
     if (this.props.onEnterKeyDown) this.props.onEnterKeyDown(event, event.currentTarget.value);
@@ -54,7 +60,7 @@ let FormsyText = React.createClass({
         onChange={this.handleChange}
         onBlur={this.handleBlur}
         onFocus={this.props.onFocus}
-        onEnterKeyDown={this.handleEnterKeyDown}
+        onKeyDown={this.handleKeyDown}
         errorText={this.getErrorMessage()}
         value={this.getValue()}
       />
