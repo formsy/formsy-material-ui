@@ -13,26 +13,6 @@ let FormsyText = React.createClass({
     onBlur: React.PropTypes.func
   },
 
-  handleChange: function handleChange(event) {
-    if(this.getErrorMessage() != null){
-      this.setValue(event.currentTarget.value);
-      if (this.props.onChange) this.props.onChange(event, event.currentTarget.value);
-    }
-    else{
-      if (this.isValidValue(event.target.value)) {
-        this.setValue(event.target.value);
-        if (this.props.onChange) this.props.onChange(event, event.target.value);
-      }
-      else{
-        this.setState({
-          _value: event.currentTarget.value,
-          _isPristine: false
-        });
-        if (this.props.onChange) this.props.onChange(event, event.currentTarget.value);
-      }
-    }
-  },
-
   handleBlur: function handleBlur(event) {
     this.setValue(event.currentTarget.value);
     if (this.props.onBlur) this.props.onBlur(event);
@@ -51,12 +31,10 @@ let FormsyText = React.createClass({
         {...this.props}
         ref={this._setMuiComponentAndMaybeFocus}
         defaultValue={this.props.value}
-        onChange={this.handleChange}
         onBlur={this.handleBlur}
         onFocus={this.props.onFocus}
         onEnterKeyDown={this.handleEnterKeyDown}
         errorText={this.getErrorMessage()}
-        value={this.getValue()}
       />
     );
   }
