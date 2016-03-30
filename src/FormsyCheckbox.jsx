@@ -1,9 +1,7 @@
 import React from 'react';
 import Formsy from 'formsy-react';
 import Checkbox from 'material-ui/lib/checkbox';
-
-import { _setMuiComponentAndMaybeFocus } from 'formsy-material-ui/lib/utils'
-// import { _setMuiComponentAndMaybeFocus } from './utils';
+import { _setMuiComponentAndMaybeFocus } from './utils';
 
 let FormsyCheckbox = React.createClass({
   mixins: [ Formsy.Mixin ],
