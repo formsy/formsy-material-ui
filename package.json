@@ -38,7 +38,7 @@
     "karma-sinon": "^1.0.4",
     "karma-sourcemap-loader": "^0.3.7",
     "karma-webpack": "^1.7.0",
-    "material-ui": "^0.14.4",
+    "material-ui": "./../material-ui",
     "mocha": "^2.4.5",
     "phantomjs-prebuilt": "^2.1.4",
     "react": "^0.14.7",

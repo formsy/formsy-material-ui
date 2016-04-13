@@ -1,7 +1,7 @@
 import FormsyText from '../src/FormsyText'
-import TextField from 'material-ui/lib/text-field'
+import TextField from 'material-ui/lib/TextField'
 import FormsyRadioGroup from '../src/FormsyRadioGroup'
-import RadioButtonGroup from 'material-ui/lib/radio-button-group'
+import RadioButtonGroup from 'material-ui/lib/RadioButton/RadioButtonGroup'
 import { mountTestForm } from './support'
 
 const setup = () => {
