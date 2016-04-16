@@ -1,10 +1,8 @@
-module.exports = {
-  FormsyCheckbox:   require('./FormsyCheckbox'),
-  FormsyDate:       require('./FormsyDate'),
-  FormsyRadio:      require('./FormsyRadio'),
-  FormsyRadioGroup: require('./FormsyRadioGroup'),
-  FormsySelect:     require('./FormsySelect'),
-  FormsyText:       require('./FormsyText'),
-  FormsyTime:       require('./FormsyTime'),
-  FormsyToggle:     require('./FormsyToggle')
-};
+export FormsyCheckbox from './FormsyCheckbox';
+export FormsyDate from './FormsyDate';
+export FormsyRadio from './FormsyRadio';
+export FormsyRadioGroup from './FormsyRadioGroup';
+export FormsySelect from './FormsySelect';
+export FormsyText from './FormsyText';
+export FormsyTime from './FormsyTime';
+export FormsyToggle from './FormsyToggle';

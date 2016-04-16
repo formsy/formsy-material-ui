@@ -1,8 +1,8 @@
 import React from 'react';
 import keycode from 'keycode';
 import Formsy from 'formsy-react';
-import TextField from 'material-ui/lib/text-field';
-import { _setMuiComponentAndMaybeFocus } from './utils';
+import TextField from 'material-ui/TextField';
+import {_setMuiComponentAndMaybeFocus} from './utils';
 
 let FormsyText = React.createClass({
   mixins: [ Formsy.Mixin ],
@@ -68,4 +68,4 @@ let FormsyText = React.createClass({
   }
 });
 
-module.exports = FormsyText;
+export default  FormsyText;
