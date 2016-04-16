@@ -1,10 +1,10 @@
 import React from 'react';
 import Formsy from 'formsy-react';
-import Toggle from 'material-ui/lib/toggle';
-import { _setMuiComponentAndMaybeFocus } from './utils';
+import Toggle from 'material-ui/Toggle';
+import {_setMuiComponentAndMaybeFocus} from './utils';
 
 let FormsyToggle = React.createClass({
-  mixins: [ Formsy.Mixin ],
+  mixins: [Formsy.Mixin],
 
   propTypes: {
     name: React.PropTypes.string.isRequired
