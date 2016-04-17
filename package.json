@@ -1,6 +1,6 @@
 {
-  "name": "formsy-material-ui",
-  "version": "0.3.10",
+  "name": "formsy-material-ui-ef",
+  "version": "0.3.11",
   "description": "A formsy-react compatibility wrapper for Material-UI form components.",
   "main": "./lib/index.js",
   "scripts": {
@@ -41,7 +41,7 @@
     "karma-sinon": "^1.0.4",
     "karma-sourcemap-loader": "^0.3.7",
     "karma-webpack": "^1.7.0",
-    "material-ui": "^0.14.4",
+    "material-ui": "^0.15.0-beta.1",
     "mocha": "^2.4.5",
     "phantomjs-prebuilt": "^2.1.7",
     "react": "^15.0.1",

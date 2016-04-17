@@ -1,5 +1,5 @@
 import FormsyText from '../src/FormsyText'
-import TextField from 'material-ui/lib/TextField'
+import TextField from 'material-ui/TextField'
 import FormsyRadioGroup from '../src/FormsyRadioGroup'
 import RadioButtonGroup from 'material-ui/lib/radio-button-group'
 import { mountTestForm } from './support'
