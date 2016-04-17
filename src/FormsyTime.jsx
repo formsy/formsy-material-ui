@@ -1,6 +1,6 @@
 import React from 'react';
 import Formsy from 'formsy-react';
-import TimePicker from 'material-ui//lib/TimePicker';
+import TimePicker from 'material-ui/TimePicker';
 import { _setMuiComponentAndMaybeFocus } from './utils';
 
 let FormsyTime = React.createClass({

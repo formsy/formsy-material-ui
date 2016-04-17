@@ -1,6 +1,6 @@
 {
-  "name": "formsy-material-ui-ef",
-  "version": "0.3.11",
+  "name": "formsy-material-ui",
+  "version": "0.3.12",
   "description": "A formsy-react compatibility wrapper for Material-UI form components.",
   "main": "./lib/index.js",
   "scripts": {
