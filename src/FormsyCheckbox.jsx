@@ -29,7 +29,7 @@ const FormsyCheckbox = React.createClass({
 
     return (
       <Checkbox
-        {...this.props}
+        {...extendedProps}
         ref={this._setMuiComponentAndMaybeFocus}
         onCheck={this.handleValueChange}
         checked={this.getValue() || defaultChecked || false}
