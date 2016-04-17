@@ -1,8 +1,8 @@
 import React from 'react';
 import keycode from 'keycode';
 import Formsy from 'formsy-react';
-import TextField from 'material-ui/lib/text-field';
-import { _setMuiComponentAndMaybeFocus } from './utils';
+import TextField from 'material-ui/TextField';
+import {_setMuiComponentAndMaybeFocus} from './utils';
 
 let FormsyText = React.createClass({
   mixins: [ Formsy.Mixin ],
@@ -40,6 +40,7 @@ let FormsyText = React.createClass({
   },
 
   handleKeyDown: function handleKeyDown(event) {
+
     if (keycode(event) === 'enter') this.handleEnterKeyDown(event);
     if (this.props.onKeyDown) this.props.onKeyDown(event, event.currentTarget.value);
   },
@@ -52,20 +53,22 @@ let FormsyText = React.createClass({
   _setMuiComponentAndMaybeFocus: _setMuiComponentAndMaybeFocus,
 
   render: function () {
+
+    delete this.props.defaultValue;
+
     return (
       <TextField
         {...this.props}
         ref={this._setMuiComponentAndMaybeFocus}
-        defaultValue={this.props.value}
         onChange={this.handleChange}
         onBlur={this.handleBlur}
         onFocus={this.props.onFocus}
         onKeyDown={this.handleKeyDown}
         errorText={this.getErrorMessage()}
-        value={this.getValue()}
+        value={this.getValue() || this.props.value || ''}
       />
     );
   }
 });
 
-module.exports = FormsyText;
+export default  FormsyText;
