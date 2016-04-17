@@ -12,6 +12,6 @@ export const mountTestForm = (childrenFn, formProps={}) => {
     }
   }
 
-  const formWrapper = mount(<TestForm {...formProps} />)
+  const formWrapper = mount(<TestForm {...formProps} />);
   return formWrapper
 }
