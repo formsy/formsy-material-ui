@@ -1,10 +1,8 @@
 import React from 'react';
-import Formsy from 'formsy-react';
-import TimePicker from 'material-ui/TimePicker';
-import { _setMuiComponentAndMaybeFocus } from './utils';
+import {_setMuiComponentAndMaybeFocus} from './utils';
 
 let FormsyTime = React.createClass({
-  mixins: [ Formsy.Mixin ],
+  mixins: [Formsy.Mixin],
 
   propTypes: {
     name: React.PropTypes.string.isRequired
@@ -30,4 +28,4 @@ let FormsyTime = React.createClass({
   }
 });
 
-module.exports = FormsyTime;
+export default FormsyTime;

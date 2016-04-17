@@ -1,10 +1,10 @@
 import React from 'react';
 import Formsy from 'formsy-react';
 import SelectField from 'material-ui/SelectField';
-import { _setMuiComponentAndMaybeFocus } from './utils';
+import {_setMuiComponentAndMaybeFocus} from './utils';
 
 let FormsySelect = React.createClass({
-  mixins: [ Formsy.Mixin],
+  mixins: [Formsy.Mixin],
 
   propTypes: {
     name: React.PropTypes.string.isRequired
@@ -41,4 +41,4 @@ let FormsySelect = React.createClass({
   }
 });
 
-module.exports = FormsySelect;
+export default FormsySelect;
