@@ -52,6 +52,9 @@ let FormsyText = React.createClass({
   _setMuiComponentAndMaybeFocus: _setMuiComponentAndMaybeFocus,
 
   render: function () {
+
+    delete this.props.defaultValue;
+
     return (
       <TextField
         {...this.props}
