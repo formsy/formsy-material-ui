@@ -1,6 +1,6 @@
 import React from 'react';
 import Formsy from 'formsy-react';
-import Checkbox from 'material-ui/lib/checkbox';
+import Checkbox from 'material-ui/Checkbox';
 import { _setMuiComponentAndMaybeFocus } from './utils';
 
 let FormsyCheckbox = React.createClass({
