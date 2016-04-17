@@ -40,6 +40,7 @@ let FormsyText = React.createClass({
   },
 
   handleKeyDown: function handleKeyDown(event) {
+
     if (keycode(event) === 'enter') this.handleEnterKeyDown(event);
     if (this.props.onKeyDown) this.props.onKeyDown(event, event.currentTarget.value);
   },
@@ -64,7 +65,7 @@ let FormsyText = React.createClass({
         onFocus={this.props.onFocus}
         onKeyDown={this.handleKeyDown}
         errorText={this.getErrorMessage()}
-        value={this.getValue()}
+        value={this.getValue() || this.props.value || ''}
       />
     );
   }
