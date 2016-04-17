@@ -52,6 +52,7 @@
     "react": "^15.0.0",
     "react-addons-test-utils": "^15.0.0",
     "react-dom": "^15.0.0",
+    "react-tap-event-plugin": "1.0",
     "sinon": "^1.17.3",
     "sinon-chai": "^2.8.0",
     "webpack": "^1.12.13"
