@@ -2,7 +2,7 @@
   "name": "formsy-material-ui",
   "version": "0.3.9",
   "description": "A formsy-react compatibility wrapper for Material-UI form components.",
-  "main": "./lib/index.js",
+  "main": "./src/index.jsx",
   "scripts": {
     "test": "PHANTOMJS_BIN=$(npm bin)/phantomjs $(npm bin)/karma start --single-run",
     "test:watch": "PHANTOMJS_BIN=$(npm bin)/phantomjs $(npm bin)/karma start",
