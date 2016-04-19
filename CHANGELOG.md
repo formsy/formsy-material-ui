@@ -1,6 +1,11 @@
 ## Changelog
 
-* 0.3.8 Propagate events as onChange() (@magicalcows) bable 6 (@mbrookes)
+* 0.3.9 Use defaultDate rather than defaultValue in FormsyDate (@ZoetropeLabs)
+        Change text component proptype to allow any data type for value (@scrambled2k3)
+        Remove dependency on onEnterKeyDown (@enricofoschi)
+        Add `lib` to `.gitignore`
+        FormsyCheckbox - Fix error on form reset (@jurgob)
+* 0.3.8 Propagate events as onChange() (@magicalcows) babel 6 (@mbrookes)
 * 0.3.7 Expose a `.focus()` method (@py-in-the-sky)
 * 0.3.6 Add custom onBlur and onFocus handler support (@Aweary)
 * 0.3.5 Support composable SelctField (@rblakeley), update REDME SelectField example, remove mixin

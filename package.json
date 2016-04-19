@@ -12,6 +12,10 @@
     "type": "git",
     "url": "git+https://github.com/mbrookes/formsy-material-ui.git"
   },
+  "files": [
+    "lib",
+    "src"
+  ],
   "dependencies": {
     "keycode": "^2.1.0"
   },
