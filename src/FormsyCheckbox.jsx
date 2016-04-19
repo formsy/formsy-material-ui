@@ -25,7 +25,7 @@ const FormsyCheckbox = React.createClass({
     var value = this.getValue();
     var defaultChecked = this.props.defaultChecked;
     if (typeof(value) === 'undefined') 
-      value = typeof defaultChecked !== 'undefined' ? defaultChecked : false
+      value = typeof defaultChecked !== 'undefined' ? defaultChecked : false;
     
     return (
       <Checkbox
