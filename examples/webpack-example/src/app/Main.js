@@ -5,28 +5,24 @@ import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import Paper from 'material-ui/Paper';
 import RaisedButton from 'material-ui/RaisedButton';
 import MenuItem from 'material-ui/MenuItem';
-import FormsyCheckbox from 'formsy-material-ui/lib/FormsyCheckbox';
-import FormsyDate from 'formsy-material-ui/lib/FormsyDate';
-import FormsyRadio from 'formsy-material-ui/lib/FormsyRadio';
-import FormsyRadioGroup from 'formsy-material-ui/lib/FormsyRadioGroup';
-import FormsySelect from 'formsy-material-ui/lib/FormsySelect';
-import FormsyText from 'formsy-material-ui/lib/FormsyText';
-import FormsyTime from 'formsy-material-ui/lib/FormsyTime';
-import FormsyToggle from 'formsy-material-ui/lib/FormsyToggle';
-
-const muiTheme = getMuiTheme();
+import { FormsyCheckbox, FormsyDate, FormsyRadio, FormsyRadioGroup,
+    FormsySelect, FormsyText, FormsyTime, FormsyToggle } from 'formsy-material-ui/lib';
 
 const Main = React.createClass({
 
-  // childContextTypes: {
-  //   muiTheme: React.PropTypes.object,
-  // },
-  //
-  // getChildContext(){
-  //   return {
-  //     muiTheme: getMuiTheme(),
-  //   }
-  // },
+  /**
+   * As an alternative to `MuiThemeProvider` you can add a theme directly into context.
+   * See the [Material-UI themes](http://www.material-ui.com/#/customization/themes) docs for details.
+   *
+   * childContextTypes: {
+   *   muiTheme: React.PropTypes.object,
+   * },
+   * getChildContext(){
+   *   return {
+   *     muiTheme: getMuiTheme(),
+   *   }
+   * },
+   */
 
   getInitialState() {
     return {
@@ -47,7 +43,7 @@ const Main = React.createClass({
       padding: 20,
     },
     switchStyle: {
-      marginBottom:16,
+      marginBottom: 16,
     },
     submitStyle: {
       marginTop: 32,
@@ -79,7 +75,7 @@ const Main = React.createClass({
     let { wordsError, numericError, urlError } = this.errorMessages;
 
     return (
-      <MuiThemeProvider muiTheme={muiTheme}>
+      <MuiThemeProvider muiTheme={getMuiTheme()}>
         <Paper style={paperStyle}>
           <Formsy.Form
             onValid={this.enableButton}
