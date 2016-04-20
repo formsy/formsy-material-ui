@@ -1,6 +1,6 @@
 const React = require('react');
 const Formsy = require('formsy-react');
-const TextField = require('material-ui/TextField');
+const TextField = require('material-ui/TextField').default;
 
 let FormsyText = React.createClass({
   mixins: [ Formsy.Mixin ],

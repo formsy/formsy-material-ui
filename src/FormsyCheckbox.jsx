@@ -1,6 +1,6 @@
 const React = require('react');
 const Formsy = require('formsy-react');
-const Checkbox = require('material-ui/Checkbox');
+const Checkbox = require('material-ui/Checkbox').default;
 const FormComponentMixin = require('./FormComponentMixin');
 
 let FormsyCheckbox = React.createClass({

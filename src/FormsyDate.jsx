@@ -1,6 +1,6 @@
 const React = require('react');
 const Formsy = require('formsy-react');
-const DatePicker = require('material-ui/DatePicker/DatePicker');
+const DatePicker = require('material-ui/DatePicker/DatePicker').default;
 const FormComponentMixin = require('./FormComponentMixin');
 
 let FormsyDate = React.createClass({

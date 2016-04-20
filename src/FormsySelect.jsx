@@ -1,6 +1,6 @@
 const React = require('react');
 const Formsy = require('formsy-react');
-const SelectField = require('material-ui/SelectField');
+const SelectField = require('material-ui/SelectField').default;
 const FormComponentMixin = require('./FormComponentMixin');
 
 let FormsySelect = React.createClass({
