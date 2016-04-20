@@ -27,11 +27,13 @@ let FormsyText = React.createClass({
   _setMuiComponentAndMaybeFocus: _setMuiComponentAndMaybeFocus,
 
   render: function () {
+    // value must not be passed in, because it makes the field value unchangeable.
+    const { value, ...props } = this.props;
     return (
       <TextField
-        {...this.props}
+        {...props}
         ref={this._setMuiComponentAndMaybeFocus}
-        defaultValue={this.props.value}
+        defaultValue={value}
         onBlur={this.handleBlur}
         onFocus={this.props.onFocus}
         onKeyDown={this.handleKeyDown}
