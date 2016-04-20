@@ -1,6 +1,6 @@
 const React = require('react');
 const Formsy = require('formsy-react');
-const TimePicker = require('material-ui/lib/time-picker/time-picker');
+const TimePicker = require('material-ui/TimePicker/TimePicker');
 const FormComponentMixin = require('./FormComponentMixin');
 
 let FormsyTime = React.createClass({

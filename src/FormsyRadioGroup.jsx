@@ -1,6 +1,6 @@
 const React = require('react');
 const Formsy = require('formsy-react');
-const RadioButtonGroup = require('material-ui/lib/radio-button-group');
+const RadioButtonGroup = require('material-ui/RadioButton/RadioButtonGroup');
 const FormComponentMixin = require('./FormComponentMixin');
 
 let FormsyRadioGroup = React.createClass({

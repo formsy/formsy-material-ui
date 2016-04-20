@@ -1,6 +1,6 @@
 const React = require('react');
 const Formsy = require('formsy-react');
-const Toggle = require('material-ui/lib/toggle');
+const Toggle = require('material-ui/Toggle');
 const FormComponentMixin = require('./FormComponentMixin');
 
 let FormsyToggle = React.createClass({
