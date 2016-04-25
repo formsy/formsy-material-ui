@@ -103,7 +103,6 @@ const Main = React.createClass({
               validations="isUrl"
               validationError={urlError}
               required
-              defaultValue="http://"
               hintText="http://www.example.com"
               floatingLabelText="URL"
             />

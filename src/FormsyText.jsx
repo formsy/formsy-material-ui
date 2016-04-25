@@ -27,13 +27,14 @@ let FormsyText = React.createClass({
   _setMuiComponentAndMaybeFocus: _setMuiComponentAndMaybeFocus,
 
   render: function () {
+    const {onFocus, value, ...rest} = this.props;
     return (
       <TextField
-        {...this.props}
+        {...rest}
         ref={this._setMuiComponentAndMaybeFocus}
-        defaultValue={this.props.value}
+        defaultValue={value}
         onBlur={this.handleBlur}
-        onFocus={this.props.onFocus}
+        onFocus={onFocus}
         onKeyDown={this.handleKeyDown}
         errorText={this.getErrorMessage()}
       />
