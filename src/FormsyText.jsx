@@ -20,7 +20,7 @@ let FormsyText = React.createClass({
   },
 
   handleKeyDown: function handleKeyDown(event) {
-    if (keycode(event) === 'enter') this.handleEnterKeyDown(event);
+    if (keycode(event) === 'enter') this.setValue(event.currentTarget.value);
     if (this.props.onKeyDown) this.props.onKeyDown(event, event.currentTarget.value);
   },
 
