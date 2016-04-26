@@ -21,8 +21,6 @@ Note: For React 15.0.x compatibility, specify `"formsy-react": "^0.18.0"`.
 
 ## Usage
 
-Note: for `FormsyText` you must use `value` instead of `defaultValue` to set a default value.
-
 ### ES6 Imports
 
 ```js

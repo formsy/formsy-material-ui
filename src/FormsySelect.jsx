@@ -7,7 +7,8 @@ let FormsySelect = React.createClass({
   mixins: [Formsy.Mixin],
 
   propTypes: {
-    name: React.PropTypes.string.isRequired
+    name: React.PropTypes.string.isRequired,
+    onChange: React.PropTypes.func,
   },
 
   getInitialState: function () {
@@ -25,14 +26,17 @@ let FormsySelect = React.createClass({
   _setMuiComponentAndMaybeFocus: _setMuiComponentAndMaybeFocus,
 
   render: function () {
-    var value = this.state.hasChanged ? this.getValue() : this.props.value;
+    
+    let {value, ...rest} = this.props;
+    
+    value = this.state.hasChanged ? this.getValue() : value;
 
     return (
       <SelectField
-        {...this.props}
-        ref={this._setMuiComponentAndMaybeFocus}
-        onChange={this.handleChange}
+        {...rest}
         errorText={this.getErrorMessage()}
+        onChange={this.handleChange}
+        ref={this._setMuiComponentAndMaybeFocus}
         value={value}
       >
         {this.props.children}

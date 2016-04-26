@@ -7,10 +7,21 @@ let FormsyTime = React.createClass({
   mixins: [Formsy.Mixin],
 
   propTypes: {
-    name: React.PropTypes.string.isRequired
+    name: React.PropTypes.string.isRequired,
+    onChange: React.PropTypes.func,
+    value: React.PropTypes.object,
   },
 
-  handleValueChange: function (event, value) {
+  componentDidMount: function() {
+    const {defaultTime} = this.props;
+    let value = this.getValue();
+
+    if (typeof value === 'undefined' && typeof defaultTime !== 'undefined') {
+      this.setValue(defaultTime);
+    }
+  },
+  
+  handleChange: function (event, value) {
     this.setValue(value);
     if (this.props.onChange) this.props.onChange(event, value);
   },
@@ -18,12 +29,14 @@ let FormsyTime = React.createClass({
   _setMuiComponentAndMaybeFocus: _setMuiComponentAndMaybeFocus,
 
   render: function () {
+    const {defaultTime, ...rest} = this.props;
+
     return (
       <TimePicker
-        {...this.props}
+        {...rest}
+        errorText={this.getErrorMessage()}
+        onChange={this.handleChange}
         ref={this._setMuiComponentAndMaybeFocus}
-        onChange={this.handleValueChange}
-        defaultTime={this.props.value}
         value={this.getValue()}
       />
     );

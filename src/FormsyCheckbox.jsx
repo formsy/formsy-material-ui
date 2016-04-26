@@ -7,10 +7,12 @@ const FormsyCheckbox = React.createClass({
   mixins: [Formsy.Mixin],
 
   propTypes: {
-    name: React.PropTypes.string.isRequired
+    defaultChecked: React.PropTypes.bool,
+    name: React.PropTypes.string.isRequired,
+    onChange: React.PropTypes.func,
   },
 
-  handleValueChange: function (event, value) {
+  handleChange: function (event, value) {
     this.setValue(value);
     if (this.props.onChange) this.props.onChange(event, value);
   },
@@ -22,19 +24,21 @@ const FormsyCheckbox = React.createClass({
   _setMuiComponentAndMaybeFocus: _setMuiComponentAndMaybeFocus,
 
   render: function () {
-    var value = this.getValue();
-    var defaultChecked = this.props.defaultChecked;
-    if (typeof(value) === 'undefined') 
-      value = typeof defaultChecked !== 'undefined' ? defaultChecked : false;
-    
+    const {defaultChecked, ...rest} = this.props;
+    let value = this.getValue();
+
+    if (typeof value === 'undefined') {
+      value = (typeof defaultChecked !== 'undefined') ? defaultChecked : false;
+    }
     return (
-      <Checkbox
-        {...this.props}
-        ref={this._setMuiComponentAndMaybeFocus}
-        onCheck={this.handleValueChange}
-        checked={value}
-      />
+        <Checkbox
+            {...rest}
+            checked={value}
+            onCheck={this.handleChange}
+            ref={this._setMuiComponentAndMaybeFocus}
+        />
     );
+
   }
 });
 

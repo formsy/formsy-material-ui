@@ -7,10 +7,12 @@ let FormsyToggle = React.createClass({
   mixins: [Formsy.Mixin],
 
   propTypes: {
-    name: React.PropTypes.string.isRequired
+    defaultToggled: React.PropTypes.bool,
+    name: React.PropTypes.string.isRequired,
+    onChange: React.PropTypes.func,
   },
 
-  handleValueChange: function (event, value) {
+  handleChange: function (event, value) {
     this.setValue(value);
     if (this.props.onChange) this.props.onChange(event, value);
   },
@@ -22,11 +24,19 @@ let FormsyToggle = React.createClass({
   _setMuiComponentAndMaybeFocus: _setMuiComponentAndMaybeFocus,
 
   render: function () {
+    const {defaultToggled, ...rest} = this.props;
+    let value = this.getValue();
+
+    if (typeof value === 'undefined') {
+      value = (typeof defaultToggled !== 'undefined') ? defaultToggled : false;
+    }
+    
     return (
       <Toggle
-        {...this.props}
+        {...rest}
+        onToggle={this.handleChange}
         ref={this._setMuiComponentAndMaybeFocus}
-        onToggle={this.handleValueChange}
+        toggled={value}
       />
     );
   }

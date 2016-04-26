@@ -9,14 +9,31 @@ let FormsyText = React.createClass({
 
   propTypes: {
     name: React.PropTypes.string.isRequired,
-    value: React.PropTypes.any,
+    defaultValue: React.PropTypes.any,
     onFocus: React.PropTypes.func,
     onBlur: React.PropTypes.func
+  },
+
+  componentWillMount: function() {
+    this.setValue(this.props.defaultValue || this.props.value || '');
+  },
+
+  getInitialState: function() {
+    return {
+      value: this.props.defaultValue || this.props.value || '',
+    }
   },
 
   handleBlur: function handleBlur(event) {
     this.setValue(event.currentTarget.value);
     if (this.props.onBlur) this.props.onBlur(event);
+  },
+
+  handleChange: function handleChange(event) {
+    this.setState({
+      value: event.currentTarget.value
+    });
+    if (this.props.onChanger) this.props.onChange(event);
   },
 
   handleKeyDown: function handleKeyDown(event) {
@@ -27,16 +44,17 @@ let FormsyText = React.createClass({
   _setMuiComponentAndMaybeFocus: _setMuiComponentAndMaybeFocus,
 
   render: function () {
-    const {onFocus, value, ...rest} = this.props;
+    const {defaultValue, onFocus, value, ...rest} = this.props;
     return (
       <TextField
         {...rest}
-        ref={this._setMuiComponentAndMaybeFocus}
-        defaultValue={value}
+        errorText={this.getErrorMessage()}
         onBlur={this.handleBlur}
+        onChange={this.handleChange}
         onFocus={onFocus}
         onKeyDown={this.handleKeyDown}
-        errorText={this.getErrorMessage()}
+        ref={this._setMuiComponentAndMaybeFocus}
+        value={this.state.value}
       />
     );
   }

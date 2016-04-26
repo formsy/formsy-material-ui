@@ -7,10 +7,21 @@ const FormsyDate = React.createClass({
   mixins: [Formsy.Mixin],
 
   propTypes: {
-    name: React.PropTypes.string.isRequired
+    name: React.PropTypes.string.isRequired,
+    onChange: React.PropTypes.func,
+    value: React.PropTypes.object,
+  },
+  
+  componentDidMount: function() {
+    const {defaultDate} = this.props;
+    let value = this.getValue();
+
+    if (typeof value === 'undefined' && typeof defaultDate !== 'undefined') {
+      this.setValue(defaultDate);
+    }
   },
 
-  handleValueChange: function (event, value) {
+  handleChange: function (event, value) {
     this.setValue(value);
     if (this.props.onChange) this.props.onChange(event, value);
   },
@@ -18,13 +29,14 @@ const FormsyDate = React.createClass({
   _setMuiComponentAndMaybeFocus: _setMuiComponentAndMaybeFocus,
 
   render: function () {
+    const {defaultDate, ...rest} = this.props;
+    
     return (
       <DatePicker
-        {...this.props}
-        ref={this._setMuiComponentAndMaybeFocus}
-        defaultDate={this.props.value}
-        onChange={this.handleValueChange}
+        {...rest}
         errorText={this.getErrorMessage()}
+        onChange={this.handleChange}
+        ref={this._setMuiComponentAndMaybeFocus}
         value={this.getValue()}
       />
     );
