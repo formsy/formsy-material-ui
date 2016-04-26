@@ -1,5 +1,6 @@
 ## Changelog
 
+* 0.4.1 Fix issue with FormsyText default `value`.
 * 0.4.0 Update to MUI 0.15.0-beta.1, React 15.0.1, formsy-react 0.18.0
         Add a webpack example
 * 0.3.9 Use defaultDate rather than defaultValue in FormsyDate (@ZoetropeLabs)
