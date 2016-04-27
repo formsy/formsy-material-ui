@@ -1,7 +1,7 @@
 import React from 'react';
 import Formsy from 'formsy-react';
 import DatePicker from 'material-ui/DatePicker';
-import {_setMuiComponentAndMaybeFocus} from './utils';
+import {setMuiComponentAndMaybeFocus} from './utils';
 
 const FormsyDate = React.createClass({
   mixins: [Formsy.Mixin],
@@ -26,7 +26,7 @@ const FormsyDate = React.createClass({
     if (this.props.onChange) this.props.onChange(event, value);
   },
 
-  _setMuiComponentAndMaybeFocus: _setMuiComponentAndMaybeFocus,
+  setMuiComponentAndMaybeFocus: setMuiComponentAndMaybeFocus,
 
   render() {
     const {defaultDate, ...rest} = this.props;
@@ -36,7 +36,7 @@ const FormsyDate = React.createClass({
         {...rest}
         errorText={this.getErrorMessage()}
         onChange={this.handleChange}
-        ref={this._setMuiComponentAndMaybeFocus}
+        ref={this.setMuiComponentAndMaybeFocus}
         value={this.getValue()}
       />
     );

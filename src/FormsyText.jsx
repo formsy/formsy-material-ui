@@ -2,7 +2,7 @@ import React from 'react';
 import keycode from 'keycode';
 import Formsy from 'formsy-react';
 import TextField from 'material-ui/TextField';
-import {_setMuiComponentAndMaybeFocus} from './utils';
+import {setMuiComponentAndMaybeFocus} from './utils';
 
 let FormsyText = React.createClass({
   mixins: [ Formsy.Mixin ],
@@ -42,7 +42,7 @@ let FormsyText = React.createClass({
     if (this.props.onKeyDown) this.props.onKeyDown(event, event.currentTarget.value);
   },
 
-  _setMuiComponentAndMaybeFocus: _setMuiComponentAndMaybeFocus,
+  setMuiComponentAndMaybeFocus: setMuiComponentAndMaybeFocus,
 
   render() {
     const {defaultValue, onFocus, value, ...rest} = this.props;
@@ -54,7 +54,7 @@ let FormsyText = React.createClass({
         onChange={this.handleChange}
         onFocus={onFocus}
         onKeyDown={this.handleKeyDown}
-        ref={this._setMuiComponentAndMaybeFocus}
+        ref={this.setMuiComponentAndMaybeFocus}
         value={this.state.value}
       />
     );
