@@ -1,8 +1,10 @@
-import 'babel-polyfill'
-import React from 'react'
-import sinonChai from 'sinon-chai'
-import chaiEnzyme from 'chai-enzyme'
-import injectTapEventPlugin from 'react-tap-event-plugin'
+/* global chai */
+
+import 'babel-polyfill';
+import React from 'react';
+import sinonChai from 'sinon-chai';
+import chaiEnzyme from 'chai-enzyme';
+import injectTapEventPlugin from 'react-tap-event-plugin';
 
 window.React = React;
 window.expect = chai.expect;

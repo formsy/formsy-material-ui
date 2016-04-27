@@ -1,8 +1,13 @@
-import FormsyText from '../src/FormsyText'
-import TextField from 'material-ui/TextField'
-import FormsyRadioGroup from '../src/FormsyRadioGroup'
-import { RadioButtonGroup } from 'material-ui/RadioButton'
-import { mountTestForm } from './support'
+/* eslint-env mocha */
+/* global expect, sinon */
+/* eslint no-unused-expressions: "off" */
+
+import React from 'react';
+import FormsyText from '../src/FormsyText';
+import TextField from 'material-ui/TextField';
+import FormsyRadioGroup from '../src/FormsyRadioGroup';
+import { RadioButtonGroup } from 'material-ui/RadioButton';
+import { mountTestForm } from './support';
 
 const setup = () => {
   const formWrapper = mountTestForm(childrenFn);
@@ -13,7 +18,7 @@ const setup = () => {
     textFieldInstance: formsyTextWrapper.find(TextField).node,
     formsyRadioGroupInstance: formsyRadioGroupWrapper.node,
     toggleInstance: formsyRadioGroupWrapper.find(RadioButtonGroup).node,
-  }
+  };
 };
 
 const childrenFn = () => (
@@ -55,6 +60,6 @@ describe('_setMuiComponentAndMaybeFocus', () => {
 
       formsyTextInstance.focus();
       expect(textFieldInstance.focus).to.have.been.calledTwice;
-    })
-  })
+    });
+  });
 });

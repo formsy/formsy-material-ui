@@ -1,8 +1,12 @@
-import FormsyText from '../src/FormsyText'
-import TextField from 'material-ui/TextField'
-import { Simulate } from 'react-addons-test-utils'
-import { mountTestForm } from './support'
-import { Form } from 'formsy-react'
+/* eslint-env mocha, jasmine */
+/* global expect */
+
+import React from 'react';
+import FormsyText from '../src/FormsyText';
+import TextField from 'material-ui/TextField';
+import { Simulate } from 'react-addons-test-utils';
+import { mountTestForm } from './support';
+import { Form } from 'formsy-react';
 
 const setup = () => {
   const formWrapper = mountTestForm(childrenFn);
@@ -10,7 +14,7 @@ const setup = () => {
   return {
     formWrapper,
     formsyTextWrapper,
-  }
+  };
 };
 
 const childrenFn = () => (
@@ -24,13 +28,13 @@ const childrenFn = () => (
 const fillInText = (wrapper, text) => {
   const inputDOM = wrapper.find('input').node;
   inputDOM.value = text;
-  Simulate.change(inputDOM)
+  Simulate.change(inputDOM);
 };
 
 describe('FormsyText', () => {
   it('renders a material-ui TextField', () => {
     const { formsyTextWrapper } = setup();
-    expect(formsyTextWrapper).to.have.descendants(TextField)
+    expect(formsyTextWrapper).to.have.descendants(TextField);
   });
 
   it('sends input to the form', () => {
@@ -38,7 +42,7 @@ describe('FormsyText', () => {
     fillInText(formsyTextWrapper, 'some text');
     const formsyForm = formWrapper.find(Form).node;
     const formValues = formsyForm.getCurrentValues();
-    expect(formValues.text).to.eq('some text')
+    expect(formValues.text).to.eq('some text');
   });
 
   it('renders validation information', () => {
@@ -53,6 +57,6 @@ describe('FormsyText', () => {
 
     fillInText(formsyTextWrapper, 'just fine');
     formsyForm.validateForm();
-    expect(formsyTextWrapper).to.not.contain.text('Text is too long')
-  })
+    expect(formsyTextWrapper).to.not.contain.text('Text is too long');
+  });
 });

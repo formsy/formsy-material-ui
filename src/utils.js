@@ -1,4 +1,4 @@
-export function setMuiComponentAndMaybeFocus (c) {
+export function setMuiComponentAndMaybeFocus(c) {
   if (c === this.muiComponent) return;
 
   this.muiComponent = c;
