@@ -10,15 +10,16 @@ let FormsyText = React.createClass({
   propTypes: {
     name: React.PropTypes.string.isRequired,
     defaultValue: React.PropTypes.any,
+    value: React.PropTypes.any,
     onFocus: React.PropTypes.func,
     onBlur: React.PropTypes.func
   },
 
-  componentWillMount: function() {
+  componentWillMount() {
     this.setValue(this.props.defaultValue || this.props.value || '');
   },
 
-  getInitialState: function() {
+  getInitialState() {
     return {
       value: this.props.defaultValue || this.props.value || '',
     }
@@ -43,7 +44,7 @@ let FormsyText = React.createClass({
 
   _setMuiComponentAndMaybeFocus: _setMuiComponentAndMaybeFocus,
 
-  render: function () {
+  render() {
     const {defaultValue, onFocus, value, ...rest} = this.props;
     return (
       <TextField

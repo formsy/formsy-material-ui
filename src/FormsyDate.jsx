@@ -12,7 +12,7 @@ const FormsyDate = React.createClass({
     value: React.PropTypes.object,
   },
   
-  componentDidMount: function() {
+  componentDidMount() {
     const {defaultDate} = this.props;
     let value = this.getValue();
 
@@ -21,14 +21,14 @@ const FormsyDate = React.createClass({
     }
   },
 
-  handleChange: function (event, value) {
+  handleChange(event, value) {
     this.setValue(value);
     if (this.props.onChange) this.props.onChange(event, value);
   },
 
   _setMuiComponentAndMaybeFocus: _setMuiComponentAndMaybeFocus,
 
-  render: function () {
+  render() {
     const {defaultDate, ...rest} = this.props;
     
     return (

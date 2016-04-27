@@ -11,13 +11,13 @@ let FormsySelect = React.createClass({
     onChange: React.PropTypes.func,
   },
 
-  getInitialState: function () {
+  getInitialState() {
     return {
       hasChanged: false,
     };
   },
 
-  handleChange: function (event, index, value) {
+  handleChange(event, index, value) {
     this.setValue(value);
     this.setState({hasChanged: value !== ''});
     if (this.props.onChange) this.props.onChange(event, value, index);
@@ -25,7 +25,7 @@ let FormsySelect = React.createClass({
 
   _setMuiComponentAndMaybeFocus: _setMuiComponentAndMaybeFocus,
 
-  render: function () {
+  render() {
     
     let {value, ...rest} = this.props;
     

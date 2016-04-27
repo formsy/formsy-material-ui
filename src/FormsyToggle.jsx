@@ -12,18 +12,18 @@ let FormsyToggle = React.createClass({
     onChange: React.PropTypes.func,
   },
 
-  handleChange: function (event, value) {
+  handleChange(event, value) {
     this.setValue(value);
     if (this.props.onChange) this.props.onChange(event, value);
   },
 
-  componentDidMount: function () {
+  componentDidMount() {
     this.setValue(this._muiComponent.isToggled());
   },
 
   _setMuiComponentAndMaybeFocus: _setMuiComponentAndMaybeFocus,
 
-  render: function () {
+  render() {
     const {defaultToggled, ...rest} = this.props;
     let value = this.getValue();
 

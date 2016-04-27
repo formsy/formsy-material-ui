@@ -10,18 +10,18 @@ const FormsyRadioGroup = React.createClass({
     name: React.PropTypes.string.isRequired
   },
 
-  handleValueChange: function (event, value) {
+  handleValueChange(event, value) {
     this.setValue(value);
     if (this.props.onChange) this.props.onChange(event, value);
   },
 
-  componentDidMount: function () {
+  componentDidMount() {
     this.setValue(this._muiComponent.getSelectedValue());
   },
 
   _setMuiComponentAndMaybeFocus: _setMuiComponentAndMaybeFocus,
 
-  render: function () {
+  render() {
     return (
       <RadioButtonGroup
         {...this.props}
