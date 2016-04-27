@@ -28,7 +28,7 @@
   },
   "dependencies": {
     "formsy-react": "^0.18.0",
-    "formsy-material-ui": "0.4.0",
+    "formsy-material-ui": "0.4.2",
     "material-ui": "^0.15.0-beta.1",
     "react": "^15.0.1",
     "react-dom": "^15.0.1",

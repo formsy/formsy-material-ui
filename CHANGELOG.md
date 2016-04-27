@@ -1,5 +1,10 @@
 ## Changelog
 
+* 0.4.2 Fix controlled / uncontrolled conflicts
+        Add defaultValue support to FormsyText 
+        (no longer have to use `value` to set the default)
+        Add eslint and fix linting erros
+        Add .editorconfig
 * 0.4.1 Fix issue with FormsyText default `value`.
 * 0.4.0 Update to MUI 0.15.0-beta.1, React 15.0.1, formsy-react 0.18.0
         Add a webpack example
