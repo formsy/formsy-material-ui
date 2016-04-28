@@ -4,19 +4,22 @@ import { RadioButtonGroup } from 'material-ui/RadioButton';
 import { setMuiComponentAndMaybeFocus } from './utils';
 
 const FormsyRadioGroup = React.createClass({
-  mixins: [Formsy.Mixin],
 
   propTypes: {
-    name: React.PropTypes.string.isRequired
+    children: React.PropTypes.node,
+    name: React.PropTypes.string.isRequired,
+    onChange: React.PropTypes.func,
+  },
+
+  mixins: [Formsy.Mixin],
+
+  componentDidMount() {
+    this.setValue(this.muiComponent.getSelectedValue());
   },
 
   handleValueChange(event, value) {
     this.setValue(value);
     if (this.props.onChange) this.props.onChange(event, value);
-  },
-
-  componentDidMount() {
-    this.setValue(this.muiComponent.getSelectedValue());
   },
 
   setMuiComponentAndMaybeFocus: setMuiComponentAndMaybeFocus,
@@ -31,7 +34,7 @@ const FormsyRadioGroup = React.createClass({
         {this.props.children}
       </RadioButtonGroup>
     );
-  }
+  },
 });
 
 export default FormsyRadioGroup;

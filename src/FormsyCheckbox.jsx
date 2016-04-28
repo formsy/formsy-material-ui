@@ -1,7 +1,7 @@
 import React from 'react';
 import Formsy from 'formsy-react';
 import Checkbox from 'material-ui/Checkbox';
-import {setMuiComponentAndMaybeFocus} from './utils';
+import { setMuiComponentAndMaybeFocus } from './utils';
 
 const FormsyCheckbox = React.createClass({
 
@@ -13,19 +13,19 @@ const FormsyCheckbox = React.createClass({
 
   mixins: [Formsy.Mixin],
 
+  componentDidMount() {
+    this.setValue(this.muiComponent.isChecked());
+  },
+
   handleChange(event, value) {
     this.setValue(value);
     if (this.props.onChange) this.props.onChange(event, value);
   },
 
-  componentDidMount() {
-    this.setValue(this.muiComponent.isChecked());
-  },
-
   setMuiComponentAndMaybeFocus: setMuiComponentAndMaybeFocus,
 
   render() {
-    const {defaultChecked, ...rest} = this.props;
+    const { defaultChecked, ...rest } = this.props;
     let value = this.getValue();
 
     if (typeof value === 'undefined') {

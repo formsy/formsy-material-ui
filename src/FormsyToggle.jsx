@@ -1,10 +1,9 @@
 import React from 'react';
 import Formsy from 'formsy-react';
 import Toggle from 'material-ui/Toggle';
-import {setMuiComponentAndMaybeFocus} from './utils';
+import { setMuiComponentAndMaybeFocus } from './utils';
 
-let FormsyToggle = React.createClass({
-  mixins: [Formsy.Mixin],
+const FormsyToggle = React.createClass({
 
   propTypes: {
     defaultToggled: React.PropTypes.bool,
@@ -12,25 +11,27 @@ let FormsyToggle = React.createClass({
     onChange: React.PropTypes.func,
   },
 
-  handleChange(event, value) {
-    this.setValue(value);
-    if (this.props.onChange) this.props.onChange(event, value);
-  },
+  mixins: [Formsy.Mixin],
 
   componentDidMount() {
     this.setValue(this.muiComponent.isToggled());
   },
 
+  handleChange(event, value) {
+    this.setValue(value);
+    if (this.props.onChange) this.props.onChange(event, value);
+  },
+
   setMuiComponentAndMaybeFocus: setMuiComponentAndMaybeFocus,
 
   render() {
-    const {defaultToggled, ...rest} = this.props;
+    const { defaultToggled, ...rest } = this.props;
     let value = this.getValue();
 
     if (typeof value === 'undefined') {
       value = (typeof defaultToggled !== 'undefined') ? defaultToggled : false;
     }
-    
+
     return (
       <Toggle
         {...rest}
@@ -39,7 +40,7 @@ let FormsyToggle = React.createClass({
         toggled={value}
       />
     );
-  }
+  },
 });
 
-module.exports = FormsyToggle;
+export default FormsyToggle;

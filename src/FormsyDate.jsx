@@ -1,11 +1,12 @@
 import React from 'react';
 import Formsy from 'formsy-react';
 import DatePicker from 'material-ui/DatePicker';
-import {setMuiComponentAndMaybeFocus} from './utils';
+import { setMuiComponentAndMaybeFocus } from './utils';
 
 const FormsyDate = React.createClass({
 
   propTypes: {
+    defaultDate: React.PropTypes.object,
     name: React.PropTypes.string.isRequired,
     onChange: React.PropTypes.func,
     value: React.PropTypes.object,
@@ -14,7 +15,7 @@ const FormsyDate = React.createClass({
   mixins: [Formsy.Mixin],
 
   componentDidMount() {
-    const {defaultDate} = this.props;
+    const { defaultDate } = this.props;
     const value = this.getValue();
 
     if (typeof value === 'undefined' && typeof defaultDate !== 'undefined') {
@@ -32,7 +33,7 @@ const FormsyDate = React.createClass({
   render() {
     const {
         defaultDate, // eslint-disable-line no-unused-vars
-        ...rest
+        ...rest,
     } = this.props;
 
     return (
@@ -44,7 +45,7 @@ const FormsyDate = React.createClass({
         value={this.getValue()}
       />
     );
-  }
+  },
 });
 
 export default FormsyDate;

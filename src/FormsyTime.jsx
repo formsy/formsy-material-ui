@@ -1,26 +1,28 @@
 import React from 'react';
 import Formsy from 'formsy-react';
 import TimePicker from 'material-ui/TimePicker';
-import {setMuiComponentAndMaybeFocus} from './utils';
+import { setMuiComponentAndMaybeFocus } from './utils';
 
-let FormsyTime = React.createClass({
-  mixins: [Formsy.Mixin],
+const FormsyTime = React.createClass({
 
   propTypes: {
+    defaultTime: React.PropTypes.object,
     name: React.PropTypes.string.isRequired,
     onChange: React.PropTypes.func,
     value: React.PropTypes.object,
   },
 
+  mixins: [Formsy.Mixin],
+
   componentDidMount() {
-    const {defaultTime} = this.props;
-    let value = this.getValue();
+    const { defaultTime } = this.props;
+    const value = this.getValue();
 
     if (typeof value === 'undefined' && typeof defaultTime !== 'undefined') {
       this.setValue(defaultTime);
     }
   },
-  
+
   handleChange(event, value) {
     this.setValue(value);
     if (this.props.onChange) this.props.onChange(event, value);
@@ -29,7 +31,10 @@ let FormsyTime = React.createClass({
   setMuiComponentAndMaybeFocus: setMuiComponentAndMaybeFocus,
 
   render() {
-    const {defaultTime, ...rest} = this.props;
+    const {
+      defaultTime, // eslint-disable-line no-unused-vars
+      ...rest,
+    } = this.props;
 
     return (
       <TimePicker
@@ -40,7 +45,7 @@ let FormsyTime = React.createClass({
         value={this.getValue()}
       />
     );
-  }
+  },
 });
 
 export default FormsyTime;
