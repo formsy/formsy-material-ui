@@ -18,14 +18,26 @@ const FormsyText = React.createClass({
 
   mixins: [Formsy.Mixin],
 
+  controlledValue(props = this.props) {
+    return props.value || props.defaultValue || '';
+  },
+
   getInitialState() {
-    return {
-      value: this.props.defaultValue || this.props.value || '',
-    };
+    const value = this.controlledValue();
+    return { value };
   },
 
   componentWillMount() {
-    this.setValue(this.props.defaultValue || this.props.value || '');
+    const value = this.controlledValue();
+    this.setValue(value);
+  },
+
+  componentWillReceiveProps(nextProps) {
+    if (nextProps.value !== this.props.value || nextProps.defaultValue !== this.props.defaultValue) {
+      const value = this.controlledValue(nextProps);
+      this.setValue(value);
+      this.setState({ value });
+    }
   },
 
   handleBlur: function handleBlur(event) {
