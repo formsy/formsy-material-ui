@@ -1,6 +1,6 @@
 {
   "name": "formsy-material-ui-example-webpack",
-  "version": "0.15.0-beta.1",
+  "version": "0.1.0",
   "description": "Sample project that uses formsy-material-ui",
   "repository": {
     "type": "git",
@@ -29,7 +29,7 @@
   "dependencies": {
     "formsy-react": "^0.18.0",
     "formsy-material-ui": "0.4.2",
-    "material-ui": "^0.15.0-beta.1",
+    "material-ui": "^0.15.0",
     "react": "^15.0.1",
     "react-dom": "^15.0.1",
     "react-tap-event-plugin": "^1.0.0"
