@@ -13,6 +13,7 @@ const FormsyText = React.createClass({
     onChange: React.PropTypes.func,
     onFocus: React.PropTypes.func,
     onKeyDown: React.PropTypes.func,
+    updateImmediately: React.PropTypes.bool,
     value: React.PropTypes.any,
   },
 
@@ -37,6 +38,7 @@ const FormsyText = React.createClass({
     this.setState({
       value: event.currentTarget.value,
     });
+    if (this.props.updateImmediately) this.setValue(event.currentTarget.value);
     if (this.props.onChange) this.props.onChange(event);
   },
 
