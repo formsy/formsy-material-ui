@@ -48,12 +48,12 @@ const FormsyText = React.createClass({
 
   setMuiComponentAndMaybeFocus: setMuiComponentAndMaybeFocus,
 
-  render () {
+  render() {
     const {
       defaultValue, // eslint-disable-line no-unused-vars
       onFocus,
-      value, // eslint-disable-line no-unused-vars
       requiredError,
+      value, // eslint-disable-line no-unused-vars
       ...rest } = this.props;
     const { isRequired, isPristine, isValid, isFormSubmitted } = this;
     const isRequiredError = isRequired() && !isPristine() && !isValid() && isFormSubmitted() && requiredError;
