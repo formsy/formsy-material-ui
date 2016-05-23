@@ -2,7 +2,7 @@ import React from 'react';
 import keycode from 'keycode';
 import Formsy from 'formsy-react';
 import TextField from 'material-ui/TextField';
-import { setMuiComponentAndMaybeFocus } from './utils';
+import { setMuiComponentAndMaybeFocus } from 'formsy-material-ui/lib/utils';
 
 const FormsyText = React.createClass({
 
@@ -13,6 +13,7 @@ const FormsyText = React.createClass({
     onChange: React.PropTypes.func,
     onFocus: React.PropTypes.func,
     onKeyDown: React.PropTypes.func,
+    requiredError: React.PropTypes.string,
     value: React.PropTypes.any,
   },
 
@@ -47,16 +48,20 @@ const FormsyText = React.createClass({
 
   setMuiComponentAndMaybeFocus: setMuiComponentAndMaybeFocus,
 
-  render() {
+  render () {
     const {
       defaultValue, // eslint-disable-line no-unused-vars
       onFocus,
       value, // eslint-disable-line no-unused-vars
+      requiredError,
       ...rest } = this.props;
+    const { isRequired, isPristine, isValid, isFormSubmitted } = this;
+    const isRequiredError = isRequired() && !isPristine() && !isValid() && isFormSubmitted() && requiredError;
+    const errorText = this.getErrorMessage() || isRequiredError;
     return (
       <TextField
         {...rest}
-        errorText={this.getErrorMessage()}
+        errorText={errorText}
         onBlur={this.handleBlur}
         onChange={this.handleChange}
         onFocus={onFocus}
