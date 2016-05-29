@@ -60,7 +60,7 @@ The `formsy-material-ui` repo contains a [sample webpack SPA](https://github.com
 
 #### Example Code
 
-You can find an [example form](https://github.com/mbrookes/formsy-material-ui/tree/master/examples/webpack-example/src/app/Main.js) in the example app directory.
+You can find an [example form](https://github.com/mbrookes/formsy-material-ui/blob/master/examples/webpack-example/src/app/Main.js#L80) in the example app directory.
 
 ## Known Issues
 
