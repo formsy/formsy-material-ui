@@ -40,12 +40,8 @@ const FormsyText = React.createClass({
       value: event.currentTarget.value,
     });
     if (this.props.updateImmediately) {
-      if (this.changeValue) {
-        this.changeValue(event.currentTarget.value);
-      } else {
-        this.changeValue = debounce(this.setValue, 200);
-        this.changeValue(event.currentTarget.value);
-      }
+      if (!this.changeValue) this.changeValue = debounce(this.setValue, 200);
+      this.changeValue(event.currentTarget.value);
     }
     if (this.props.onChange) this.props.onChange(event);
   },
