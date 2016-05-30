@@ -2,7 +2,7 @@ import React from 'react';
 import keycode from 'keycode';
 import Formsy from 'formsy-react';
 import TextField from 'material-ui/TextField';
-import { setMuiComponentAndMaybeFocus } from './utils';
+import { setMuiComponentAndMaybeFocus, debounce } from './utils';
 
 const FormsyText = React.createClass({
 
@@ -31,6 +31,7 @@ const FormsyText = React.createClass({
 
   handleBlur: function handleBlur(event) {
     this.setValue(event.currentTarget.value);
+    delete this.changeValue;
     if (this.props.onBlur) this.props.onBlur(event);
   },
 
@@ -38,7 +39,14 @@ const FormsyText = React.createClass({
     this.setState({
       value: event.currentTarget.value,
     });
-    if (this.props.updateImmediately) this.setValue(event.currentTarget.value);
+    if (this.props.updateImmediately) {
+      if (this.changeValue) {
+        this.changeValue(event.currentTarget.value);
+      } else {
+        this.changeValue = debounce(this.setValue, 200);
+        this.changeValue(event.currentTarget.value);
+      }
+    }
     if (this.props.onChange) this.props.onChange(event);
   },
 
