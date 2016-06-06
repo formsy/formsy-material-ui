@@ -83,28 +83,15 @@ const Main = React.createClass({
             onValidSubmit={this.submitForm}
             onInvalidSubmit={this.notifyFormError}
           >
-            <FormsyText
-              name="name"
-              validations="isWords"
-              validationError={wordsError}
+            <FormsyDate
+              name="date"
               required
-              hintText="What is your name?"
-              floatingLabelText="Name"
+              floatingLabelText="Date"
             />
-            <FormsyText
-              name="age"
-              validations="isNumeric"
-              validationError={numericError}
-              hintText="Are you a wrinkly?"
-              floatingLabelText="Age (optional)"
-            />
-            <FormsyText
-              name="url"
-              validations="isUrl"
-              validationError={urlError}
+            <FormsyTime
+              name="time"
               required
-              hintText="http://www.example.com"
-              floatingLabelText="URL"
+              floatingLabelText="Time"
             />
             <FormsySelect
               name="frequency"
@@ -116,16 +103,6 @@ const Main = React.createClass({
               <MenuItem value={'nightly'} primaryText="Every Night" />
               <MenuItem value={'weeknights'} primaryText="Weeknights" />
             </FormsySelect>
-            <FormsyDate
-              name="date"
-              required
-              floatingLabelText="Date"
-            />
-            <FormsyTime
-              name="time"
-              required
-              floatingLabelText="Time"
-            />
             <FormsyCheckbox
               name="agree"
               label="Do you agree to disagree?"
@@ -154,6 +131,30 @@ const Main = React.createClass({
                 disabled={true}
               />
             </FormsyRadioGroup>
+            <FormsyText
+              name="name"
+              validations="isWords"
+              validationError={wordsError}
+              required
+              hintText="What is your name?"
+              floatingLabelText="Name"
+            />
+            <FormsyText
+              name="age"
+              validations="isNumeric"
+              validationError={numericError}
+              hintText="Are you a wrinkly?"
+              floatingLabelText="Age (optional)"
+            />
+            <FormsyText
+              name="url"
+              validations="isUrl"
+              validationError={urlError}
+              required
+              hintText="http://www.example.com"
+              floatingLabelText="URL"
+              updateImmediately
+            />
             <RaisedButton
               style={submitStyle}
               type="submit"
