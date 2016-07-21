@@ -13,6 +13,9 @@ const FormsyText = React.createClass({
     onChange: React.PropTypes.func,
     onFocus: React.PropTypes.func,
     onKeyDown: React.PropTypes.func,
+    validationError: React.PropTypes.string,
+    validationErrors: React.PropTypes.object,
+    validations: React.PropTypes.oneOfType([React.PropTypes.string, React.PropTypes.object]),
     value: React.PropTypes.any,
   },
 
@@ -74,6 +77,9 @@ const FormsyText = React.createClass({
   render() {
     const {
       defaultValue, // eslint-disable-line no-unused-vars
+      validations, // eslint-disable-line no-unused-vars
+      validationError, // eslint-disable-line no-unused-vars
+      validationErrors, // eslint-disable-line no-unused-vars
       onFocus,
       value, // eslint-disable-line no-unused-vars
       ...rest } = this.props;
