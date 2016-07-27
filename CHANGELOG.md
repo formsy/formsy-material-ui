@@ -1,6 +1,9 @@
 ## Changelog
 
-* HEAD  Lint jsx files - fix linting errors in same
+* 0.5.0  Lint jsx files - fix linting errors in same
+         Accepts Formsy.Form.reset() (@Mokto)q
+         Fix text input values, and form reset (@reebalazs)
+         Fixes React 15.2 unknown props warnings (@jayalfredprufrock)
 
 * 0.4.2 Fix controlled / uncontrolled conflicts
         Add defaultValue support to FormsyText 
