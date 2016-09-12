@@ -44,7 +44,7 @@ import { FormsyCheckbox, FormsyDate, FormsyRadio, FormsyRadioGroup,
 ### Events
 
 Components allow for `onChange` event handlers in props. They are fired when the value of the 
-component changes, regardless of the underlying handler (eg, `FomrsyToggle` uses `onToggle` internally, but we
+component changes, regardless of the underlying handler (eg, `FormsyToggle` uses `onToggle` internally, but we
 still use `onChange` in props to hook into the event.)
 
 The call back signatures for all `onChange` handlers conform to 
