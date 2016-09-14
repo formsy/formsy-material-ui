@@ -2,7 +2,7 @@ import React from 'react';
 import keycode from 'keycode';
 import Formsy from 'formsy-react';
 import TextField from 'material-ui/TextField';
-import { setMuiComponentAndMaybeFocus } from './utils';
+import { setMuiComponentAndMaybeFocus, debounce } from './utils';
 
 const FormsyText = React.createClass({
 
@@ -11,11 +11,11 @@ const FormsyText = React.createClass({
     name: React.PropTypes.string.isRequired,
     onBlur: React.PropTypes.func,
     onChange: React.PropTypes.func,
-    onFocus: React.PropTypes.func,
     onKeyDown: React.PropTypes.func,
     validationError: React.PropTypes.string,
     validationErrors: React.PropTypes.object,
     validations: React.PropTypes.oneOfType([React.PropTypes.string, React.PropTypes.object]),
+    updateImmediately: React.PropTypes.bool,
     value: React.PropTypes.any,
   },
 
@@ -55,16 +55,51 @@ const FormsyText = React.createClass({
     return props.value || props.defaultValue || '';
   },
 
+  // Controlled component
+  componentWillReceiveProps(nextProps) {
+    if (nextProps.value !== this.props.value)
+    this.setState({
+      value: nextProps.value
+    });
+  },
+
   handleBlur: function handleBlur(event) {
     this.setValue(event.currentTarget.value);
+    delete this.changeValue;
     if (this.props.onBlur) this.props.onBlur(event);
   },
 
   handleChange: function handleChange(event) {
-    this.setState({
-      value: event.currentTarget.value,
-    });
-    if (this.props.onChange) this.props.onChange(event);
+    // Update the value (and so display any error) after a timeout.
+    if (this.props.updateImmediately) {
+      if (!this.changeValue) {
+        this.changeValue = debounce(this.setValue, 400);
+      }
+      this.changeValue(event.currentTarget.value);
+    } else {
+      // If there was an error (on loss of focus) update on each keypress to resolve same.
+      if (this.getErrorMessage() != null) {
+        this.setValue(event.currentTarget.value);
+      } else {
+        // Only update on valid values, so as to not generate an error until focus is lost.
+        if (this.isValidValue(event.target.value)) {
+          this.setValue(event.currentTarget.value);
+          // If it becomes invalid, and there isn't an error message, invalidate without error.
+        } else {
+          this.resetValue();
+        }
+      }
+    }
+
+    // Controlled component
+    if (this.props.onChange) {
+      this.props.onChange(event, event.currentTarget.value);
+    // Uncontrolled component
+    } else {
+      this.setState({
+        value: event.currentTarget.value
+      });
+    }
   },
 
   handleKeyDown: function handleKeyDown(event) {
@@ -82,20 +117,21 @@ const FormsyText = React.createClass({
       validationErrors, // eslint-disable-line no-unused-vars
       onFocus,
       value, // eslint-disable-line no-unused-vars
-      ...rest } = this.props;
+      ...rest 
+    } = this.props;
+
     return (
       <TextField
         {...rest}
         errorText={this.getErrorMessage()}
         onBlur={this.handleBlur}
         onChange={this.handleChange}
-        onFocus={onFocus}
         onKeyDown={this.handleKeyDown}
         ref={this.setMuiComponentAndMaybeFocus}
         value={this.state.value}
       />
     );
-  },
+  }
 });
 
 export default FormsyText;
