@@ -23,7 +23,10 @@ const FormsyText = React.createClass({
 
 
   getInitialState() {
-    return { value: this.controlledValue() };
+    return { 
+      value: this.controlledValue(),
+      _isInitial: true,
+    };
   },
 
   componentWillMount() {
@@ -42,8 +45,8 @@ const FormsyText = React.createClass({
   },
 
   componentWillUpdate(nextProps, nextState) {
-    if (nextState._isPristine && // eslint-disable-line no-underscore-dangle
-      nextState._isPristine !== this.state._isPristine) { // eslint-disable-line no-underscore-dangle
+    if (nextState._isInitial && // eslint-disable-line no-underscore-dangle
+      nextState._isInitial !== this.state._isInitial) { // eslint-disable-line no-underscore-dangle
       // Calling state here is valid, as it cannot cause infinite recursion.
       const value = this.controlledValue(nextProps);
       this.setValue(value);
@@ -65,6 +68,10 @@ const FormsyText = React.createClass({
 
   handleBlur: function handleBlur(event) {
     this.setValue(event.currentTarget.value);
+    this.setState({
+      value: event.currentTarget.value,
+      _isInitial: event.currentTarget.value ? false : true,
+    });
     delete this.changeValue;
     if (this.props.onBlur) this.props.onBlur(event);
   },
@@ -77,16 +84,19 @@ const FormsyText = React.createClass({
       }
       this.changeValue(event.currentTarget.value);
     } else {
-      // If there was an error (on loss of focus) update on each keypress to resolve same.
-      if (this.getErrorMessage() != null) {
-        this.setValue(event.currentTarget.value);
-      } else {
-        // Only update on valid values, so as to not generate an error until focus is lost.
-        if (this.isValidValue(event.target.value)) {
+      if (!this.state._isInitial)
+      {
+        // If there was an error (on loss of focus) update on each keypress to resolve same.
+        if (this.getErrorMessage() != null) {
           this.setValue(event.currentTarget.value);
-          // If it becomes invalid, and there isn't an error message, invalidate without error.
         } else {
-          this.resetValue();
+          // Only update on valid values, so as to not generate an error until focus is lost.
+          if (this.isValidValue(event.target.value)) {
+            this.setValue(event.currentTarget.value);
+            // If it becomes invalid, and there isn't an error message, invalidate without error.
+          } else {
+            this.resetValue();
+          }
         }
       }
     }
@@ -115,7 +125,6 @@ const FormsyText = React.createClass({
       validations, // eslint-disable-line no-unused-vars
       validationError, // eslint-disable-line no-unused-vars
       validationErrors, // eslint-disable-line no-unused-vars
-      onFocus,
       value, // eslint-disable-line no-unused-vars
       ...rest 
     } = this.props;
@@ -123,7 +132,7 @@ const FormsyText = React.createClass({
     return (
       <TextField
         {...rest}
-        errorText={this.getErrorMessage()}
+        errorText={!this.state._isInitial && this.getErrorMessage()}
         onBlur={this.handleBlur}
         onChange={this.handleChange}
         onKeyDown={this.handleKeyDown}
