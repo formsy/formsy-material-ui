@@ -45,8 +45,8 @@ const FormsyText = React.createClass({
   },
 
   componentWillUpdate(nextProps, nextState) {
-    if (nextState._isInitial && // eslint-disable-line no-underscore-dangle
-      nextState._isInitial !== this.state._isInitial) { // eslint-disable-line no-underscore-dangle
+    if (nextState._isPristine && // eslint-disable-line no-underscore-dangle
+      nextState._isPristine !== this.state._isPristine) { // eslint-disable-line no-underscore-dangle
       // Calling state here is valid, as it cannot cause infinite recursion.
       const value = this.controlledValue(nextProps);
       this.setValue(value);
