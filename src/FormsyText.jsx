@@ -72,27 +72,26 @@ const FormsyText = React.createClass({
       value: event.currentTarget.value,
       _isInitial: event.currentTarget.value ? false : true,
     });
-    delete this.changeValue;
     if (this.props.onBlur) this.props.onBlur(event);
   },
 
   handleChange: function handleChange(event) {
     // Update the value (and so display any error) after a timeout.
+    if (!this.changeValue) {
+      this.changeValue = debounce(this.setValue, 400);
+    }
     if (this.props.updateImmediately) {
-      if (!this.changeValue) {
-        this.changeValue = debounce(this.setValue, 400);
-      }
       this.changeValue(event.currentTarget.value);
     } else {
       if (!this.state._isInitial)
       {
         // If there was an error (on loss of focus) update on each keypress to resolve same.
         if (this.getErrorMessage() != null) {
-          this.setValue(event.currentTarget.value);
+          this.changeValue(event.currentTarget.value);
         } else {
           // Only update on valid values, so as to not generate an error until focus is lost.
           if (this.isValidValue(event.target.value)) {
-            this.setValue(event.currentTarget.value);
+            this.changeValue(event.currentTarget.value);
             // If it becomes invalid, and there isn't an error message, invalidate without error.
           } else {
             this.resetValue();
