@@ -25,7 +25,7 @@ const FormsyText = React.createClass({
   getInitialState() {
     return { 
       value: this.controlledValue(),
-      _isInitial: true,
+      _isInitial: this.controlledValue() ? false : true,
     };
   },
 
