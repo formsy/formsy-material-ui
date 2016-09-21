@@ -12,10 +12,10 @@ const FormsyText = React.createClass({
     onBlur: React.PropTypes.func,
     onChange: React.PropTypes.func,
     onKeyDown: React.PropTypes.func,
+    updateImmediately: React.PropTypes.bool,
     validationError: React.PropTypes.string,
     validationErrors: React.PropTypes.object,
     validations: React.PropTypes.oneOfType([React.PropTypes.string, React.PropTypes.object]),
-    updateImmediately: React.PropTypes.bool,
     value: React.PropTypes.any,
   },
 
@@ -23,9 +23,9 @@ const FormsyText = React.createClass({
 
 
   getInitialState() {
-    return { 
+    return {
       value: this.controlledValue(),
-      _isInitial: this.controlledValue() ? false : true,
+      isInitial: this.controlledValue() ? false : true, // eslint-disable-line no-unneeded-ternary
     };
   },
 
@@ -58,19 +58,12 @@ const FormsyText = React.createClass({
     return props.value || props.defaultValue || '';
   },
 
-  // Controlled component
-  componentWillReceiveProps(nextProps) {
-    if (nextProps.value !== this.props.value)
-    this.setState({
-      value: nextProps.value
-    });
-  },
 
   handleBlur: function handleBlur(event) {
     this.setValue(event.currentTarget.value);
     this.setState({
       value: event.currentTarget.value,
-      _isInitial: event.currentTarget.value ? false : true,
+      isInitial: event.currentTarget.value ? false : true, // eslint-disable-line no-unneeded-ternary
     });
     if (this.props.onBlur) this.props.onBlur(event);
   },
@@ -83,8 +76,7 @@ const FormsyText = React.createClass({
     if (this.props.updateImmediately) {
       this.changeValue(event.currentTarget.value);
     } else {
-      if (!this.state._isInitial)
-      {
+      if (!this.state.isInitial) {
         // If there was an error (on loss of focus) update on each keypress to resolve same.
         if (this.getErrorMessage() != null) {
           this.changeValue(event.currentTarget.value);
@@ -106,7 +98,7 @@ const FormsyText = React.createClass({
     // Uncontrolled component
     } else {
       this.setState({
-        value: event.currentTarget.value
+        value: event.currentTarget.value,
       });
     }
   },
@@ -125,13 +117,13 @@ const FormsyText = React.createClass({
       validationError, // eslint-disable-line no-unused-vars
       validationErrors, // eslint-disable-line no-unused-vars
       value, // eslint-disable-line no-unused-vars
-      ...rest 
+      ...rest,
     } = this.props;
 
     return (
       <TextField
         {...rest}
-        errorText={!this.state._isInitial && this.getErrorMessage()}
+        errorText={!this.state.isInitial && this.getErrorMessage()}
         onBlur={this.handleBlur}
         onChange={this.handleChange}
         onKeyDown={this.handleKeyDown}
@@ -139,7 +131,7 @@ const FormsyText = React.createClass({
         value={this.state.value}
       />
     );
-  }
+  },
 });
 
 export default FormsyText;
