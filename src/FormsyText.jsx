@@ -10,6 +10,7 @@ const FormsyText = React.createClass({
     defaultValue: React.PropTypes.any,
     name: React.PropTypes.string.isRequired,
     onBlur: React.PropTypes.func,
+    onFocus: React.PropTypes.func,
     onChange: React.PropTypes.func,
     onKeyDown: React.PropTypes.func,
     updateImmediately: React.PropTypes.bool,
@@ -25,7 +26,7 @@ const FormsyText = React.createClass({
   getInitialState() {
     return {
       value: this.controlledValue(),
-      isInitial: this.controlledValue() ? false : true, // eslint-disable-line no-unneeded-ternary
+      isInitial: false, // eslint-disable-line no-unneeded-ternary
     };
   },
 
@@ -63,9 +64,16 @@ const FormsyText = React.createClass({
     this.setValue(event.currentTarget.value);
     this.setState({
       value: event.currentTarget.value,
-      isInitial: event.currentTarget.value ? false : true, // eslint-disable-line no-unneeded-ternary
+      isInitial: false, // eslint-disable-line no-unneeded-ternary
     });
     if (this.props.onBlur) this.props.onBlur(event);
+  },
+
+  handleFocus: function handleFocus(event) {
+    this.setState({
+      isInitial: event.currentTarget.value ? false : true, // eslint-disable-line no-unneeded-ternary
+    })
+    if (this.props.onFocus) this.props.onFocus(event);
   },
 
   handleChange: function handleChange(event) {
@@ -117,6 +125,9 @@ const FormsyText = React.createClass({
       validationError, // eslint-disable-line no-unused-vars
       validationErrors, // eslint-disable-line no-unused-vars
       value, // eslint-disable-line no-unused-vars
+      onBlur,
+      onChange,
+      onFocus,
       ...rest,
     } = this.props;
 
@@ -126,6 +137,7 @@ const FormsyText = React.createClass({
         errorText={!this.state.isInitial && this.getErrorMessage()}
         onBlur={this.handleBlur}
         onChange={this.handleChange}
+        onFocus={this.handleFocus}
         onKeyDown={this.handleKeyDown}
         ref={this.setMuiComponentAndMaybeFocus}
         value={this.state.value}
