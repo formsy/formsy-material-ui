@@ -10,12 +10,13 @@ const FormsyText = React.createClass({
     defaultValue: React.PropTypes.any,
     name: React.PropTypes.string.isRequired,
     onBlur: React.PropTypes.func,
+    onFocus: React.PropTypes.func,
     onChange: React.PropTypes.func,
     onKeyDown: React.PropTypes.func,
+    updateImmediately: React.PropTypes.bool,
     validationError: React.PropTypes.string,
     validationErrors: React.PropTypes.object,
     validations: React.PropTypes.oneOfType([React.PropTypes.string, React.PropTypes.object]),
-    updateImmediately: React.PropTypes.bool,
     value: React.PropTypes.any,
   },
 
@@ -23,7 +24,10 @@ const FormsyText = React.createClass({
 
 
   getInitialState() {
-    return { value: this.controlledValue() };
+    return {
+      value: this.controlledValue(),
+      isInitial: false, // eslint-disable-line no-unneeded-ternary
+    };
   },
 
   componentWillMount() {
@@ -55,38 +59,41 @@ const FormsyText = React.createClass({
     return props.value || props.defaultValue || '';
   },
 
-  // Controlled component
-  componentWillReceiveProps(nextProps) {
-    if (nextProps.value !== this.props.value)
-    this.setState({
-      value: nextProps.value
-    });
-  },
 
   handleBlur: function handleBlur(event) {
     this.setValue(event.currentTarget.value);
-    delete this.changeValue;
+    this.setState({
+      value: event.currentTarget.value,
+      isInitial: false, // eslint-disable-line no-unneeded-ternary
+    });
     if (this.props.onBlur) this.props.onBlur(event);
+  },
+
+  handleFocus: function handleFocus(event) {
+    this.setState({
+      isInitial: event.currentTarget.value ? false : true, // eslint-disable-line no-unneeded-ternary
+    })
+    if (this.props.onFocus) this.props.onFocus(event);
   },
 
   handleChange: function handleChange(event) {
     // Update the value (and so display any error) after a timeout.
+    if (!this.changeValue) {
+      this.changeValue = debounce(this.setValue, 400);
+    }
     if (this.props.updateImmediately) {
-      if (!this.changeValue) {
-        this.changeValue = debounce(this.setValue, 400);
-      }
       this.changeValue(event.currentTarget.value);
     } else {
-      // If there was an error (on loss of focus) update on each keypress to resolve same.
-      if (this.getErrorMessage() != null) {
-        this.setValue(event.currentTarget.value);
-      } else {
-        // Only update on valid values, so as to not generate an error until focus is lost.
-        if (this.isValidValue(event.target.value)) {
-          this.setValue(event.currentTarget.value);
-          // If it becomes invalid, and there isn't an error message, invalidate without error.
+      if (!this.state.isInitial) {
+        // If there was an error (on loss of focus) update on each keypress to resolve same.
+        if (this.getErrorMessage() != null) {
+          this.changeValue(event.currentTarget.value);
         } else {
-          this.resetValue();
+          // Only update on valid values, so as to not generate an error until focus is lost.
+          if (this.isValidValue(event.target.value)) {
+            this.changeValue(event.currentTarget.value);
+            // If it becomes invalid, and there isn't an error message, invalidate without error.
+          }
         }
       }
     }
@@ -97,7 +104,7 @@ const FormsyText = React.createClass({
     // Uncontrolled component
     } else {
       this.setState({
-        value: event.currentTarget.value
+        value: event.currentTarget.value,
       });
     }
   },
@@ -115,23 +122,26 @@ const FormsyText = React.createClass({
       validations, // eslint-disable-line no-unused-vars
       validationError, // eslint-disable-line no-unused-vars
       validationErrors, // eslint-disable-line no-unused-vars
-      onFocus,
       value, // eslint-disable-line no-unused-vars
-      ...rest 
+      onBlur,
+      onChange,
+      onFocus,
+      ...rest,
     } = this.props;
 
     return (
       <TextField
         {...rest}
-        errorText={this.getErrorMessage()}
+        errorText={!this.state.isInitial && this.getErrorMessage()}
         onBlur={this.handleBlur}
         onChange={this.handleChange}
+        onFocus={this.handleFocus}
         onKeyDown={this.handleKeyDown}
         ref={this.setMuiComponentAndMaybeFocus}
         value={this.state.value}
       />
     );
-  }
+  },
 });
 
 export default FormsyText;
