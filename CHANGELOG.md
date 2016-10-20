@@ -1,7 +1,9 @@
 ## Changelog
 
+* 0.5.1  Add updateImmediately prop & fix handleChange (@mbrookes)
+
 * 0.5.0  Lint jsx files - fix linting errors in same
-         Accepts Formsy.Form.reset() (@Mokto)q
+         Accepts Formsy.Form.reset() (@Mokto)
          Fix text input values, and form reset (@reebalazs)
          Fixes React 15.2 unknown props warnings (@jayalfredprufrock)
 
