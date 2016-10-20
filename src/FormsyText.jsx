@@ -12,10 +12,10 @@ const FormsyText = React.createClass({
     onBlur: React.PropTypes.func,
     onChange: React.PropTypes.func,
     onKeyDown: React.PropTypes.func,
+    updateImmediately: React.PropTypes.bool,
     validationError: React.PropTypes.string,
     validationErrors: React.PropTypes.object,
     validations: React.PropTypes.oneOfType([React.PropTypes.string, React.PropTypes.object]),
-    updateImmediately: React.PropTypes.bool,
     value: React.PropTypes.any,
   },
 
@@ -55,14 +55,6 @@ const FormsyText = React.createClass({
     return props.value || props.defaultValue || '';
   },
 
-  // Controlled component
-  componentWillReceiveProps(nextProps) {
-    if (nextProps.value !== this.props.value)
-    this.setState({
-      value: nextProps.value
-    });
-  },
-
   handleBlur: function handleBlur(event) {
     this.setValue(event.currentTarget.value);
     delete this.changeValue;
@@ -92,14 +84,8 @@ const FormsyText = React.createClass({
     }
 
     // Controlled component
-    if (this.props.onChange) {
-      this.props.onChange(event, event.currentTarget.value);
-    // Uncontrolled component
-    } else {
-      this.setState({
-        value: event.currentTarget.value
-      });
-    }
+    this.setState({ value: event.currentTarget.value });
+    if (this.props.onChange) this.props.onChange(event, event.currentTarget.value);
   },
 
   handleKeyDown: function handleKeyDown(event) {
@@ -112,12 +98,12 @@ const FormsyText = React.createClass({
   render() {
     const {
       defaultValue, // eslint-disable-line no-unused-vars
+      updateImmediately, // eslint-disable-line no-unused-vars
       validations, // eslint-disable-line no-unused-vars
       validationError, // eslint-disable-line no-unused-vars
       validationErrors, // eslint-disable-line no-unused-vars
-      onFocus,
       value, // eslint-disable-line no-unused-vars
-      ...rest 
+      ...rest,
     } = this.props;
 
     return (
@@ -131,7 +117,7 @@ const FormsyText = React.createClass({
         value={this.state.value}
       />
     );
-  }
+  },
 });
 
 export default FormsyText;
