@@ -83,12 +83,9 @@ const FormsyText = React.createClass({
       }
     }
 
-    this.setState({ value: event.currentTarget.value });
-
     // Controlled component
-    if (this.props.onChange) {
-      this.props.onChange(event, event.currentTarget.value);
-    }
+    this.setState({ value: event.currentTarget.value });
+    if (this.props.onChange) this.props.onChange(event, event.currentTarget.value);
   },
 
   handleKeyDown: function handleKeyDown(event) {
@@ -101,6 +98,7 @@ const FormsyText = React.createClass({
   render() {
     const {
       defaultValue, // eslint-disable-line no-unused-vars
+      updateImmediately, // eslint-disable-line no-unused-vars
       validations, // eslint-disable-line no-unused-vars
       validationError, // eslint-disable-line no-unused-vars
       validationErrors, // eslint-disable-line no-unused-vars
