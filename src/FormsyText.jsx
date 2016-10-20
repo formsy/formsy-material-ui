@@ -83,12 +83,11 @@ const FormsyText = React.createClass({
       }
     }
 
+    this.setState({ value: event.currentTarget.value });
+
     // Controlled component
     if (this.props.onChange) {
       this.props.onChange(event, event.currentTarget.value);
-    // Uncontrolled component
-    } else {
-      this.setState({ value: event.currentTarget.value });
     }
   },
 
