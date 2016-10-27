@@ -17,13 +17,14 @@ const FormsyText = React.createClass({
     validationErrors: React.PropTypes.object,
     validations: React.PropTypes.oneOfType([React.PropTypes.string, React.PropTypes.object]),
     value: React.PropTypes.any,
+	validationColor: React.PropTypes.string,
   },
 
   mixins: [Formsy.Mixin],
 
 
   getInitialState() {
-    return { value: this.controlledValue() };
+    return { value: this.controlledValue(), isValid: this.isValidValue(this.controlleValue()) };
   },
 
   componentWillMount() {
@@ -34,8 +35,9 @@ const FormsyText = React.createClass({
     const isValueChanging = nextProps.value !== this.props.value;
     if (isValueChanging || nextProps.defaultValue !== this.props.defaultValue) {
       const value = this.controlledValue(nextProps);
+	  const isValid = this.isValidValue(this.controlleValue());
       if (isValueChanging || this.props.defaultValue === this.getValue()) {
-        this.setState({ value });
+        this.setState({ value, isValid });
         this.setValue(value);
       }
     }
@@ -46,14 +48,19 @@ const FormsyText = React.createClass({
       nextState._isPristine !== this.state._isPristine) { // eslint-disable-line no-underscore-dangle
       // Calling state here is valid, as it cannot cause infinite recursion.
       const value = this.controlledValue(nextProps);
+	  const isValid = this.isValidValue(this.controlleValue(nextProps));
       this.setValue(value);
-      this.setState({ value });
+      this.setState({ value, isValid });
     }
   },
 
   controlledValue(props = this.props) {
     return props.value || props.defaultValue || '';
   },
+  
+  validationColor(props = this.props) {
+  	return props.validationColor || '#4CAF50'
+  }
 
   handleBlur: function handleBlur(event) {
     this.setValue(event.currentTarget.value);
@@ -63,7 +70,7 @@ const FormsyText = React.createClass({
 
   handleChange: function handleChange(event) {
     // Update the value (and so display any error) after a timeout.
-    if (this.props.updateImmediately) {
+    if (this.props.updateImmediately) {	  
       if (!this.changeValue) {
         this.changeValue = debounce(this.setValue, 400);
       }
@@ -84,7 +91,7 @@ const FormsyText = React.createClass({
     }
 
     // Controlled component
-    this.setState({ value: event.currentTarget.value });
+    this.setState({ value: event.currentTarget.value, isValid: this.isValidValue(event.currentTarget.value) });
     if (this.props.onChange) this.props.onChange(event, event.currentTarget.value);
   },
 
@@ -115,6 +122,8 @@ const FormsyText = React.createClass({
         onKeyDown={this.handleKeyDown}
         ref={this.setMuiComponentAndMaybeFocus}
         value={this.state.value}
+		underlineStyle={this.state.isValid ? {color: this.validationColor()} : {}}
+		underlineFocusStyle={this.state.isValid ? {color: this.validationColor()} : {}}
       />
     );
   },
