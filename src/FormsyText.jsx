@@ -77,8 +77,6 @@ const FormsyText = React.createClass({
         if (this.isValidValue(event.target.value)) {
           this.setValue(event.currentTarget.value);
           // If it becomes invalid, and there isn't an error message, invalidate without error.
-        } else {
-          this.resetValue();
         }
       }
     }
