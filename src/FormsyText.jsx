@@ -22,10 +22,6 @@ const FormsyText = React.createClass({
 
   mixins: [Formsy.Mixin],
 
-  getInitialState() {
-    const value = this.controlledValue();
-    return { value };
-  },
 
   componentWillMount() {
     this.setValue(this.controlledValue());
@@ -38,7 +34,7 @@ const FormsyText = React.createClass({
       const isValid = this.isValidValue(value);
 
       if (isValueChanging || this.props.defaultValue === this.getValue()) {
-        this.setState({ value, isValid });
+        this.setState({ isValid });
         this.setValue(value);
       }
     }
@@ -51,7 +47,7 @@ const FormsyText = React.createClass({
       const value = this.controlledValue(nextProps);
       const isValid = this.isValidValue(value);
       this.setValue(value);
-      this.setState({ value, isValid });
+      this.setState({ isValid });
     }
   },
 
@@ -85,12 +81,13 @@ const FormsyText = React.createClass({
         if (this.isValidValue(event.target.value)) {
           this.setValue(event.currentTarget.value);
           // If it becomes invalid, and there isn't an error message, invalidate without error.
+        } else {
+          this.setState({_value: event.currentTarget.value, _isPristine: false});
         }
       }
     }
 
-    // Controlled component
-    this.setState({ value: event.currentTarget.value, isValid: this.isValidValue(event.currentTarget.value) });
+    this.setState({ isValid: this.isValidValue(event.currentTarget.value) });
     if (this.props.onChange) this.props.onChange(event, event.currentTarget.value);
   },
 
@@ -120,7 +117,7 @@ const FormsyText = React.createClass({
         onChange={this.handleChange}
         onKeyDown={this.handleKeyDown}
         ref={this.setMuiComponentAndMaybeFocus}
-        value={this.state.value}
+        value={this.getValue()}
         underlineStyle={this.state.isValid ? { color: this.validationColor() } : {}}
         underlineFocusStyle={this.state.isValid ? { color: this.validationColor() } : {}}
       />
