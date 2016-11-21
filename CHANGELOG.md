@@ -1,5 +1,11 @@
 ## Changelog
 
+* 0.5.3  Fix radio button group reset
+         Fix updateImmediately breaking validations
+         Bump material-ui to v0.16
+         Bump react-tap-event-plugin
+         Add new component FormsyAutoComplete
+
 * 0.5.2  Fix 0.5.1 error (Issue #150, PR #151) (@codeaholicguy)
 
 * 0.5.1  Add updateImmediately prop & fix handleChange (@mbrookes)
