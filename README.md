@@ -32,13 +32,14 @@ import FormsySelect from 'formsy-material-ui/lib/FormsySelect';
 import FormsyText from 'formsy-material-ui/lib/FormsyText';
 import FormsyTime from 'formsy-material-ui/lib/FormsyTime';
 import FormsyToggle from 'formsy-material-ui/lib/FormsyToggle';
+import FormsyAutoComplete from 'formsy-material-ui/lib/FormsyAutoComplete';
 ```
 
 OR:
 
 ```js
 import { FormsyCheckbox, FormsyDate, FormsyRadio, FormsyRadioGroup, 
-  FormsySelect, FormsyText, FormsyTime, FormsyToggle } from 'formsy-material-ui/lib';
+  FormsySelect, FormsyText, FormsyTime, FormsyToggle, FormsyAutoComplete } from 'formsy-material-ui/lib';
 ```
 
 ### Events

@@ -6,7 +6,7 @@ import Paper from 'material-ui/Paper';
 import RaisedButton from 'material-ui/RaisedButton';
 import MenuItem from 'material-ui/MenuItem';
 import { FormsyCheckbox, FormsyDate, FormsyRadio, FormsyRadioGroup,
-    FormsySelect, FormsyText, FormsyTime, FormsyToggle } from 'formsy-material-ui/lib';
+    FormsySelect, FormsyText, FormsyTime, FormsyToggle, FormsyAutoComplete } from 'formsy-material-ui/lib';
 
 const Main = React.createClass({
 
@@ -103,6 +103,16 @@ const Main = React.createClass({
               <MenuItem value={'nightly'} primaryText="Every Night" />
               <MenuItem value={'weeknights'} primaryText="Weeknights" />
             </FormsySelect>
+            <FormsyAutoComplete
+              name="frequency-auto-complete"
+              required
+              floatingLabelText="How often do you?"
+              dataSource={[
+                'Never',
+                'Every Night',
+                'Weeknights'
+              ]}
+            />
             <FormsyCheckbox
               name="agree"
               label="Do you agree to disagree?"
