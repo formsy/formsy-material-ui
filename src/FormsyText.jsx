@@ -82,7 +82,7 @@ const FormsyText = React.createClass({
           this.setValue(event.currentTarget.value);
           // If it becomes invalid, and there isn't an error message, invalidate without error.
         } else {
-          this.setState({_value: event.currentTarget.value, _isPristine: false});
+          this.setState({ _value: event.currentTarget.value, _isPristine: false });
         }
       }
     }
