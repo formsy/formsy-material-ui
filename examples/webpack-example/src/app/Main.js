@@ -1,12 +1,12 @@
 import React from 'react';
 import Formsy from 'formsy-react';
-import getMuiTheme from 'material-ui/styles/getMuiTheme'
+import getMuiTheme from 'material-ui/styles/getMuiTheme';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import Paper from 'material-ui/Paper';
 import RaisedButton from 'material-ui/RaisedButton';
 import MenuItem from 'material-ui/MenuItem';
 import { FormsyCheckbox, FormsyDate, FormsyRadio, FormsyRadioGroup,
-    FormsySelect, FormsyText, FormsyTime, FormsyToggle } from 'formsy-material-ui/lib';
+    FormsySelect, FormsyText, FormsyTime, FormsyToggle, FormsyAutoComplete } from 'formsy-material-ui/lib';
 
 const Main = React.createClass({
 
@@ -83,28 +83,15 @@ const Main = React.createClass({
             onValidSubmit={this.submitForm}
             onInvalidSubmit={this.notifyFormError}
           >
-            <FormsyText
-              name="name"
-              validations="isWords"
-              validationError={wordsError}
+            <FormsyDate
+              name="date"
               required
-              hintText="What is your name?"
-              floatingLabelText="Name"
+              floatingLabelText="Date"
             />
-            <FormsyText
-              name="age"
-              validations="isNumeric"
-              validationError={numericError}
-              hintText="Are you a wrinkly?"
-              floatingLabelText="Age (optional)"
-            />
-            <FormsyText
-              name="url"
-              validations="isUrl"
-              validationError={urlError}
+            <FormsyTime
+              name="time"
               required
-              hintText="http://www.example.com"
-              floatingLabelText="URL"
+              floatingLabelText="Time"
             />
             <FormsySelect
               name="frequency"
@@ -116,15 +103,15 @@ const Main = React.createClass({
               <MenuItem value={'nightly'} primaryText="Every Night" />
               <MenuItem value={'weeknights'} primaryText="Weeknights" />
             </FormsySelect>
-            <FormsyDate
-              name="date"
+            <FormsyAutoComplete
+              name="frequency-auto-complete"
               required
-              floatingLabelText="Date"
-            />
-            <FormsyTime
-              name="time"
-              required
-              floatingLabelText="Time"
+              floatingLabelText="How often do you?"
+              dataSource={[
+                'Never',
+                'Every Night',
+                'Weeknights'
+              ]}
             />
             <FormsyCheckbox
               name="agree"
@@ -154,6 +141,30 @@ const Main = React.createClass({
                 disabled={true}
               />
             </FormsyRadioGroup>
+            <FormsyText
+              name="name"
+              validations="isWords"
+              validationError={wordsError}
+              required
+              hintText="What is your name?"
+              floatingLabelText="Name"
+            />
+            <FormsyText
+              name="age"
+              validations="isNumeric"
+              validationError={numericError}
+              hintText="Are you a wrinkly?"
+              floatingLabelText="Age (optional)"
+            />
+            <FormsyText
+              name="url"
+              validations="isUrl"
+              validationError={urlError}
+              required
+              hintText="http://www.example.com"
+              floatingLabelText="URL"
+              updateImmediately
+            />
             <RaisedButton
               style={submitStyle}
               type="submit"

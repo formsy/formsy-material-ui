@@ -9,6 +9,9 @@ const FormsyCheckbox = React.createClass({
     defaultChecked: React.PropTypes.bool,
     name: React.PropTypes.string.isRequired,
     onChange: React.PropTypes.func,
+    validationError: React.PropTypes.string,
+    validationErrors: React.PropTypes.object,
+    validations: React.PropTypes.oneOfType([React.PropTypes.string, React.PropTypes.object]),
   },
 
   mixins: [Formsy.Mixin],
@@ -25,7 +28,12 @@ const FormsyCheckbox = React.createClass({
   setMuiComponentAndMaybeFocus: setMuiComponentAndMaybeFocus,
 
   render() {
-    const { defaultChecked, ...rest } = this.props;
+    const {
+      defaultChecked, // eslint-disable-line no-unused-vars
+      validations, // eslint-disable-line no-unused-vars
+      validationErrors, // eslint-disable-line no-unused-vars
+      validationError, // eslint-disable-line no-unused-vars
+      ...rest } = this.props;
     let value = this.getValue();
 
     if (typeof value === 'undefined') {

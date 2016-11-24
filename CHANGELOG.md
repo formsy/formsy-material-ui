@@ -1,6 +1,19 @@
 ## Changelog
 
-* HEAD  Lint jsx files - fix linting errors in same
+* 0.5.3  Fix radio button group reset
+         Fix updateImmediately breaking validations
+         Bump material-ui to v0.16
+         Bump react-tap-event-plugin
+         Add new component FormsyAutoComplete
+
+* 0.5.2  Fix 0.5.1 error (Issue #150, PR #151) (@codeaholicguy)
+
+* 0.5.1  Add updateImmediately prop & fix handleChange (@mbrookes)
+
+* 0.5.0  Lint jsx files - fix linting errors in same
+         Accepts Formsy.Form.reset() (@Mokto)
+         Fix text input values, and form reset (@reebalazs)
+         Fixes React 15.2 unknown props warnings (@jayalfredprufrock)
 
 * 0.4.2 Fix controlled / uncontrolled conflicts
         Add defaultValue support to FormsyText 

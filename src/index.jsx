@@ -6,3 +6,4 @@ export FormsySelect from './FormsySelect';
 export FormsyText from './FormsyText';
 export FormsyTime from './FormsyTime';
 export FormsyToggle from './FormsyToggle';
+export FormsyAutoComplete from './FormsyAutoComplete';

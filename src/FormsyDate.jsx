@@ -9,6 +9,9 @@ const FormsyDate = React.createClass({
     defaultDate: React.PropTypes.object,
     name: React.PropTypes.string.isRequired,
     onChange: React.PropTypes.func,
+    validationError: React.PropTypes.string,
+    validationErrors: React.PropTypes.object,
+    validations: React.PropTypes.oneOfType([React.PropTypes.string, React.PropTypes.object]),
     value: React.PropTypes.object,
   },
 
@@ -32,9 +35,11 @@ const FormsyDate = React.createClass({
 
   render() {
     const {
-        defaultDate, // eslint-disable-line no-unused-vars
-        ...rest,
-    } = this.props;
+      defaultDate, // eslint-disable-line no-unused-vars
+      validations, // eslint-disable-line no-unused-vars
+      validationErrors, // eslint-disable-line no-unused-vars
+      validationError, // eslint-disable-line no-unused-vars
+      ...rest } = this.props;
 
     return (
       <DatePicker

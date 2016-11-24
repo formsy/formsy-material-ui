@@ -9,6 +9,9 @@ const FormsyToggle = React.createClass({
     defaultToggled: React.PropTypes.bool,
     name: React.PropTypes.string.isRequired,
     onChange: React.PropTypes.func,
+    validationError: React.PropTypes.string,
+    validationErrors: React.PropTypes.object,
+    validations: React.PropTypes.oneOfType([React.PropTypes.string, React.PropTypes.object]),
   },
 
   mixins: [Formsy.Mixin],
@@ -25,7 +28,13 @@ const FormsyToggle = React.createClass({
   setMuiComponentAndMaybeFocus: setMuiComponentAndMaybeFocus,
 
   render() {
-    const { defaultToggled, ...rest } = this.props;
+    const {
+      defaultToggled,
+      validations, // eslint-disable-line no-unused-vars
+      validationError, // eslint-disable-line no-unused-vars
+      validationErrors, // eslint-disable-line no-unused-vars
+      ...rest } = this.props;
+
     let value = this.getValue();
 
     if (typeof value === 'undefined') {
