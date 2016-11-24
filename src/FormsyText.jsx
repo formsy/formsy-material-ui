@@ -12,6 +12,7 @@ const FormsyText = React.createClass({
     onBlur: React.PropTypes.func,
     onChange: React.PropTypes.func,
     onKeyDown: React.PropTypes.func,
+    requiredError: React.PropTypes.string,
     updateImmediately: React.PropTypes.bool,
     validationColor: React.PropTypes.string,
     validationError: React.PropTypes.string,
@@ -104,6 +105,7 @@ const FormsyText = React.createClass({
   render() {
     const {
       defaultValue, // eslint-disable-line no-unused-vars
+      requiredError,
       updateImmediately, // eslint-disable-line no-unused-vars
       validations, // eslint-disable-line no-unused-vars
       validationError, // eslint-disable-line no-unused-vars
@@ -112,10 +114,14 @@ const FormsyText = React.createClass({
       ...rest,
     } = this.props;
 
+    const { isRequired, isPristine, isValid, isFormSubmitted } = this;
+    const isRequiredError = isRequired() && !isPristine() && !isValid() && isFormSubmitted() && requiredError;
+    const errorText = this.getErrorMessage() || isRequiredError;
+
     return (
       <TextField
         {...rest}
-        errorText={this.getErrorMessage()}
+        errorText={errorText}
         onBlur={this.handleBlur}
         onChange={this.handleChange}
         onKeyDown={this.handleKeyDown}
