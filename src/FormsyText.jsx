@@ -13,6 +13,8 @@ const FormsyText = React.createClass({
     onChange: React.PropTypes.func,
     onKeyDown: React.PropTypes.func,
     requiredError: React.PropTypes.string,
+    underlineFocusStyle: React.PropTypes.object,
+    underlineStyle: React.PropTypes.object,
     updateImmediately: React.PropTypes.bool,
     validationColor: React.PropTypes.string,
     validationError: React.PropTypes.string,
@@ -23,6 +25,10 @@ const FormsyText = React.createClass({
 
   mixins: [Formsy.Mixin],
 
+  defaultProps: {
+    underlineFocusStyle: {},
+    underlineStyle: {},
+  },
 
   componentWillMount() {
     this.setValue(this.controlledValue());
@@ -103,6 +109,8 @@ const FormsyText = React.createClass({
     const {
       defaultValue, // eslint-disable-line no-unused-vars
       requiredError,
+      underlineFocusStyle,
+      underlineStyle,
       updateImmediately, // eslint-disable-line no-unused-vars
       validations, // eslint-disable-line no-unused-vars
       validationError, // eslint-disable-line no-unused-vars
@@ -124,8 +132,8 @@ const FormsyText = React.createClass({
         onKeyDown={this.handleKeyDown}
         ref={this.setMuiComponentAndMaybeFocus}
         value={this.getValue()}
-        underlineStyle={this.state.isValid ? { color: this.validationColor() } : {}}
-        underlineFocusStyle={this.state.isValid ? { color: this.validationColor() } : {}}
+        underlineStyle={this.state.isValid ? { color: this.validationColor() } : underlineStyle}
+        underlineFocusStyle={this.state.isValid ? { color: this.validationColor() } : underlineFocusStyle}
       />
     );
   },
