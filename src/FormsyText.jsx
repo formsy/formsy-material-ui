@@ -12,6 +12,7 @@ const FormsyText = React.createClass({
     onBlur: React.PropTypes.func,
     onChange: React.PropTypes.func,
     onKeyDown: React.PropTypes.func,
+    requiredError: React.PropTypes.string,
     updateImmediately: React.PropTypes.bool,
     validationColor: React.PropTypes.string,
     validationError: React.PropTypes.string,
@@ -22,10 +23,6 @@ const FormsyText = React.createClass({
 
   mixins: [Formsy.Mixin],
 
-  getInitialState() {
-    const value = this.controlledValue();
-    return { value };
-  },
 
   componentWillMount() {
     this.setValue(this.controlledValue());
@@ -38,7 +35,7 @@ const FormsyText = React.createClass({
       const isValid = this.isValidValue(value);
 
       if (isValueChanging || this.props.defaultValue === this.getValue()) {
-        this.setState({ value, isValid });
+        this.setState({ isValid });
         this.setValue(value);
       }
     }
@@ -51,7 +48,7 @@ const FormsyText = React.createClass({
       const value = this.controlledValue(nextProps);
       const isValid = this.isValidValue(value);
       this.setValue(value);
-      this.setState({ value, isValid });
+      this.setState({ isValid });
     }
   },
 
@@ -85,12 +82,13 @@ const FormsyText = React.createClass({
         if (this.isValidValue(event.target.value)) {
           this.setValue(event.currentTarget.value);
           // If it becomes invalid, and there isn't an error message, invalidate without error.
+        } else {
+          this.setState({ _value: event.currentTarget.value, _isPristine: false });
         }
       }
     }
 
-    // Controlled component
-    this.setState({ value: event.currentTarget.value, isValid: this.isValidValue(event.currentTarget.value) });
+    this.setState({ isValid: this.isValidValue(event.currentTarget.value) });
     if (this.props.onChange) this.props.onChange(event, event.currentTarget.value);
   },
 
@@ -104,6 +102,7 @@ const FormsyText = React.createClass({
   render() {
     const {
       defaultValue, // eslint-disable-line no-unused-vars
+      requiredError,
       updateImmediately, // eslint-disable-line no-unused-vars
       validations, // eslint-disable-line no-unused-vars
       validationError, // eslint-disable-line no-unused-vars
@@ -112,15 +111,19 @@ const FormsyText = React.createClass({
       ...rest,
     } = this.props;
 
+    const { isRequired, isPristine, isValid, isFormSubmitted } = this;
+    const isRequiredError = isRequired() && !isPristine() && !isValid() && isFormSubmitted() && requiredError;
+    const errorText = this.getErrorMessage() || isRequiredError;
+
     return (
       <TextField
         {...rest}
-        errorText={this.getErrorMessage()}
+        errorText={errorText}
         onBlur={this.handleBlur}
         onChange={this.handleChange}
         onKeyDown={this.handleKeyDown}
         ref={this.setMuiComponentAndMaybeFocus}
-        value={this.state.value}
+        value={this.getValue()}
         underlineStyle={this.state.isValid ? { color: this.validationColor() } : {}}
         underlineFocusStyle={this.state.isValid ? { color: this.validationColor() } : {}}
       />
