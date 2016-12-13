@@ -40,6 +40,13 @@ const FormsyAutoComplete = React.createClass({
     if (this.props.onChange) this.props.onChange(event);
   },
 
+  handleUpdateInput: function handleUpdateInput(value) {
+    this.setState({
+      value,
+    });
+    if (this.props.onChange) this.props.onChange(null, value);
+  },
+
   handleKeyDown: function handleKeyDown(event) {
     if (keycode(event) === 'enter') this.setValue(event.currentTarget.value);
     if (this.props.onKeyDown) this.props.onKeyDown(event, event.currentTarget.value);
@@ -59,6 +66,7 @@ const FormsyAutoComplete = React.createClass({
         errorText={this.getErrorMessage()}
         onBlur={this.handleBlur}
         onChange={this.handleChange}
+        onUpdateInput={this.handleUpdateInput}
         onFocus={onFocus}
         onKeyDown={this.handleKeyDown}
         ref={this.setMuiComponentAndMaybeFocus}
