@@ -14,6 +14,7 @@ const FormsyText = React.createClass({
     onKeyDown: React.PropTypes.func,
     requiredError: React.PropTypes.string,
     updateImmediately: React.PropTypes.bool,
+    underlineStyle: React.PropTypes.object,
     validationColor: React.PropTypes.string,
     validationError: React.PropTypes.string,
     validationErrors: React.PropTypes.object,
@@ -104,6 +105,7 @@ const FormsyText = React.createClass({
       defaultValue, // eslint-disable-line no-unused-vars
       requiredError,
       updateImmediately, // eslint-disable-line no-unused-vars
+      underlineStyle, // eslint-disable-line no-unused-vars
       validations, // eslint-disable-line no-unused-vars
       validationError, // eslint-disable-line no-unused-vars
       validationErrors, // eslint-disable-line no-unused-vars
@@ -124,7 +126,7 @@ const FormsyText = React.createClass({
         onKeyDown={this.handleKeyDown}
         ref={this.setMuiComponentAndMaybeFocus}
         value={this.getValue()}
-        underlineStyle={this.state.isValid ? { color: this.validationColor() } : {}}
+        underlineStyle={[underlineStyle, this.state.isValid && {color: this.validationColor()}]}
         underlineFocusStyle={this.state.isValid ? { color: this.validationColor() } : {}}
       />
     );
