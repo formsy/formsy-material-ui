@@ -40,6 +40,7 @@ class TestForm extends Component {
   };
 
   static propTypes = {
+    children: PropTypes.node,
     defaultValue: PropTypes.string,
     value: PropTypes.string,
   }
@@ -57,7 +58,7 @@ class TestForm extends Component {
     const { value, defaultValue, children, ...extraProps } = { ...this.props, ...this.state };
     return (
       <Form { ...extraProps }>
-        {this.props.children ? this.props.children : (
+        {children ? children : (
           <FormsyText ref="text" name="text"
             value={value}
             defaultValue={defaultValue}
