@@ -179,6 +179,7 @@ describe('FormsyText', () => {
           </TestForm>
         );
 
+        // Here we check we can disable a single input in a globally enabled form
         let inputDOM = wrapper.find('input').node;
         expect(inputDOM.disabled).to.eq(false);
 
@@ -191,6 +192,7 @@ describe('FormsyText', () => {
           </TestForm>
         );
 
+        // Likewise, we are able to keep a specific input enabled even if the form is marked as disabled
         inputDOM = wrapper.find('input').node;
         expect(inputDOM.disabled).to.eq(true);
       });
