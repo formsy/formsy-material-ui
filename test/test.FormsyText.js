@@ -147,6 +147,18 @@ describe('FormsyText', () => {
         formValues = formsyForm.getCurrentValues();
         expect(formValues.text).to.eq('some text');
       });
+
+      it('disabled', () => {
+        const { formsyTextWrapper, formWrapper } = makeTestParent({
+          disabled: true,
+        });
+
+        const formsyForm = formWrapper.find(Form).node;
+        expect(formsyForm.isFormDisabled()).to.eq(true);
+
+        const inputDOM = formsyTextWrapper.find('input').node;
+        expect(inputDOM.disabled).to.eq(true);
+      });
     });
 
     describe('updating', () => {

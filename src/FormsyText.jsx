@@ -123,6 +123,7 @@ const FormsyText = React.createClass({
         onChange={this.handleChange}
         onKeyDown={this.handleKeyDown}
         ref={this.setMuiComponentAndMaybeFocus}
+        disabled={this.isFormDisabled()}
         value={this.getValue()}
         underlineStyle={this.state.isValid ? { color: this.validationColor() } : {}}
         underlineFocusStyle={this.state.isValid ? { color: this.validationColor() } : {}}
