@@ -55,6 +55,7 @@ const FormsyAutoComplete = React.createClass({
       ...rest } = this.props;
     return (
       <AutoComplete
+        disabled={this.isFormDisabled()}
         {...rest}
         errorText={this.getErrorMessage()}
         onBlur={this.handleBlur}
@@ -62,7 +63,6 @@ const FormsyAutoComplete = React.createClass({
         onFocus={onFocus}
         onKeyDown={this.handleKeyDown}
         ref={this.setMuiComponentAndMaybeFocus}
-        disabled={this.isFormDisabled()}
         value={this.state.value}
       />
     );

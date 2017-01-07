@@ -117,13 +117,13 @@ const FormsyText = React.createClass({
 
     return (
       <TextField
+        disabled={this.isFormDisabled()}
         {...rest}
         errorText={errorText}
         onBlur={this.handleBlur}
         onChange={this.handleChange}
         onKeyDown={this.handleKeyDown}
         ref={this.setMuiComponentAndMaybeFocus}
-        disabled={this.isFormDisabled()}
         value={this.getValue()}
         underlineStyle={this.state.isValid ? { color: this.validationColor() } : {}}
         underlineFocusStyle={this.state.isValid ? { color: this.validationColor() } : {}}

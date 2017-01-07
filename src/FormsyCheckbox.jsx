@@ -41,9 +41,9 @@ const FormsyCheckbox = React.createClass({
     }
     return (
       <Checkbox
+        disabled={this.isFormDisabled()}
         {...rest}
         checked={value}
-        disabled={this.isFormDisabled()}
         onCheck={this.handleChange}
         ref={this.setMuiComponentAndMaybeFocus}
       />

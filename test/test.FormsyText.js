@@ -161,10 +161,16 @@ describe('FormsyText', () => {
 
         const inputDOM = wrapper.find('input').node;
         expect(inputDOM.disabled).to.eq(true);
+
+        // Next, we set `disabled` to false and check the DOM node updates accordingly
+        wrapper.setProps({
+          disabled: false,
+        });
+        expect(inputDOM.disabled).to.eq(false);
       });
 
       it('allows overriding disabled status locally', () => {
-        const wrapper = mount(
+        let wrapper = mount(
           <TestForm disabled={true}>
             <FormsyText
               name="text"
@@ -173,8 +179,20 @@ describe('FormsyText', () => {
           </TestForm>
         );
 
-        const inputDOM = wrapper.find('input').node;
+        let inputDOM = wrapper.find('input').node;
         expect(inputDOM.disabled).to.eq(false);
+
+        wrapper = mount(
+          <TestForm disabled={false}>
+            <FormsyText
+              name="text"
+              disabled={true}
+            />
+          </TestForm>
+        );
+
+        inputDOM = wrapper.find('input').node;
+        expect(inputDOM.disabled).to.eq(true);
       });
     });
 

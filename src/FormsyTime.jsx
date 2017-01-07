@@ -44,11 +44,11 @@ const FormsyTime = React.createClass({
 
     return (
       <TimePicker
+        disabled={this.isFormDisabled()}
         {...rest}
         errorText={this.getErrorMessage()}
         onChange={this.handleChange}
         ref={this.setMuiComponentAndMaybeFocus}
-        disabled={this.isFormDisabled()}
         value={this.getValue()}
       />
     );

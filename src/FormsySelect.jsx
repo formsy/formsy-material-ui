@@ -51,11 +51,11 @@ const FormsySelect = React.createClass({
     const errorText = this.getErrorMessage() || isRequiredError;
     return (
       <SelectField
+        disabled={this.isFormDisabled()}
         {...rest}
         errorText={errorText}
         onChange={this.handleChange}
         ref={this.setMuiComponentAndMaybeFocus}
-        disabled={this.isFormDisabled()}
         value={value}
       >
         {this.props.children}

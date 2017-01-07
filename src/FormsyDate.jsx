@@ -47,12 +47,12 @@ const FormsyDate = React.createClass({
     const errorText = this.getErrorMessage() || isRequiredError;
     return (
       <DatePicker
+        disabled={this.isFormDisabled()}
         {...rest}
         errorText={errorText}
         onChange={this.handleChange}
         ref={this.setMuiComponentAndMaybeFocus}
         value={this.getValue()}
-        disabled={this.isFormDisabled()}
       />
     );
   },
