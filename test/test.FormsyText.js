@@ -54,13 +54,15 @@ class TestForm extends Component {
   }
 
   render() {
-    const { value, defaultValue, ...extraProps } = { ...this.props, ...this.state };
+    const { value, defaultValue, children, ...extraProps } = { ...this.props, ...this.state };
     return (
       <Form { ...extraProps }>
-        <FormsyText ref="text" name="text"
-          value={value}
-          defaultValue={defaultValue}
-        />
+        {this.props.children ? this.props.children : (
+          <FormsyText ref="text" name="text"
+            value={value}
+            defaultValue={defaultValue}
+          />
+        )}
       </Form>
     );
   }
@@ -148,16 +150,31 @@ describe('FormsyText', () => {
         expect(formValues.text).to.eq('some text');
       });
 
-      it('disabled', () => {
-        const { formsyTextWrapper, formWrapper } = makeTestParent({
-          disabled: true,
-        });
+      it('propagates disabled status', () => {
+        const wrapper = mount(
+          <TestForm disabled={true} >
+            <FormsyText
+              name="text"
+            />
+          </TestForm>
+        );
 
-        const formsyForm = formWrapper.find(Form).node;
-        expect(formsyForm.isFormDisabled()).to.eq(true);
-
-        const inputDOM = formsyTextWrapper.find('input').node;
+        const inputDOM = wrapper.find('input').node;
         expect(inputDOM.disabled).to.eq(true);
+      });
+
+      it('allows overriding disabled status locally', () => {
+        const wrapper = mount(
+          <TestForm disabled={true}>
+            <FormsyText
+              name="text"
+              disabled={false}
+            />
+          </TestForm>
+        );
+
+        const inputDOM = wrapper.find('input').node;
+        expect(inputDOM.disabled).to.eq(false);
       });
     });
 
