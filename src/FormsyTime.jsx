@@ -48,6 +48,7 @@ const FormsyTime = React.createClass({
         errorText={this.getErrorMessage()}
         onChange={this.handleChange}
         ref={this.setMuiComponentAndMaybeFocus}
+        disabled={this.isFormDisabled()}
         value={this.getValue()}
       />
     );

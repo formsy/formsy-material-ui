@@ -52,6 +52,7 @@ const FormsyDate = React.createClass({
         onChange={this.handleChange}
         ref={this.setMuiComponentAndMaybeFocus}
         value={this.getValue()}
+        disabled={this.isFormDisabled()}
       />
     );
   },

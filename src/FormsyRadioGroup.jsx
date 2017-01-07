@@ -63,6 +63,7 @@ const FormsyRadioGroup = React.createClass({
         ref={this.setMuiComponentAndMaybeFocus}
         onChange={this.handleValueChange}
         valueSelected={this.getValue()}
+        disabled={this.isFormDisabled()}
         defaultSelected={value}
       >
         {children}

@@ -62,6 +62,7 @@ const FormsyAutoComplete = React.createClass({
         onFocus={onFocus}
         onKeyDown={this.handleKeyDown}
         ref={this.setMuiComponentAndMaybeFocus}
+        disabled={this.isFormDisabled()}
         value={this.state.value}
       />
     );

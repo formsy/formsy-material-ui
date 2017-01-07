@@ -55,6 +55,7 @@ const FormsySelect = React.createClass({
         errorText={errorText}
         onChange={this.handleChange}
         ref={this.setMuiComponentAndMaybeFocus}
+        disabled={this.isFormDisabled()}
         value={value}
       >
         {this.props.children}
