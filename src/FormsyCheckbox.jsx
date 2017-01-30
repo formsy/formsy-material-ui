@@ -41,6 +41,7 @@ const FormsyCheckbox = React.createClass({
     }
     return (
       <Checkbox
+        disabled={this.isFormDisabled()}
         {...rest}
         checked={value}
         onCheck={this.handleChange}

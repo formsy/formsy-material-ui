@@ -44,6 +44,7 @@ const FormsyTime = React.createClass({
 
     return (
       <TimePicker
+        disabled={this.isFormDisabled()}
         {...rest}
         errorText={this.getErrorMessage()}
         onChange={this.handleChange}

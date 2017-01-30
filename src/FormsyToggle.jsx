@@ -43,6 +43,7 @@ const FormsyToggle = React.createClass({
 
     return (
       <Toggle
+        disabled={this.isFormDisabled()}
         {...rest}
         onToggle={this.handleChange}
         ref={this.setMuiComponentAndMaybeFocus}

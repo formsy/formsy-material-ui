@@ -117,6 +117,7 @@ const FormsyText = React.createClass({
 
     return (
       <TextField
+        disabled={this.isFormDisabled()}
         {...rest}
         errorText={errorText}
         onBlur={this.handleBlur}

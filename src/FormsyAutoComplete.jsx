@@ -55,6 +55,7 @@ const FormsyAutoComplete = React.createClass({
       ...rest } = this.props;
     return (
       <AutoComplete
+        disabled={this.isFormDisabled()}
         {...rest}
         errorText={this.getErrorMessage()}
         onBlur={this.handleBlur}

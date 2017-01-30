@@ -40,6 +40,7 @@ class TestForm extends Component {
   };
 
   static propTypes = {
+    children: PropTypes.node,
     defaultValue: PropTypes.string,
     value: PropTypes.string,
   }
@@ -54,13 +55,15 @@ class TestForm extends Component {
   }
 
   render() {
-    const { value, defaultValue, ...extraProps } = { ...this.props, ...this.state };
+    const { value, defaultValue, children, ...extraProps } = { ...this.props, ...this.state };
     return (
       <Form { ...extraProps }>
-        <FormsyText ref="text" name="text"
-          value={value}
-          defaultValue={defaultValue}
-        />
+        {children ? children : (
+          <FormsyText ref="text" name="text"
+            value={value}
+            defaultValue={defaultValue}
+          />
+        )}
       </Form>
     );
   }
@@ -146,6 +149,53 @@ describe('FormsyText', () => {
         fillInText(formsyTextWrapper, 'some text');
         formValues = formsyForm.getCurrentValues();
         expect(formValues.text).to.eq('some text');
+      });
+
+      it('propagates disabled status', () => {
+        const wrapper = mount(
+          <TestForm disabled={true} >
+            <FormsyText
+              name="text"
+            />
+          </TestForm>
+        );
+
+        const inputDOM = wrapper.find('input').node;
+        expect(inputDOM.disabled).to.eq(true);
+
+        // Next, we set `disabled` to false and check the DOM node updates accordingly
+        wrapper.setProps({
+          disabled: false,
+        });
+        expect(inputDOM.disabled).to.eq(false);
+      });
+
+      it('allows overriding disabled status locally', () => {
+        let wrapper = mount(
+          <TestForm disabled={true}>
+            <FormsyText
+              name="text"
+              disabled={false}
+            />
+          </TestForm>
+        );
+
+        // Here we check we can disable a single input in a globally enabled form
+        let inputDOM = wrapper.find('input').node;
+        expect(inputDOM.disabled).to.eq(false);
+
+        wrapper = mount(
+          <TestForm disabled={false}>
+            <FormsyText
+              name="text"
+              disabled={true}
+            />
+          </TestForm>
+        );
+
+        // Likewise, we are able to keep a specific input enabled even if the form is marked as disabled
+        inputDOM = wrapper.find('input').node;
+        expect(inputDOM.disabled).to.eq(true);
       });
     });
 

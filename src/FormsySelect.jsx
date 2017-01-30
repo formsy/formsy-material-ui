@@ -51,6 +51,7 @@ const FormsySelect = React.createClass({
     const errorText = this.getErrorMessage() || isRequiredError;
     return (
       <SelectField
+        disabled={this.isFormDisabled()}
         {...rest}
         errorText={errorText}
         onChange={this.handleChange}
