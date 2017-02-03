@@ -1,5 +1,13 @@
 ## Changelog
 
+* 0.5.4  use FormsyText internal _value to allow external setValue calls
+         support requiredError on FormsyDate
+         add underlineStyle and underlineFocus props to FormsyText
+         fix FormsyAutoComplete to update value when MenuItem selected
+         make compatible with react v15.4.x
+         implement isFormDisabled() check
+         fix tests
+
 * 0.5.3  Fix radio button group reset
          Fix updateImmediately breaking validations
          Bump material-ui to v0.16
