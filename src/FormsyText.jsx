@@ -30,6 +30,11 @@ const FormsyText = React.createClass({
     underlineStyle: {},
   },
 
+  getInitialState() {
+    const value = this.controlledValue();
+    return { value };
+  },
+
   componentWillMount() {
     this.setValue(this.controlledValue());
   },
@@ -41,7 +46,7 @@ const FormsyText = React.createClass({
       const isValid = this.isValidValue(value);
 
       if (isValueChanging || this.props.defaultValue === this.getValue()) {
-        this.setState({ isValid });
+        this.setState({ value, isValid });
         this.setValue(value);
       }
     }
@@ -54,7 +59,7 @@ const FormsyText = React.createClass({
       const value = this.controlledValue(nextProps);
       const isValid = this.isValidValue(value);
       this.setValue(value);
-      this.setState({ isValid });
+      this.setState({ value, isValid });
     }
   },
 
@@ -88,13 +93,12 @@ const FormsyText = React.createClass({
         if (this.isValidValue(event.target.value)) {
           this.setValue(event.currentTarget.value);
           // If it becomes invalid, and there isn't an error message, invalidate without error.
-        } else {
-          this.setState({ _value: event.currentTarget.value, _isPristine: false });
         }
       }
     }
 
-    this.setState({ isValid: this.isValidValue(event.currentTarget.value) });
+    // Controlled component
+    this.setState({ value: event.currentTarget.value, isValid: this.isValidValue(event.currentTarget.value) });
     if (this.props.onChange) this.props.onChange(event, event.currentTarget.value);
   },
 
@@ -116,8 +120,7 @@ const FormsyText = React.createClass({
       validationError, // eslint-disable-line no-unused-vars
       validationErrors, // eslint-disable-line no-unused-vars
       value, // eslint-disable-line no-unused-vars
-      ...rest,
-    } = this.props;
+      ...rest } = this.props;
 
     const { isRequired, isPristine, isValid, isFormSubmitted } = this;
     const isRequiredError = isRequired() && !isPristine() && !isValid() && isFormSubmitted() && requiredError;
@@ -132,7 +135,7 @@ const FormsyText = React.createClass({
         onChange={this.handleChange}
         onKeyDown={this.handleKeyDown}
         ref={this.setMuiComponentAndMaybeFocus}
-        value={this.getValue()}
+        value={this.state.value}
         underlineStyle={this.state.isValid ? { color: this.validationColor() } : underlineStyle}
         underlineFocusStyle={this.state.isValid ? { color: this.validationColor() } : underlineFocusStyle}
       />
