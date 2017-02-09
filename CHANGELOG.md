@@ -1,5 +1,6 @@
 ## Changelog
 
+* 0.5.5  revert FormsyText internal value setting method
 * 0.5.4  use FormsyText internal _value to allow external setValue calls
          support requiredError on FormsyDate
          add underlineStyle and underlineFocus props to FormsyText
