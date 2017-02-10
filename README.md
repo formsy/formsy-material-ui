@@ -5,7 +5,7 @@ with [formsy-react](https://github.com/christianalfoni/formsy-react), a form val
 
 ## Installation
 
-To add formsy-material-ui to you package.json and install it, run:
+To and install formsy-material-ui and add it to your `package.json`, run:
 
 ```
 $ npm install --save formsy-material-ui
