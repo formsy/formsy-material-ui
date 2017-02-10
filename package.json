@@ -22,7 +22,7 @@
     "keycode": "^2.1.0"
   },
   "peerDependencies": {
-    "formsy-react": "^0.18.0",
+    "formsy-react": "^0.18.1",
     "material-ui": "^0.16.0",
     "react": "^15.0.0",
     "react-dom": "^15.0.0"
