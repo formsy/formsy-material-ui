@@ -106,6 +106,11 @@ const FormsyText = React.createClass({
     if (keycode(event) === 'enter') this.setValue(event.currentTarget.value);
     if (this.props.onKeyDown) this.props.onKeyDown(event, event.currentTarget.value);
   },
+  
+  handleEnterKeyDown: function handleEnterKeyDown(event) {
+   this.setValue(event.currentTarget.value);
+   if (this.props.onEnterKeyDown) this.props.onEnterKeyDown(event, event.currentTarget.value);
+  },
 
   setMuiComponentAndMaybeFocus: setMuiComponentAndMaybeFocus,
 
