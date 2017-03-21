@@ -31,8 +31,7 @@ const FormsyTime = React.createClass({
       if (!this.props.value || !timesEq(this.props.value, newProps.value)) {
         this.setValue(newProps.value);
       }
-    }
-    else if (!this.props.value && newProps.defaultTime) {
+    } else if (!this.props.value && newProps.defaultTime) {
       if (!timesEq(this.props.defaultTime, newProps.defaultTime)) {
         this.setValue(newProps.defaultTime);
       }
@@ -44,8 +43,8 @@ const FormsyTime = React.createClass({
      * @param {Date} date2
      */
     function timesEq(date1, date2) {
-      return date1.getHours() === date2.getHours()
-        && date1.getMinutes() === date2.getMinutes()
+      return date1.getHours() === date2.getHours() &&
+        date1.getMinutes() === date2.getMinutes();
     }
   },
 
