@@ -76,3 +76,9 @@ See [CHANGELOG.md](https://github.com/mbrookes/formsy-material-ui/blob/master/CH
 Originally based on an example by [Ryan Blakeley](https://github.com/rojobuffalo).
 
 Thanks to our [contributors](https://github.com/mbrookes/formsy-material-ui/graphs/contributors).
+
+## Alternatives
+
+Here are some alternative solutions you might also wish to consider:
+  - [react-material-ui-form-validator](https://github.com/NewOldMax/react-material-ui-form-validator)
+  - Redux Form [Material-UI example](http://redux-form.com/6.1.1/examples/material-ui/)
