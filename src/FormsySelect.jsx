@@ -37,28 +37,28 @@ const FormsySelect = React.createClass({
   setMuiComponentAndMaybeFocus: setMuiComponentAndMaybeFocus,
 
   render() {
-    const { 
+    const {
       requiredError,
       validations, // eslint-disable-line no-unused-vars
       validationError, // eslint-disable-line no-unused-vars
       validationErrors, // eslint-disable-line no-unused-vars
       value: valueProp,
-      ...rest 
+      ...rest,
     } = this.props;
 
     const { isRequired, isPristine, isValid, isFormSubmitted } = this;
     const isRequiredError = isRequired() && !isPristine() && !isValid() && isFormSubmitted() && requiredError;
     const errorText = this.getErrorMessage() || isRequiredError;
-    value = this.state.hasChanged ? this.getValue() : valueProp;
-    
+    const value = this.state.hasChanged ? this.getValue() : valueProp;
+
     return (
       <SelectField
         disabled={this.isFormDisabled()}
-        {...rest}
         errorText={errorText}
         onChange={this.handleChange}
         ref={this.setMuiComponentAndMaybeFocus}
         value={value}
+        {...rest}
       >
         {this.props.children}
       </SelectField>
