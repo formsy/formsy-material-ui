@@ -97,7 +97,6 @@ const Main = React.createClass({
               name="frequency"
               required
               floatingLabelText="How often do you?"
-              menuItems={this.selectFieldItems}
             >
               <MenuItem value={'never'} primaryText="Never" />
               <MenuItem value={'nightly'} primaryText="Every Night" />
