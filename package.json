@@ -1,6 +1,6 @@
 {
   "name": "formsy-material-ui-fork-ck",
-  "version": "0.1.1",
+  "version": "0.2.0",
   "description": "A formsy-react compatibility wrapper for Material-UI form components.",
   "main": "./lib/index.js",
   "scripts": {
