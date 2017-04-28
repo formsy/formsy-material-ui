@@ -37,6 +37,8 @@ const FormsyAutoComplete = React.createClass({
     this.setState({
       value: event.currentTarget.value,
     });
+    // The next line makes sure AutoComplete opens its menu (because its onChange handler is overwritten):
+    this.autoCompleteComponent.handleChange(event);
     if (this.props.onChange) this.props.onChange(event);
   },
 
