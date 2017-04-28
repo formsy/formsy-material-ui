@@ -3,6 +3,8 @@
 This library is a wrapper for [Material-UI](http://material-ui.com/) form components to allow them to be used
 with [formsy-react](https://github.com/christianalfoni/formsy-react), a form validation component for React forms.
 
+I forked it in order to fix a bug in FormsyAutoComplete that prevents the menu from opening when a valid search string is typed.
+
 ## Installation
 
 To and install formsy-material-ui and add it to your `package.json`, run:
