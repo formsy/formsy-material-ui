@@ -54,6 +54,11 @@ const FormsyAutoComplete = React.createClass({
 
   setMuiComponentAndMaybeFocus: setMuiComponentAndMaybeFocus,
 
+  setAutoCompleteRef: function(component) {
+    this.autoCompleteComponent = component;
+    return this.setMuiComponentAndMaybeFocus;
+  },
+
   render() {
     const {
       defaultValue, // eslint-disable-line no-unused-vars
@@ -70,7 +75,7 @@ const FormsyAutoComplete = React.createClass({
         onUpdateInput={this.handleUpdateInput}
         onFocus={onFocus}
         onKeyDown={this.handleKeyDown}
-        ref={this.setMuiComponentAndMaybeFocus}
+        ref={this.setAutoCompleteRef}
         value={this.state.value}
       />
     );
