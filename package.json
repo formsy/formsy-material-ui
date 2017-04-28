@@ -1,5 +1,5 @@
 {
-  "name": "formsy-material-ui",
+  "name": "formsy-material-ui-fork-ck",
   "version": "0.6.0",
   "description": "A formsy-react compatibility wrapper for Material-UI form components.",
   "main": "./lib/index.js",
@@ -12,7 +12,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/mbrookes/formsy-material-ui.git"
+    "url": "git+https://github.com/charleskoehl/formsy-material-ui.git"
   },
   "files": [
     "lib",
@@ -76,14 +76,14 @@
     "jsx",
     "react-component"
   ],
-  "author": {
-    "name": "Matt Brookes",
-    "email": "npm@nospam.33m.co",
-    "url": "https://github.com/mbrookes"
-  },
+  "author": "Matt Brookes <npm@nospam.33m.co> (https://github.com/mbrookes)",
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/mbrookes/formsy-material-ui/issues"
   },
-  "homepage": "https://github.com/mbrookes/formsy-material-ui#readme"
+  "homepage": "https://github.com/mbrookes/formsy-material-ui#readme",
+  "directories": {
+    "example": "examples",
+    "test": "test"
+  }
 }
