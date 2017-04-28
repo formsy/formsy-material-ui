@@ -76,14 +76,14 @@
     "jsx",
     "react-component"
   ],
-  "author": "Matt Brookes <npm@nospam.33m.co> (https://github.com/mbrookes)",
+  "author": {
+    "name": "Matt Brookes",
+    "email": "npm@nospam.33m.co",
+    "url": "https://github.com/mbrookes"
+  },
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/mbrookes/formsy-material-ui/issues"
   },
-  "homepage": "https://github.com/mbrookes/formsy-material-ui#readme",
-  "directories": {
-    "example": "examples",
-    "test": "test"
-  }
+  "homepage": "https://github.com/mbrookes/formsy-material-ui#readme"
 }
