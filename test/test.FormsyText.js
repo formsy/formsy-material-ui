@@ -234,6 +234,20 @@ describe('FormsyText', () => {
         formValues = formsyForm.getCurrentValues();
         expect(formValues.text).to.eq('some text');
       });
+
+      it('calls onChange once per text update', () => {
+        const calls = [];
+        const { parent, formsyTextWrapper } = makeTestParent({
+          onChange: (...args) => calls.push(args),
+          value: 'initial',
+        });
+
+        const inputDOM = formsyTextWrapper.find('input').node;
+        inputDOM.value = 'updated';
+        parent.setState({ value: 'updated' });
+
+        expect(calls.length).to.eq(1);
+      });
     });
 
     describe('resetting to', () => {
