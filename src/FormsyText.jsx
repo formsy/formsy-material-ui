@@ -47,7 +47,7 @@ const FormsyText = React.createClass({
 
       if (isValueChanging || this.props.defaultValue === this.getValue()) {
         this.setState({ value, isValid });
-        this.setValue(value);
+        if (this.getValue() !== value) this.setValue(value);
       }
     }
   },
