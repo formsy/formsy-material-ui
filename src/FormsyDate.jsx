@@ -1,19 +1,21 @@
 import React from 'react';
+import createClass from 'create-react-class';
+import PropTypes from 'prop-types';
 import Formsy from 'formsy-react';
 import DatePicker from 'material-ui/DatePicker';
 import { setMuiComponentAndMaybeFocus } from './utils';
 
-const FormsyDate = React.createClass({
+const FormsyDate = createClass({
 
   propTypes: {
-    defaultDate: React.PropTypes.object,
-    name: React.PropTypes.string.isRequired,
-    onChange: React.PropTypes.func,
-    requiredError: React.PropTypes.string,
-    validationError: React.PropTypes.string,
-    validationErrors: React.PropTypes.object,
-    validations: React.PropTypes.oneOfType([React.PropTypes.string, React.PropTypes.object]),
-    value: React.PropTypes.object,
+    defaultDate: PropTypes.object,
+    name: PropTypes.string.isRequired,
+    onChange: PropTypes.func,
+    requiredError: PropTypes.string,
+    validationError: PropTypes.string,
+    validationErrors: PropTypes.object,
+    validations: PropTypes.oneOfType([PropTypes.string, PropTypes.object]),
+    value: PropTypes.object,
   },
 
   mixins: [Formsy.Mixin],

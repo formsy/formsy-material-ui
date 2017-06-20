@@ -1,7 +1,7 @@
-import React from 'react';
+import createClass from 'create-react-class';
 import Formsy from 'formsy-react';
 
-const FormsyRadio = React.createClass({
+const FormsyRadio = createClass({
 
   mixins: [Formsy.Mixin],
 

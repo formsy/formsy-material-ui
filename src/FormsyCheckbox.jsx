@@ -1,17 +1,19 @@
 import React from 'react';
+import createClass from 'create-react-class';
+import PropTypes from 'prop-types';
 import Formsy from 'formsy-react';
 import Checkbox from 'material-ui/Checkbox';
 import { setMuiComponentAndMaybeFocus } from './utils';
 
-const FormsyCheckbox = React.createClass({
+const FormsyCheckbox = createClass({
 
   propTypes: {
-    defaultChecked: React.PropTypes.bool,
-    name: React.PropTypes.string.isRequired,
-    onChange: React.PropTypes.func,
-    validationError: React.PropTypes.string,
-    validationErrors: React.PropTypes.object,
-    validations: React.PropTypes.oneOfType([React.PropTypes.string, React.PropTypes.object]),
+    defaultChecked: PropTypes.bool,
+    name: PropTypes.string.isRequired,
+    onChange: PropTypes.func,
+    validationError: PropTypes.string,
+    validationErrors: PropTypes.object,
+    validations: PropTypes.oneOfType([PropTypes.string, PropTypes.object]),
   },
 
   mixins: [Formsy.Mixin],

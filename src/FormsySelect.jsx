@@ -1,19 +1,21 @@
 import React from 'react';
+import createClass from 'create-react-class';
+import PropTypes from 'prop-types';
 import Formsy from 'formsy-react';
 import SelectField from 'material-ui/SelectField';
 import { setMuiComponentAndMaybeFocus } from './utils';
 
-const FormsySelect = React.createClass({
+const FormsySelect = createClass({
 
   propTypes: {
-    children: React.PropTypes.node,
-    name: React.PropTypes.string.isRequired,
-    onChange: React.PropTypes.func,
-    requiredError: React.PropTypes.string,
-    validationError: React.PropTypes.string,
-    validationErrors: React.PropTypes.object,
-    validations: React.PropTypes.oneOfType([React.PropTypes.string, React.PropTypes.object]),
-    value: React.PropTypes.any,
+    children: PropTypes.node,
+    name: PropTypes.string.isRequired,
+    onChange: PropTypes.func,
+    requiredError: PropTypes.string,
+    validationError: PropTypes.string,
+    validationErrors: PropTypes.object,
+    validations: PropTypes.oneOfType([PropTypes.string, PropTypes.object]),
+    value: PropTypes.any,
   },
 
   mixins: [Formsy.Mixin],

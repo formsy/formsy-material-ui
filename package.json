@@ -25,7 +25,9 @@
     "formsy-react": "^0.19.0",
     "material-ui": "^0.17.0",
     "react": "^15.0.0",
-    "react-dom": "^15.0.0"
+    "react-dom": "^15.0.0",
+    "prop-types": "^15.5.7",
+    "create-react-class": "^15.5.0"
   },
   "devDependencies": {
     "babel-cli": "^6.3.17",
