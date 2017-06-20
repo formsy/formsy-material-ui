@@ -1,26 +1,28 @@
 import React from 'react';
+import createClass from 'create-react-class';
+import PropTypes from 'prop-types';
 import keycode from 'keycode';
 import Formsy from 'formsy-react';
 import TextField from 'material-ui/TextField';
 import { setMuiComponentAndMaybeFocus, debounce } from './utils';
 
-const FormsyText = React.createClass({
+const FormsyText = createClass({
 
   propTypes: {
-    defaultValue: React.PropTypes.any,
-    name: React.PropTypes.string.isRequired,
-    onBlur: React.PropTypes.func,
-    onChange: React.PropTypes.func,
-    onKeyDown: React.PropTypes.func,
-    requiredError: React.PropTypes.string,
-    underlineFocusStyle: React.PropTypes.object,
-    underlineStyle: React.PropTypes.object,
-    updateImmediately: React.PropTypes.bool,
-    validationColor: React.PropTypes.string,
-    validationError: React.PropTypes.string,
-    validationErrors: React.PropTypes.object,
-    validations: React.PropTypes.oneOfType([React.PropTypes.string, React.PropTypes.object]),
-    value: React.PropTypes.any,
+    defaultValue: PropTypes.any,
+    name: PropTypes.string.isRequired,
+    onBlur: PropTypes.func,
+    onChange: PropTypes.func,
+    onKeyDown: PropTypes.func,
+    requiredError: PropTypes.string,
+    underlineFocusStyle: PropTypes.object,
+    underlineStyle: PropTypes.object,
+    updateImmediately: PropTypes.bool,
+    validationColor: PropTypes.string,
+    validationError: PropTypes.string,
+    validationErrors: PropTypes.object,
+    validations: PropTypes.oneOfType([PropTypes.string, PropTypes.object]),
+    value: PropTypes.any,
   },
 
   mixins: [Formsy.Mixin],

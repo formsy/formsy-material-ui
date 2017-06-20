@@ -1,19 +1,21 @@
 import React from 'react';
+import createClass from 'create-react-class';
+import PropTypes from 'prop-types';
 import Formsy from 'formsy-react';
 import { RadioButtonGroup, RadioButton } from 'material-ui/RadioButton';
 import { setMuiComponentAndMaybeFocus } from './utils';
 
-const FormsyRadioGroup = React.createClass({
+const FormsyRadioGroup = createClass({
 
   propTypes: {
-    children: React.PropTypes.node,
-    defaultSelected: React.PropTypes.oneOfType([React.PropTypes.string, React.PropTypes.number, React.PropTypes.bool]),
-    name: React.PropTypes.string.isRequired,
-    onChange: React.PropTypes.func,
-    validationError: React.PropTypes.string,
-    validationErrors: React.PropTypes.object,
-    validations: React.PropTypes.oneOfType([React.PropTypes.string, React.PropTypes.object]),
-    value: React.PropTypes.oneOfType([React.PropTypes.string, React.PropTypes.number, React.PropTypes.bool]),
+    children: PropTypes.node,
+    defaultSelected: PropTypes.oneOfType([PropTypes.string, PropTypes.number, PropTypes.bool]),
+    name: PropTypes.string.isRequired,
+    onChange: PropTypes.func,
+    validationError: PropTypes.string,
+    validationErrors: PropTypes.object,
+    validations: PropTypes.oneOfType([PropTypes.string, PropTypes.object]),
+    value: PropTypes.oneOfType([PropTypes.string, PropTypes.number, PropTypes.bool]),
   },
 
   mixins: [Formsy.Mixin],

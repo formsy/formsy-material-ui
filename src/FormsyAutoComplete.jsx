@@ -1,19 +1,21 @@
 import React from 'react';
+import createClass from 'create-react-class';
+import PropTypes from 'prop-types';
 import keycode from 'keycode';
 import Formsy from 'formsy-react';
 import AutoComplete from 'material-ui/AutoComplete';
 import { setMuiComponentAndMaybeFocus } from 'formsy-react/src/utils';
 
-const FormsyAutoComplete = React.createClass({
+const FormsyAutoComplete = createClass({
 
   propTypes: {
-    defaultValue: React.PropTypes.any,
-    name: React.PropTypes.string.isRequired,
-    onBlur: React.PropTypes.func,
-    onChange: React.PropTypes.func,
-    onFocus: React.PropTypes.func,
-    onKeyDown: React.PropTypes.func,
-    value: React.PropTypes.any,
+    defaultValue: PropTypes.any,
+    name: PropTypes.string.isRequired,
+    onBlur: PropTypes.func,
+    onChange: PropTypes.func,
+    onFocus: PropTypes.func,
+    onKeyDown: PropTypes.func,
+    value: PropTypes.any,
   },
 
   mixins: [Formsy.Mixin],

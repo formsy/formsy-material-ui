@@ -1,4 +1,5 @@
 import React from 'react';
+import createClass from 'create-react-class';
 import Formsy from 'formsy-react';
 import getMuiTheme from 'material-ui/styles/getMuiTheme';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
@@ -8,14 +9,14 @@ import MenuItem from 'material-ui/MenuItem';
 import { FormsyCheckbox, FormsyDate, FormsyRadio, FormsyRadioGroup,
     FormsySelect, FormsyText, FormsyTime, FormsyToggle, FormsyAutoComplete } from 'formsy-material-ui/lib';
 
-const Main = React.createClass({
+const Main = createClass({
 
   /**
    * As an alternative to `MuiThemeProvider` you can add a theme directly into context.
    * See the [Material-UI themes](http://www.material-ui.com/#/customization/themes) docs for details.
    *
    * childContextTypes: {
-   *   muiTheme: React.PropTypes.object,
+   *   muiTheme: PropTypes.object,
    * },
    * getChildContext(){
    *   return {
