@@ -299,5 +299,42 @@ describe('FormsyText', () => {
         expect(formValues.text).to.eq('NEW VALUE');
       });
     });
+
+    describe('with convertValue', () => {
+      it('converts to number', () => {
+        const { formsyTextWrapper, formWrapper } = setup({
+          value: 1,
+          type: 'number',
+          convertValue: (v) => Number(v),
+        });
+        const formsyForm = formWrapper.find(Form).node;
+        let formValues = formsyForm.getCurrentValues();
+        expect(formValues.text).to.eq(1);
+        fillInText(formsyTextWrapper, '2');
+        formValues = formsyForm.getCurrentValues();
+        expect(formValues.text).to.eq(2);
+      });
+
+      it('and defaultValue', () => {
+        const { formWrapper } = setup({
+          defaultValue: 1,
+          type: 'number',
+          convertValue: (v) => Number(v),
+        });
+        const formsyForm = formWrapper.find(Form).node;
+        const formValues = formsyForm.getCurrentValues();
+        expect(formValues.text).to.eq(1);
+      });
+
+      it('and no value', () => {
+        const { formWrapper } = setup({
+          type: 'number',
+          convertValue: (v) => Number(v),
+        });
+        const formsyForm = formWrapper.find(Form).node;
+        const formValues = formsyForm.getCurrentValues();
+        expect(formValues.text).to.eq(0);
+      });
+    });
   });
 });
