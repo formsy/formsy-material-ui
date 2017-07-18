@@ -30,6 +30,7 @@ const FormsyText = createClass({
   defaultProps: {
     underlineFocusStyle: {},
     underlineStyle: {},
+    validationColor: '#4CAF50',
   },
 
   getInitialState() {
@@ -67,10 +68,6 @@ const FormsyText = createClass({
 
   controlledValue(props = this.props) {
     return props.value || props.defaultValue || '';
-  },
-
-  validationColor(props = this.props) {
-    return props.validationColor || '#4CAF50';
   },
 
   handleBlur(event) {
@@ -122,6 +119,7 @@ const FormsyText = createClass({
       validationError, // eslint-disable-line no-unused-vars
       validationErrors, // eslint-disable-line no-unused-vars
       value, // eslint-disable-line no-unused-vars
+      validationColor,
       ...rest } = this.props;
 
     const { isRequired, isPristine, isValid, isFormSubmitted } = this;
@@ -138,8 +136,8 @@ const FormsyText = createClass({
         onKeyDown={this.handleKeyDown}
         ref={this.setMuiComponentAndMaybeFocus}
         value={this.state.value}
-        underlineStyle={this.state.isValid ? { color: this.validationColor() } : underlineStyle}
-        underlineFocusStyle={this.state.isValid ? { color: this.validationColor() } : underlineFocusStyle}
+        underlineStyle={this.state.isValid ? { borderColor: validationColor } : underlineStyle}
+        underlineFocusStyle={this.state.isValid ? { borderColor: validationColor } : underlineFocusStyle}
       />
     );
   },
