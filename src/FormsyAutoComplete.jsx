@@ -15,6 +15,9 @@ const FormsyAutoComplete = createClass({
     onChange: PropTypes.func,
     onFocus: PropTypes.func,
     onKeyDown: PropTypes.func,
+    validationError: PropTypes.string,
+    validationErrors: PropTypes.object,
+    validations: PropTypes.oneOfType([PropTypes.string, PropTypes.object]),
     value: PropTypes.any,
   },
 
@@ -61,6 +64,9 @@ const FormsyAutoComplete = createClass({
       defaultValue, // eslint-disable-line no-unused-vars
       onFocus,
       value, // eslint-disable-line no-unused-vars
+      validations, // eslint-disable-line no-unused-vars
+      validationError, // eslint-disable-line no-unused-vars
+      validationErrors, // eslint-disable-line no-unused-vars
       ...rest } = this.props;
     return (
       <AutoComplete
