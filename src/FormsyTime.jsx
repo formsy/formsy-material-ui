@@ -63,7 +63,7 @@ const FormsyTime = createClass({
       validations, // eslint-disable-line no-unused-vars
       validationError, // eslint-disable-line no-unused-vars
       validationErrors, // eslint-disable-line no-unused-vars
-      ...rest,
+      ...rest
     } = this.props;
 
     return (

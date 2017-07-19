@@ -19,6 +19,7 @@ module.exports = {
   plugins: [
     'babel',
     'react',
+    'import',
   ],
   rules: {
     // Errors
@@ -39,6 +40,7 @@ module.exports = {
     'eol-last': 'error',
     'indent': ['error', 2, {SwitchCase: 1}],
     'id-blacklist': ['error', 'e'],
+    'import/extensions': 'error',
     'jsx-quotes': ['error', 'prefer-double'],
     'keyword-spacing': 'error',
     'key-spacing': 'error',
@@ -67,7 +69,7 @@ module.exports = {
     'operator-linebreak': ['error', 'after'],
     'padded-blocks': ['error', 'never'],
     'prefer-arrow-callback': 'off', // Wishlist, one day
-    'prefer-const': 'error',
+    'prefer-const': ['error', {'destructuring': 'all'}],
     'prefer-template': 'error',
     'quotes': ['error', 'single', 'avoid-escape'],
     'semi': ['error', 'always'],
@@ -97,7 +99,7 @@ module.exports = {
     'react/jsx-no-duplicate-props': 'error',
     'react/jsx-no-undef': 'error',
     'react/jsx-pascal-case': 'error',
-    'react/jsx-space-before-closing': 'error',
+    'react/jsx-tag-spacing': ['error', {beforeSelfClosing: 'never'}],
     'react/jsx-uses-react': 'error',
     'react/jsx-uses-vars': 'error',
     'react/no-danger': 'error',
@@ -111,12 +113,11 @@ module.exports = {
     'react/prefer-es6-class': 'off', // Wishlist, one day
     'react/prop-types': 'error',
     'react/react-in-jsx-scope': 'error',
-    'react/require-extension': 'error',
     'react/self-closing-comp': 'error',
     'react/sort-comp': 'error',
     'react/sort-prop-types': 'error',
-    'react/wrap-multilines': 'error',
     'react/jsx-indent': ['error', 2],
+    'react/jsx-wrap-multilines': 'error',
 
     // React Disabled
     'react/jsx-no-bind': 'off',
