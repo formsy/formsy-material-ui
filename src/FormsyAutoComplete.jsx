@@ -42,6 +42,8 @@ const FormsyAutoComplete = createClass({
     this.setState({
       value: event.currentTarget.value,
     });
+    // The next line makes sure AutoComplete opens its menu (because its onChange handler is overwritten):
+    this.autoCompleteComponent.handleChange(event);
     if (this.props.onChange) this.props.onChange(event);
   },
 
@@ -58,6 +60,11 @@ const FormsyAutoComplete = createClass({
   },
 
   setMuiComponentAndMaybeFocus: setMuiComponentAndMaybeFocus,
+
+  setAutoCompleteRef: function(component) {
+    this.autoCompleteComponent = component;
+    return this.setMuiComponentAndMaybeFocus;
+  },
 
   render() {
     const {
@@ -78,7 +85,7 @@ const FormsyAutoComplete = createClass({
         onUpdateInput={this.handleUpdateInput}
         onFocus={onFocus}
         onKeyDown={this.handleKeyDown}
-        ref={this.setMuiComponentAndMaybeFocus}
+        ref={this.setAutoCompleteRef}
         value={this.state.value}
       />
     );
