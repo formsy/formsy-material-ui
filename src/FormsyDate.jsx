@@ -29,6 +29,29 @@ const FormsyDate = createClass({
     }
   },
 
+  componentWillReceiveProps(newProps) {
+    if (newProps.value) {
+      if (!this.props.value || !datesEq(this.props.value, newProps.value)) {
+        this.setValue(newProps.value);
+      }
+    } else if (!this.props.value && newProps.defaultDate) {
+      if (!datesEq(this.props.defaultDate, newProps.defaultDate)) {
+        this.setValue(newProps.defaultDate);
+      }
+    }
+
+    /**
+     * Check date equality by year, month and day
+     * @param {Date} date1
+     * @param {Date} date2
+     */
+    function datesEq(date1, date2) {
+      return date1.getFullYear() === date2.getFullYear() &&
+        date1.getDate() === date2.getDate() &&
+        date1.getDay() === date2.getDay();
+    }
+  },
+
   handleChange(event, value) {
     this.setValue(value);
     if (this.props.onChange) this.props.onChange(event, value);

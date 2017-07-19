@@ -28,6 +28,28 @@ const FormsyTime = createClass({
     }
   },
 
+  componentWillReceiveProps(newProps) {
+    if (newProps.value) {
+      if (!this.props.value || !timesEq(this.props.value, newProps.value)) {
+        this.setValue(newProps.value);
+      }
+    } else if (!this.props.value && newProps.defaultTime) {
+      if (!timesEq(this.props.defaultTime, newProps.defaultTime)) {
+        this.setValue(newProps.defaultTime);
+      }
+    }
+
+    /**
+     * Check time equality by hours and minutes
+     * @param {Date} date1
+     * @param {Date} date2
+     */
+    function timesEq(date1, date2) {
+      return date1.getHours() === date2.getHours() &&
+        date1.getMinutes() === date2.getMinutes();
+    }
+  },
+
   handleChange(event, value) {
     this.setValue(value);
     if (this.props.onChange) this.props.onChange(event, value);
