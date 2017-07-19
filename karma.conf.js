@@ -27,13 +27,14 @@ module.exports = function (config) {
     webpack: {
       devtool: 'inline-source-map',
       resolve: {
-        root: '.',
-        extensions: [ '', '.js', '.jsx' ],
+        modules: ['.', "node_modules"],
+        extensions: [ '.js', '.jsx' ],
         alias: { 'sinon': 'sinon/pkg/sinon' }
       },
       externals: {
         'jsdom': 'window',
         'cheerio': 'window',
+        'react/addons': true,
         'react/lib/ExecutionEnvironment': true,
         'react/lib/ReactContext': 'window'
       },
