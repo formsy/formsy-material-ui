@@ -45,6 +45,7 @@ const FormsySelect = createClass({
       validationError, // eslint-disable-line no-unused-vars
       validationErrors, // eslint-disable-line no-unused-vars
       value: valueProp,
+      onChange,
       ...rest
     } = this.props;
 
