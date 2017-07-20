@@ -47,7 +47,7 @@ module.exports = {
     'max-len': ['error', 120, 4],
     'new-cap': ['off', {capIsNew: true, newIsCap: true}], // Wishlist, one day
     'no-unused-expressions': 'error',
-    'no-unused-vars': 'error',
+    'no-unused-vars': ['error', {ignoreRestSiblings: true}],
     'no-shadow': 'off', // Wishlist, one day
     'no-spaced-func': 'error',
     'no-multiple-empty-lines': 'error',
