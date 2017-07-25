@@ -1,9 +1,21 @@
-export FormsyCheckbox from './FormsyCheckbox';
-export FormsyDate from './FormsyDate';
-export FormsyRadio from './FormsyRadio';
-export FormsyRadioGroup from './FormsyRadioGroup';
-export FormsySelect from './FormsySelect';
-export FormsyText from './FormsyText';
-export FormsyTime from './FormsyTime';
-export FormsyToggle from './FormsyToggle';
-export FormsyAutoComplete from './FormsyAutoComplete';
+import FormsyCheckbox from './FormsyCheckbox';
+import FormsyDate from './FormsyDate';
+import FormsyRadio from './FormsyRadio';
+import FormsyRadioGroup from './FormsyRadioGroup';
+import FormsySelect from './FormsySelect';
+import FormsyText from './FormsyText';
+import FormsyTime from './FormsyTime';
+import FormsyToggle from './FormsyToggle';
+import FormsyAutoComplete from './FormsyAutoComplete';
+
+export {
+  FormsyCheckbox,
+  FormsyDate,
+  FormsyRadio,
+  FormsyRadioGroup,
+  FormsySelect,
+  FormsyText,
+  FormsyTime,
+  FormsyToggle,
+  FormsyAutoComplete,
+}
