@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import keycode from 'keycode';
 import Formsy from 'formsy-react';
 import AutoComplete from 'material-ui/AutoComplete';
-import { setMuiComponentAndMaybeFocus } from 'formsy-react/src/utils';
+import { setMuiComponentAndMaybeFocus } from './utils';
 
 const FormsyAutoComplete = createClass({
 
