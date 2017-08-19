@@ -28,10 +28,12 @@ const FormsyText = createClass({
 
   mixins: [Formsy.Mixin],
 
-  defaultProps: {
-    underlineFocusStyle: {},
-    underlineStyle: {},
-    validationColor: '#4CAF50',
+  getDefaultProps() {
+    return {
+      underlineFocusStyle: {},
+      underlineStyle: {},
+      validationColor: '#4CAF50',
+    };
   },
 
   getInitialState() {
