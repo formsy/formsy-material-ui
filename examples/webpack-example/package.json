@@ -27,9 +27,9 @@
     "webpack-dev-server": "^1.14.0"
   },
   "dependencies": {
-    "formsy-react": "^0.18.0",
-    "formsy-material-ui": "^0.5.0",
-    "material-ui": "^0.16.0",
+    "formsy-material-ui": "^0.6.2",
+    "formsy-react": "^0.19.5",
+    "material-ui": "^0.18.7",
     "react": "^15.4.0",
     "react-dom": "^15.4.0",
     "react-tap-event-plugin": "^2.0.1"
