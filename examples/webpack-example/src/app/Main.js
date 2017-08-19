@@ -110,7 +110,7 @@ const Main = createClass({
               dataSource={[
                 'Never',
                 'Every Night',
-                'Weeknights'
+                'Weeknights',
               ]}
             />
             <FormsyCheckbox
