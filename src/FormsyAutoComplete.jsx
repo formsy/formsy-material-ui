@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import keycode from 'keycode';
 import Formsy from 'formsy-react';
 import AutoComplete from 'material-ui/AutoComplete';
-import { setMuiComponentAndMaybeFocus } from 'formsy-react/src/utils';
+import { setMuiComponentAndMaybeFocus } from './utils';
 
 const FormsyAutoComplete = createClass({
 
@@ -39,16 +39,12 @@ const FormsyAutoComplete = createClass({
   },
 
   handleChange: function handleChange(event) {
-    this.setState({
-      value: event.currentTarget.value,
-    });
+    this.setState({ value: event.currentTarget.value }, () => this.setValue(event.currentTarget.value));
     if (this.props.onChange) this.props.onChange(event);
   },
 
   handleUpdateInput: function handleUpdateInput(value) {
-    this.setState({
-      value,
-    });
+    this.setState({ value }, () => this.setValue(value));
     if (this.props.onChange) this.props.onChange(null, value);
   },
 

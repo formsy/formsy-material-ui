@@ -73,7 +73,7 @@ See [CHANGELOG.md](https://github.com/mbrookes/formsy-material-ui/blob/master/CH
 
 ## Acknowledgements
 
-Originally based on an example by [Ryan Blakeley](https://github.com/rojobuffalo).
+Originally started by [Matt Brookes](https://github.com/mbrookes) and later transfered.
 
 Thanks to our [contributors](https://github.com/mbrookes/formsy-material-ui/graphs/contributors).
 
