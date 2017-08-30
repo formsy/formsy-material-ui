@@ -1,12 +1,11 @@
-import createClass from 'create-react-class';
-import Formsy from 'formsy-react';
+import { Component } from 'react';
+import { HOC } from 'formsy-react';
 
-const FormsyRadio = createClass({
 
-  mixins: [Formsy.Mixin],
+class FormsyRadio extends Component {
+  // Material-UI replaces any component inside RadioButtonGroup 
+  // with RadioButton, so no need to render it here.
+  render() {}
+}
 
-  // Material-UI replaces any component inside RadioButtonGroup with RadioButton, so no need to render it here
-  render() {},
-});
-
-export default FormsyRadio;
+export default HOC(FormsyRadio);

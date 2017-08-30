@@ -1,30 +1,18 @@
-import React from 'react';
-import createClass from 'create-react-class';
+import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import Formsy from 'formsy-react';
+import { HOC } from 'formsy-react';
 import SelectField from 'material-ui/SelectField';
 import { setMuiComponentAndMaybeFocus } from './utils';
 
-const FormsySelect = createClass({
-
-  propTypes: {
-    children: PropTypes.node,
-    name: PropTypes.string.isRequired,
-    onChange: PropTypes.func,
-    requiredError: PropTypes.string,
-    validationError: PropTypes.string,
-    validationErrors: PropTypes.object,
-    validations: PropTypes.oneOfType([PropTypes.string, PropTypes.object]),
-    value: PropTypes.any,
-  },
-
-  mixins: [Formsy.Mixin],
-
-  getInitialState() {
-    return {
+class FormsySelect extends Component {
+  constructor() {
+    super();
+    this.state = {
       hasChanged: false,
     };
-  },
+  }
+
+  setValue = this.props.setValue;  
 
   handleChange(event, index, value) {
     this.setValue(value);
@@ -34,9 +22,7 @@ const FormsySelect = createClass({
     });
 
     if (this.props.onChange) this.props.onChange(event, value, index);
-  },
-
-  setMuiComponentAndMaybeFocus: setMuiComponentAndMaybeFocus,
+  }
 
   render() {
     const {
@@ -49,24 +35,43 @@ const FormsySelect = createClass({
       ...rest
     } = this.props;
 
-    const { isRequired, isPristine, isValid, isFormSubmitted } = this;
+    const { isRequired, isPristine, isValid, isFormSubmitted, isFormDisabled, getValue, getErrorMessage } = this.props;
     const isRequiredError = isRequired() && !isPristine() && !isValid() && isFormSubmitted() && requiredError;
-    const errorText = this.getErrorMessage() || isRequiredError;
-    const value = this.state.hasChanged ? this.getValue() : valueProp;
+    const errorText = getErrorMessage() || isRequiredError;
+    const value = this.state.hasChanged ? getValue() : valueProp;
 
     return (
       <SelectField
-        disabled={this.isFormDisabled()}
+        disabled={isFormDisabled()}
         errorText={errorText}
         onChange={this.handleChange}
-        ref={this.setMuiComponentAndMaybeFocus}
+        ref={setMuiComponentAndMaybeFocus}
         value={value}
         {...rest}
       >
         {this.props.children}
       </SelectField>
     );
-  },
-});
+  }
+}
 
-export default FormsySelect;
+FormsySelect.propTypes = {
+  children: PropTypes.node,
+  getErrorMessage: PropTypes.func.isRequired,
+  getValue: PropTypes.func.isRequired,
+  isFormDisabled: PropTypes.func.isRequired,
+  isFormSubmitted: PropTypes.func.isRequired,
+  isPristine: PropTypes.func.isRequired,
+  isRequired: PropTypes.func.isRequired,
+  isValid: PropTypes.func.isRequired,
+  name: PropTypes.string.isRequired,
+  onChange: PropTypes.func,
+  requiredError: PropTypes.string,
+  setValue: PropTypes.func.isRequired,  
+  validationError: PropTypes.string,
+  validationErrors: PropTypes.object,
+  validations: PropTypes.oneOfType([PropTypes.string, PropTypes.object]),
+  value: PropTypes.any,
+};
+
+export default HOC(FormsySelect);

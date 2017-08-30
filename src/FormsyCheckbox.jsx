@@ -1,56 +1,57 @@
-import React from 'react';
-import createClass from 'create-react-class';
+import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import Formsy from 'formsy-react';
+import { HOC } from 'formsy-react';
 import Checkbox from 'material-ui/Checkbox';
 import { setMuiComponentAndMaybeFocus } from './utils';
 
-const FormsyCheckbox = createClass({
 
-  propTypes: {
-    defaultChecked: PropTypes.bool,
-    name: PropTypes.string.isRequired,
-    onChange: PropTypes.func,
-    validationError: PropTypes.string,
-    validationErrors: PropTypes.object,
-    validations: PropTypes.oneOfType([PropTypes.string, PropTypes.object]),
-  },
-
-  mixins: [Formsy.Mixin],
-
+class FormsyCheckbox extends Component {
   componentDidMount() {
     this.setValue(this.muiComponent.isChecked());
-  },
+  }
 
-  handleChange(event, value) {
+  setValue = this.props.setValue;
+
+  handleChange = (event, value) => {
     this.setValue(value);
     if (this.props.onChange) this.props.onChange(event, value);
-  },
-
-  setMuiComponentAndMaybeFocus: setMuiComponentAndMaybeFocus,
+  }
 
   render() {
     const {
       defaultChecked, // eslint-disable-line no-unused-vars
+      isFormDisabled,
       validations, // eslint-disable-line no-unused-vars
       validationErrors, // eslint-disable-line no-unused-vars
       validationError, // eslint-disable-line no-unused-vars
       ...rest } = this.props;
-    let value = this.getValue();
+    let value = this.props.getValue();
 
     if (typeof value === 'undefined') {
       value = (typeof defaultChecked !== 'undefined') ? defaultChecked : false;
     }
     return (
       <Checkbox
-        disabled={this.isFormDisabled()}
-        {...rest}
+        disabled={isFormDisabled()}
         checked={value}
         onCheck={this.handleChange}
-        ref={this.setMuiComponentAndMaybeFocus}
+        ref={setMuiComponentAndMaybeFocus}
+        {...rest}
       />
     );
-  },
-});
+  }
+}
 
-export default FormsyCheckbox;
+FormsyCheckbox.propTypes = {
+  defaultChecked: PropTypes.bool,
+  getValue: PropTypes.func.isRequired,
+  isFormDisabled: PropTypes.func.isRequired,
+  name: PropTypes.string.isRequired,
+  onChange: PropTypes.func,
+  setValue: PropTypes.func.isRequired,
+  validationError: PropTypes.string,
+  validationErrors: PropTypes.object,
+  validations: PropTypes.oneOfType([PropTypes.string, PropTypes.object]),
+};
+
+export default HOC(FormsyCheckbox);

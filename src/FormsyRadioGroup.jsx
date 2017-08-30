@@ -1,35 +1,20 @@
-import React from 'react';
-import createClass from 'create-react-class';
+import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import Formsy from 'formsy-react';
+import { HOC } from 'formsy-react';
 import { RadioButtonGroup, RadioButton } from 'material-ui/RadioButton';
 import { setMuiComponentAndMaybeFocus } from './utils';
 
-const FormsyRadioGroup = createClass({
-
-  propTypes: {
-    children: PropTypes.node,
-    defaultSelected: PropTypes.oneOfType([PropTypes.string, PropTypes.number, PropTypes.bool]),
-    name: PropTypes.string.isRequired,
-    onChange: PropTypes.func,
-    validationError: PropTypes.string,
-    validationErrors: PropTypes.object,
-    validations: PropTypes.oneOfType([PropTypes.string, PropTypes.object]),
-    value: PropTypes.oneOfType([PropTypes.string, PropTypes.number, PropTypes.bool]),
-  },
-
-  mixins: [Formsy.Mixin],
-
+class FormsyRadioGroup extends Component {
   componentDidMount() {
     this.setValue(this.muiComponent.getSelectedValue());
-  },
+  }
 
-  handleValueChange(event, value) {
+  handleValueChange = (event, value) => {
     this.setValue(value);
     if (this.props.onChange) this.props.onChange(event, value);
-  },
+  }
 
-  setMuiComponentAndMaybeFocus: setMuiComponentAndMaybeFocus,
+  setValue = this.props.setValue
 
   render() {
     let {
@@ -40,7 +25,12 @@ const FormsyRadioGroup = createClass({
       value,
       ...rest } = this.props;
 
-      // remove unknown props from children
+    const {
+      isFormDisabled,
+      getValue,
+    } = this.props;
+
+    // remove unknown props from children
     const children = React.Children.map(this.props.children, (radio) => {
       const {
         validations, // eslint-disable-line no-unused-vars
@@ -61,17 +51,31 @@ const FormsyRadioGroup = createClass({
 
     return (
       <RadioButtonGroup
-        disabled={this.isFormDisabled()}
-        {...rest}
-        ref={this.setMuiComponentAndMaybeFocus}
+        disabled={isFormDisabled()}
+        ref={setMuiComponentAndMaybeFocus}
         onChange={this.handleValueChange}
-        valueSelected={this.getValue()}
+        valueSelected={getValue()}
         defaultSelected={value}
+        {...rest}
       >
         {children}
       </RadioButtonGroup>
     );
-  },
-});
+  }
+}
 
-export default FormsyRadioGroup;
+FormsyRadioGroup.propTypes = {
+  children: PropTypes.node,
+  defaultSelected: PropTypes.oneOfType([PropTypes.string, PropTypes.number, PropTypes.bool]),
+  getValue: PropTypes.func.isRequired,
+  isFormDisabled: PropTypes.func.isRequired,
+  name: PropTypes.string.isRequired,
+  onChange: PropTypes.func,
+  setValue: PropTypes.func.isRequired,
+  validationError: PropTypes.string,
+  validationErrors: PropTypes.object,
+  validations: PropTypes.oneOfType([PropTypes.string, PropTypes.object]),
+  value: PropTypes.oneOfType([PropTypes.string, PropTypes.number, PropTypes.bool]),
+};
+
+export default HOC(FormsyRadioGroup);

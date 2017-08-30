@@ -1,63 +1,37 @@
-import React from 'react';
-import createClass from 'create-react-class';
+import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import Formsy from 'formsy-react';
+import { HOC } from 'formsy-react';
 import DatePicker from 'material-ui/DatePicker';
-import { setMuiComponentAndMaybeFocus } from './utils';
+import { setMuiComponentAndMaybeFocus, timeEq } from './utils';
 
-const FormsyDate = createClass({
-
-  propTypes: {
-    defaultDate: PropTypes.object,
-    name: PropTypes.string.isRequired,
-    onChange: PropTypes.func,
-    requiredError: PropTypes.string,
-    validationError: PropTypes.string,
-    validationErrors: PropTypes.object,
-    validations: PropTypes.oneOfType([PropTypes.string, PropTypes.object]),
-    value: PropTypes.object,
-  },
-
-  mixins: [Formsy.Mixin],
-
+class FormsyDate extends Component {
   componentDidMount() {
-    const { defaultDate } = this.props;
-    const value = this.getValue();
+    const { defaultDate, getValue } = this.props;
+    const value = getValue();
 
     if (typeof value === 'undefined' && typeof defaultDate !== 'undefined') {
       this.setValue(defaultDate);
     }
-  },
+  }
 
   componentWillReceiveProps(newProps) {
     if (newProps.value) {
-      if (!this.props.value || !datesEq(this.props.value, newProps.value)) {
+      if (!this.props.value || !timeEq(this.props.value, newProps.value)) {
         this.setValue(newProps.value);
       }
     } else if (!this.props.value && newProps.defaultDate) {
-      if (!datesEq(this.props.defaultDate, newProps.defaultDate)) {
+      if (!timeEq(this.props.defaultDate, newProps.defaultDate)) {
         this.setValue(newProps.defaultDate);
       }
     }
+  }
 
-    /**
-     * Check date equality by year, month and day
-     * @param {Date} date1
-     * @param {Date} date2
-     */
-    function datesEq(date1, date2) {
-      return date1.getFullYear() === date2.getFullYear() &&
-        date1.getDate() === date2.getDate() &&
-        date1.getDay() === date2.getDay();
-    }
-  },
+  setValue = this.props.setValue;
 
-  handleChange(event, value) {
+  handleChange = (event, value) => {
     this.setValue(value);
     if (this.props.onChange) this.props.onChange(event, value);
-  },
-
-  setMuiComponentAndMaybeFocus: setMuiComponentAndMaybeFocus,
+  }
 
   render() {
     const {
@@ -67,20 +41,40 @@ const FormsyDate = createClass({
       validationError, // eslint-disable-line no-unused-vars
       requiredError,
       ...rest } = this.props;
-    const { isRequired, isPristine, isValid, isFormSubmitted } = this;
+    const { isRequired, isPristine, isValid, isFormSubmitted, isFormDisabled, getValue, getErrorMessage } = this.props;
     const isRequiredError = isRequired() && !isPristine() && !isValid() && isFormSubmitted() && requiredError;
-    const errorText = this.getErrorMessage() || isRequiredError;
+    const errorText = getErrorMessage() || isRequiredError;
     return (
       <DatePicker
-        disabled={this.isFormDisabled()}
-        {...rest}
+        disabled={isFormDisabled()}
         errorText={errorText}
         onChange={this.handleChange}
-        ref={this.setMuiComponentAndMaybeFocus}
-        value={this.getValue()}
+        ref={setMuiComponentAndMaybeFocus}
+        value={getValue()}
+        {...rest}
       />
     );
-  },
-});
+  }
+}
 
-export default FormsyDate;
+FormsyDate.propTypes = {
+  defaultDate: PropTypes.object,
+  getErrorMessage: PropTypes.func.isRequired,
+  getValue: PropTypes.func.isRequired,
+  isFormDisabled: PropTypes.func.isRequired,
+  isFormSubmitted: PropTypes.func.isRequired,
+  isPristine: PropTypes.func.isRequired,
+  isRequired: PropTypes.func.isRequired,
+  isValid: PropTypes.func.isRequired,
+  name: PropTypes.string.isRequired,
+  onChange: PropTypes.func,
+  requiredError: PropTypes.string,
+  setValue: PropTypes.func.isRequired,
+  validationError: PropTypes.string,
+  validationErrors: PropTypes.object,
+  validations: PropTypes.oneOfType([PropTypes.string, PropTypes.object]),
+  value: PropTypes.object,
+};
+
+export default HOC(FormsyDate);
+

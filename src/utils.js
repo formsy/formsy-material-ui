@@ -20,3 +20,13 @@ export function debounce(fn, delay) {
     }, delay);
   };
 }
+
+/**
+* Check timestamp equality
+* 
+* @param {Date} prevTime 
+* @param {Date} nextTime 
+*/ 
+export const timeEq = (prevTime, nextTime) => {
+  return prevTime.getTime() === nextTime.getTime();
+};
