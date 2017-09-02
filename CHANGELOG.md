@@ -1,31 +1,46 @@
 ## Changelog
 
-* 0.6.0  Support material-ui ^0.17.0 & formsy-react ^0.19.0
+* 0.6.3 Bump deps in example <Ryan Blakeley>
+        Fix older default props method <Ryan Blakeley>
 
-* 0.5.5  revert FormsyText internal value setting method
+* 0.6.2 Fix to exclude `onChange` from getting passed on `...rest` <Ryan Blakeley>
 
-* 0.5.4  use FormsyText internal _value to allow external setValue calls
-         support requiredError on FormsyDate
-         add underlineStyle and underlineFocus props to FormsyText
-         fix FormsyAutoComplete to update value when MenuItem selected
-         make compatible with react v15.4.x
-         implement isFormDisabled() check
-         fix tests
+* 0.6.1 Update lint config <Ryan Blakeley>
+        Fixed controlled Date and TimePicker <Ferenc Faluvegi>
+        Fix validation color <dex157>
+        add new optional convertValue property to FormsyText <Ulich, Timo>
+        use create-react-app and prop-types <Timo Ulich>
+        Fix test assertion <Jan Amann>
+        Reduce calls to `onChange` of the parent form. <Jan Amann>
+        Remove unused prop <Matt McDonald>
+        Fix Unknown prop `requiredError` <Matt Brookes>
 
-* 0.5.3  Fix radio button group reset
-         Fix updateImmediately breaking validations
-         Bump material-ui to v0.16
-         Bump react-tap-event-plugin
-         Add new component FormsyAutoComplete
+* 0.6.0 Support material-ui ^0.17.0 & formsy-react ^0.19.0
 
-* 0.5.2  Fix 0.5.1 error (Issue #150, PR #151) (@codeaholicguy)
+* 0.5.5 revert FormsyText internal value setting method
 
-* 0.5.1  Add updateImmediately prop & fix handleChange (@mbrookes)
+* 0.5.4 use FormsyText internal _value to allow external setValue calls
+        support requiredError on FormsyDate
+        add underlineStyle and underlineFocus props to FormsyText
+        fix FormsyAutoComplete to update value when MenuItem selected
+        make compatible with react v15.4.x
+        implement isFormDisabled() check
+        fix tests
 
-* 0.5.0  Lint jsx files - fix linting errors in same
-         Accepts Formsy.Form.reset() (@Mokto)
-         Fix text input values, and form reset (@reebalazs)
-         Fixes React 15.2 unknown props warnings (@jayalfredprufrock)
+* 0.5.3 Fix radio button group reset
+        Fix updateImmediately breaking validations
+        Bump material-ui to v0.16
+        Bump react-tap-event-plugin
+        Add new component FormsyAutoComplete
+
+* 0.5.2 Fix 0.5.1 error (Issue #150, PR #151) (@codeaholicguy)
+
+* 0.5.1 Add updateImmediately prop & fix handleChange (@mbrookes)
+
+* 0.5.0 Lint jsx files - fix linting errors in same
+        Accepts Formsy.Form.reset() (@Mokto)
+        Fix text input values, and form reset (@reebalazs)
+        Fixes React 15.2 unknown props warnings (@jayalfredprufrock)
 
 * 0.4.2 Fix controlled / uncontrolled conflicts
         Add defaultValue support to FormsyText 
