@@ -1,3 +1,11 @@
+# THIS PACKAGE IS NO LONGER MAINTAINED
+
+Here are some alternatives:
+
+- https://www.npmjs.com/package/react-material-ui-form-validator
+- https://redux-form.com/6.6.2/examples/material-ui/
+- https://github.com/foxhound87/mobx-react-form
+
 # formsy-material-ui [![npm version](https://badge.fury.io/js/formsy-material-ui.svg)](https://badge.fury.io/js/formsy-material-ui) [![Build Status](https://travis-ci.org/mbrookes/formsy-material-ui.svg?branch=master)](https://travis-ci.org/mbrookes/formsy-material-ui)
 
 This library is a wrapper for [Material-UI](http://material-ui.com/) form components to allow them to be used
