@@ -65,25 +65,25 @@ An example usage of this would be to use an `onChange` for the FormsySelect and 
 
 #### Example App
 
-The `formsy-material-ui` repo contains a [sample webpack SPA](https://github.com/mbrookes/formsy-material-ui/tree/master/examples/webpack-example).
+The `formsy-material-ui` repo contains a [sample webpack SPA](https://github.com/formsy/formsy-material-ui/tree/master/examples/webpack-example).
 
 #### Example Code
 
-You can find an [example form](https://github.com/mbrookes/formsy-material-ui/blob/master/examples/webpack-example/src/app/Main.js#L80) in the example app directory.
+You can find an [example form](https://github.com/formsy/formsy-material-ui/blob/master/examples/webpack-example/src/app/Main.js#L80) in the example app directory.
 
 ## Known Issues
 
-See [issues](https://github.com/mbrookes/formsy-material-ui/issues).
+See [issues](https://github.com/formsy/formsy-material-ui/issues).
 
 ## Release History
 
-See [CHANGELOG.md](https://github.com/mbrookes/formsy-material-ui/blob/master/CHANGELOG.md)
+See [CHANGELOG.md](https://github.com/formsy/formsy-material-ui/blob/master/CHANGELOG.md)
 
 ## Acknowledgements
 
-Originally started by [Matt Brookes](https://github.com/mbrookes) and later transfered.
+Originally started by [Matt Brookes](https://github.com/mbrookes), later transfered to [Ryan Blakeley](@rojobuffalo) before joining the Formsy Organization.
 
-Thanks to our [contributors](https://github.com/mbrookes/formsy-material-ui/graphs/contributors).
+Thanks to our [contributors](https://github.com/formsy/formsy-material-ui/graphs/contributors).
 
 ## Alternatives
 
