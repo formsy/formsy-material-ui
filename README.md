@@ -1,6 +1,8 @@
-# THIS PACKAGE IS NO LONGER MAINTAINED
+# Help Wanted
 
-Here are some alternatives:
+This package is currently being updated after a long hiatus, and all help is appreciated.
+
+In the meantime, here are some alternatives:
 
 - https://www.npmjs.com/package/react-material-ui-form-validator
 - https://redux-form.com/6.6.2/examples/material-ui/
