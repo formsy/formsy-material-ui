@@ -8,15 +8,15 @@ const config = {
   entry: [path.join(__dirname, '/src/app/app.js')],
   resolve: {
     //When require, do not have to add these extensions to file's name
-    extensions: ["", ".js"],
+    extensions: ['', '.js'],
     //node_modules: ["web_modules", "node_modules"]  (Default Settings)
   },
   //Render source-map file for final build
   devtool: 'source-map',
   //output config
   output: {
-    path: buildPath,    //Path of output file
-    filename: 'app.js',  //Name of output file
+    path: buildPath, //Path of output file
+    filename: 'app.js', //Name of output file
   },
   plugins: [
     //Minify the bundle
@@ -29,9 +29,7 @@ const config = {
     //Allows error warnings but does not stop compiling. Will remove when eslint is added
     new webpack.NoErrorsPlugin(),
     //Transfer Files
-    new TransferWebpackPlugin([
-      {from: 'www'},
-    ], path.resolve(__dirname,"src")),
+    new TransferWebpackPlugin([{ from: 'www' }], path.resolve(__dirname, 'src')),
   ],
   module: {
     loaders: [

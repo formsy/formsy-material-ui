@@ -12,18 +12,19 @@ import { mount } from 'enzyme';
 
 function makeChildrenFn(props) {
   const fn = () => (
-    <FormsyText ref="text"
+    <FormsyText
+      ref="text"
       name="text"
       validations="maxLength:10"
       validationErrors={{ maxLength: 'Text is too long' }}
-      { ...props }
+      {...props}
     />
   );
   fn.DisplayName = 'FormsyText';
   return fn;
 }
 
-const setup = (props) => {
+const setup = props => {
   const childrenFn = makeChildrenFn(props);
   const formWrapper = mountTestForm(childrenFn);
   const formsyTextWrapper = formWrapper.find(FormsyText);
@@ -34,7 +35,6 @@ const setup = (props) => {
 };
 
 class TestForm extends Component {
-
   static childContextTypes = {
     muiTheme: PropTypes.object.isRequired,
   };
@@ -43,7 +43,7 @@ class TestForm extends Component {
     children: PropTypes.node,
     defaultValue: PropTypes.string,
     value: PropTypes.string,
-  }
+  };
 
   getChildContext() {
     return { muiTheme: getMuiTheme() };
@@ -55,15 +55,13 @@ class TestForm extends Component {
   }
 
   render() {
-    const { value, defaultValue, children, ...extraProps } = { ...this.props, ...this.state };
+    const { value, defaultValue, children, ...extraProps } = {
+      ...this.props,
+      ...this.state,
+    };
     return (
-      <Form { ...extraProps }>
-        {children ? children : (
-          <FormsyText ref="text" name="text"
-            value={value}
-            defaultValue={defaultValue}
-          />
-        )}
+      <Form {...extraProps}>
+        {children ? children : <FormsyText ref="text" name="text" value={value} defaultValue={defaultValue} />}
       </Form>
     );
   }
@@ -153,11 +151,9 @@ describe('FormsyText', () => {
 
       it('propagates disabled status', () => {
         const wrapper = mount(
-          <TestForm disabled={true} >
-            <FormsyText
-              name="text"
-            />
-          </TestForm>
+          <TestForm disabled={true}>
+            <FormsyText name="text" />
+          </TestForm>,
         );
 
         const inputDOM = wrapper.find('input').node;
@@ -173,11 +169,8 @@ describe('FormsyText', () => {
       it('allows overriding disabled status locally', () => {
         let wrapper = mount(
           <TestForm disabled={true}>
-            <FormsyText
-              name="text"
-              disabled={false}
-            />
-          </TestForm>
+            <FormsyText name="text" disabled={false} />
+          </TestForm>,
         );
 
         // Here we check we can disable a single input in a globally enabled form
@@ -186,11 +179,8 @@ describe('FormsyText', () => {
 
         wrapper = mount(
           <TestForm disabled={false}>
-            <FormsyText
-              name="text"
-              disabled={true}
-            />
-          </TestForm>
+            <FormsyText name="text" disabled={true} />
+          </TestForm>,
         );
 
         // Likewise, we are able to keep a specific input enabled even if the form is marked as disabled
@@ -305,7 +295,7 @@ describe('FormsyText', () => {
         const { formsyTextWrapper, formWrapper } = setup({
           value: 1,
           type: 'number',
-          convertValue: (v) => Number(v),
+          convertValue: v => Number(v),
         });
         const formsyForm = formWrapper.find(Form).node;
         let formValues = formsyForm.getCurrentValues();
@@ -319,7 +309,7 @@ describe('FormsyText', () => {
         const { formWrapper } = setup({
           defaultValue: 1,
           type: 'number',
-          convertValue: (v) => Number(v),
+          convertValue: v => Number(v),
         });
         const formsyForm = formWrapper.find(Form).node;
         const formValues = formsyForm.getCurrentValues();
@@ -329,7 +319,7 @@ describe('FormsyText', () => {
       it('and no value', () => {
         const { formWrapper } = setup({
           type: 'number',
-          convertValue: (v) => Number(v),
+          convertValue: v => Number(v),
         });
         const formsyForm = formWrapper.find(Form).node;
         const formValues = formsyForm.getCurrentValues();

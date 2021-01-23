@@ -6,7 +6,6 @@ import Checkbox from 'material-ui/Checkbox';
 import { setMuiComponentAndMaybeFocus } from './utils';
 
 const FormsyCheckbox = createClass({
-
   propTypes: {
     defaultChecked: PropTypes.bool,
     name: PropTypes.string.isRequired,
@@ -35,11 +34,12 @@ const FormsyCheckbox = createClass({
       validations, // eslint-disable-line no-unused-vars
       validationErrors, // eslint-disable-line no-unused-vars
       validationError, // eslint-disable-line no-unused-vars
-      ...rest } = this.props;
+      ...rest
+    } = this.props;
     let value = this.getValue();
 
     if (typeof value === 'undefined') {
-      value = (typeof defaultChecked !== 'undefined') ? defaultChecked : false;
+      value = typeof defaultChecked !== 'undefined' ? defaultChecked : false;
     }
     return (
       <Checkbox

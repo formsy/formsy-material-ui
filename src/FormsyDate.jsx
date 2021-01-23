@@ -6,7 +6,6 @@ import DatePicker from 'material-ui/DatePicker';
 import { setMuiComponentAndMaybeFocus } from './utils';
 
 const FormsyDate = createClass({
-
   propTypes: {
     defaultDate: PropTypes.object,
     name: PropTypes.string.isRequired,
@@ -46,9 +45,11 @@ const FormsyDate = createClass({
      * @param {Date} date2
      */
     function datesEq(date1, date2) {
-      return date1.getFullYear() === date2.getFullYear() &&
+      return (
+        date1.getFullYear() === date2.getFullYear() &&
         date1.getDate() === date2.getDate() &&
-        date1.getDay() === date2.getDay();
+        date1.getDay() === date2.getDay()
+      );
     }
   },
 
@@ -66,7 +67,8 @@ const FormsyDate = createClass({
       validationErrors, // eslint-disable-line no-unused-vars
       validationError, // eslint-disable-line no-unused-vars
       requiredError,
-      ...rest } = this.props;
+      ...rest
+    } = this.props;
     const { isRequired, isPristine, isValid, isFormSubmitted } = this;
     const isRequiredError = isRequired() && !isPristine() && !isValid() && isFormSubmitted() && requiredError;
     const errorText = this.getErrorMessage() || isRequiredError;

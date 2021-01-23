@@ -5,7 +5,6 @@ import getMuiTheme from 'material-ui/styles/getMuiTheme';
 
 export const mountTestForm = (childrenFn, formProps = {}) => {
   class TestForm extends Component {
-
     static childContextTypes = {
       muiTheme: PropTypes.object.isRequired,
     };
@@ -15,11 +14,7 @@ export const mountTestForm = (childrenFn, formProps = {}) => {
     };
 
     render() {
-      return (
-        <Form {...this.props}>
-          {childrenFn()}
-        </Form>
-      );
+      return <Form {...this.props}>{childrenFn()}</Form>;
     }
   }
 

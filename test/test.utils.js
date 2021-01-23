@@ -30,12 +30,7 @@ const childrenFn = () => (
 
 describe('_setMuiComponentAndMaybeFocus', () => {
   it('exposes a`focus` method if the underlying material-ui component does', () => {
-    const {
-      formsyTextInstance,
-      textFieldInstance,
-      formsyRadioGroupInstance,
-      toggleInstance,
-    } = setup();
+    const { formsyTextInstance, textFieldInstance, formsyRadioGroupInstance, toggleInstance } = setup();
 
     expect(formsyTextInstance.focus).to.be.a('function');
     expect(textFieldInstance.focus).to.be.a('function');
@@ -46,10 +41,7 @@ describe('_setMuiComponentAndMaybeFocus', () => {
 
   describe('the exposed `focus` method', () => {
     it('calls `focus` on the material-ui component', () => {
-      const {
-        formsyTextInstance,
-        textFieldInstance,
-      } = setup();
+      const { formsyTextInstance, textFieldInstance } = setup();
 
       textFieldInstance.focus = sinon.spy(textFieldInstance.focus);
 

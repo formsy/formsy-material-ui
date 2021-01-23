@@ -6,7 +6,6 @@ import TimePicker from 'material-ui/TimePicker';
 import { setMuiComponentAndMaybeFocus } from './utils';
 
 const FormsyTime = createClass({
-
   propTypes: {
     defaultTime: PropTypes.object,
     name: PropTypes.string.isRequired,
@@ -45,8 +44,7 @@ const FormsyTime = createClass({
      * @param {Date} date2
      */
     function timesEq(date1, date2) {
-      return date1.getHours() === date2.getHours() &&
-        date1.getMinutes() === date2.getMinutes();
+      return date1.getHours() === date2.getHours() && date1.getMinutes() === date2.getMinutes();
     }
   },
 

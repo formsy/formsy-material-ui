@@ -6,7 +6,6 @@ import Toggle from 'material-ui/Toggle';
 import { setMuiComponentAndMaybeFocus } from './utils';
 
 const FormsyToggle = createClass({
-
   propTypes: {
     defaultToggled: PropTypes.bool,
     name: PropTypes.string.isRequired,
@@ -35,12 +34,13 @@ const FormsyToggle = createClass({
       validations, // eslint-disable-line no-unused-vars
       validationError, // eslint-disable-line no-unused-vars
       validationErrors, // eslint-disable-line no-unused-vars
-      ...rest } = this.props;
+      ...rest
+    } = this.props;
 
     let value = this.getValue();
 
     if (typeof value === 'undefined') {
-      value = (typeof defaultToggled !== 'undefined') ? defaultToggled : false;
+      value = typeof defaultToggled !== 'undefined' ? defaultToggled : false;
     }
 
     return (

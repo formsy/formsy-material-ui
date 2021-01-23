@@ -6,7 +6,6 @@ import SelectField from 'material-ui/SelectField';
 import { setMuiComponentAndMaybeFocus } from './utils';
 
 const FormsySelect = createClass({
-
   propTypes: {
     children: PropTypes.node,
     name: PropTypes.string.isRequired,

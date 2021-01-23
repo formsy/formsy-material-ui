@@ -4,7 +4,7 @@
   "description": "Sample project that uses formsy-material-ui",
   "repository": {
     "type": "git",
-    "url": "https://github.com/mbrookes/formsy-material-ui.git"
+    "url": "https://github.com/formsy/formsy-material-ui.git"
   },
   "scripts": {
     "start": "webpack-dev-server --config webpack-dev-server.config.js --progress --inline --colors",

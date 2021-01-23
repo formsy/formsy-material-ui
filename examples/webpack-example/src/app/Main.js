@@ -6,11 +6,19 @@ import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import Paper from 'material-ui/Paper';
 import RaisedButton from 'material-ui/RaisedButton';
 import MenuItem from 'material-ui/MenuItem';
-import { FormsyCheckbox, FormsyDate, FormsyRadio, FormsyRadioGroup,
-    FormsySelect, FormsyText, FormsyTime, FormsyToggle, FormsyAutoComplete } from 'formsy-material-ui/lib';
+import {
+  FormsyCheckbox,
+  FormsyDate,
+  FormsyRadio,
+  FormsyRadioGroup,
+  FormsySelect,
+  FormsyText,
+  FormsyTime,
+  FormsyToggle,
+  FormsyAutoComplete,
+} from 'formsy-material-ui/lib';
 
 const Main = createClass({
-
   /**
    * As an alternative to `MuiThemeProvider` you can add a theme directly into context.
    * See the [Material-UI themes](http://www.material-ui.com/#/customization/themes) docs for details.
@@ -32,9 +40,9 @@ const Main = createClass({
   },
 
   errorMessages: {
-    wordsError: "Please only use letters",
-    numericError: "Please provide a number",
-    urlError: "Please provide a valid URL",
+    wordsError: 'Please only use letters',
+    numericError: 'Please provide a number',
+    urlError: 'Please provide a valid URL',
   },
 
   styles: {
@@ -72,7 +80,7 @@ const Main = createClass({
   },
 
   render() {
-    let {paperStyle, switchStyle, submitStyle } = this.styles;
+    let { paperStyle, switchStyle, submitStyle } = this.styles;
     let { wordsError, numericError, urlError } = this.errorMessages;
 
     return (
@@ -84,21 +92,9 @@ const Main = createClass({
             onValidSubmit={this.submitForm}
             onInvalidSubmit={this.notifyFormError}
           >
-            <FormsyDate
-              name="date"
-              required
-              floatingLabelText="Date"
-            />
-            <FormsyTime
-              name="time"
-              required
-              floatingLabelText="Time"
-            />
-            <FormsySelect
-              name="frequency"
-              required
-              floatingLabelText="How often do you?"
-            >
+            <FormsyDate name="date" required floatingLabelText="Date" />
+            <FormsyTime name="time" required floatingLabelText="Time" />
+            <FormsySelect name="frequency" required floatingLabelText="How often do you?">
               <MenuItem value={'never'} primaryText="Never" />
               <MenuItem value={'nightly'} primaryText="Every Night" />
               <MenuItem value={'weeknights'} primaryText="Weeknights" />
@@ -107,39 +103,14 @@ const Main = createClass({
               name="frequency-auto-complete"
               required
               floatingLabelText="How often do you?"
-              dataSource={[
-                'Never',
-                'Every Night',
-                'Weeknights',
-              ]}
+              dataSource={['Never', 'Every Night', 'Weeknights']}
             />
-            <FormsyCheckbox
-              name="agree"
-              label="Do you agree to disagree?"
-              style={switchStyle}
-            />
-            <FormsyToggle
-              name="toggle"
-              label="Toggle"
-              style={switchStyle}
-            />
+            <FormsyCheckbox name="agree" label="Do you agree to disagree?" style={switchStyle} />
+            <FormsyToggle name="toggle" label="Toggle" style={switchStyle} />
             <FormsyRadioGroup name="shipSpeed" defaultSelected="not_light">
-              <FormsyRadio
-                value="light"
-                label="prepare for light speed"
-                style={switchStyle}
-              />
-              <FormsyRadio
-                value="not_light"
-                label="light speed too slow"
-                style={switchStyle}
-              />
-              <FormsyRadio
-                value="ludicrous"
-                label="go to ludicrous speed"
-                style={switchStyle}
-                disabled={true}
-              />
+              <FormsyRadio value="light" label="prepare for light speed" style={switchStyle} />
+              <FormsyRadio value="not_light" label="light speed too slow" style={switchStyle} />
+              <FormsyRadio value="ludicrous" label="go to ludicrous speed" style={switchStyle} disabled={true} />
             </FormsyRadioGroup>
             <FormsyText
               name="name"
@@ -165,12 +136,7 @@ const Main = createClass({
               floatingLabelText="URL"
               updateImmediately
             />
-            <RaisedButton
-              style={submitStyle}
-              type="submit"
-              label="Submit"
-              disabled={!this.state.canSubmit}
-            />
+            <RaisedButton style={submitStyle} type="submit" label="Submit" disabled={!this.state.canSubmit} />
           </Formsy.Form>
         </Paper>
       </MuiThemeProvider>
