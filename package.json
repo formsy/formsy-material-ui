@@ -43,6 +43,7 @@
     "@types/jest": "^26.0.22",
     "@types/react": "^17.0.3",
     "@types/react-dom": "^17.0.3",
+    "core-js": "^3.10.0",
     "create-react-class": "^15.6.0",
     "enzyme": "^3.11.0",
     "enzyme-adapter-react-16": "^1.15.6",
@@ -52,6 +53,7 @@
     "react": "^16.0.0",
     "react-dom": "^16.0.0",
     "react-tap-event-plugin": "^2.0.1",
+    "regenerator-runtime": "^0.13.7",
     "tsdx": "^0.14.1"
   },
   "keywords": [

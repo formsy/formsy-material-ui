@@ -1,8 +1,18 @@
 language: node_js
+
 node_js:
-  - "6"
-install:
-  - npm install
-script:
-  - npm run lint
-  - npm run test
+  - "node"
+  - "lts/*"
+
+cache:
+  directories:
+    - "node_modules"
+
+script: echo "Running tests against $(node -v)..." && yarn test
+
+jobs:
+  include:
+    - stage: Build
+      script: yarn build
+    - stage: Lint
+      script: yarn lint
