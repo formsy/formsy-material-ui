@@ -18,7 +18,7 @@ import {
   FormsyAutoComplete,
 } from 'formsy-material-ui/lib';
 
-const Main = createClass({
+const Main = createClass<any, any>({
   /**
    * As an alternative to `MuiThemeProvider` you can add a theme directly into context.
    * See the [Material-UI themes](http://www.material-ui.com/#/customization/themes) docs for details.

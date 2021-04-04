@@ -5,7 +5,7 @@ import Formsy from 'formsy-react';
 import { RadioButtonGroup, RadioButton } from 'material-ui/RadioButton';
 import { setMuiComponentAndMaybeFocus } from './utils';
 
-const FormsyRadioGroup = createClass({
+const FormsyRadioGroup = createClass<any, any>({
   propTypes: {
     children: PropTypes.node,
     defaultSelected: PropTypes.oneOfType([PropTypes.string, PropTypes.number, PropTypes.bool]),

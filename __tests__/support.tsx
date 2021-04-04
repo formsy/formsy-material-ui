@@ -1,5 +1,6 @@
+import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import { mount } from 'enzyme';
-import React, { Component, PropTypes } from 'react';
 import { Form } from 'formsy-react';
 import getMuiTheme from 'material-ui/styles/getMuiTheme';
 

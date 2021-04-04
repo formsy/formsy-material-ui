@@ -6,7 +6,7 @@ import Formsy from 'formsy-react';
 import AutoComplete from 'material-ui/AutoComplete';
 import { setMuiComponentAndMaybeFocus } from 'formsy-react/src/utils';
 
-const FormsyAutoComplete = createClass({
+const FormsyAutoComplete = createClass<any, any>({
   propTypes: {
     defaultValue: PropTypes.any,
     name: PropTypes.string.isRequired,

@@ -1,6 +1,5 @@
-.idea
 node_modules
-*.log
+coverage
 .DS_Store
-lib/
-
+.idea
+yarn-error.log

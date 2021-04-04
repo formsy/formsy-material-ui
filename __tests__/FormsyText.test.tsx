@@ -1,14 +1,14 @@
-/* eslint-env mocha, jasmine */
-/* global expect */
-
-import React, { Component, PropTypes } from 'react';
-import FormsyText from '../src/FormsyText';
+import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import TextField from 'material-ui/TextField';
-import { Simulate } from 'react-addons-test-utils';
-import { mountTestForm } from './support';
 import { Form } from 'formsy-react';
 import getMuiTheme from 'material-ui/styles/getMuiTheme';
 import { mount } from 'enzyme';
+
+import FormsyText from '../src/FormsyText';
+
+// @ts-ignore
+import { mountTestForm } from './support';
 
 function makeChildrenFn(props) {
   const fn = () => (
@@ -24,7 +24,7 @@ function makeChildrenFn(props) {
   return fn;
 }
 
-const setup = props => {
+const setup = (props = {}) => {
   const childrenFn = makeChildrenFn(props);
   const formWrapper = mountTestForm(childrenFn);
   const formsyTextWrapper = formWrapper.find(FormsyText);
@@ -34,7 +34,14 @@ const setup = props => {
   };
 };
 
-class TestForm extends Component {
+interface ITestFormProps {
+  defaultValue?: string;
+  value?: string;
+  children?: React.ReactNode;
+  disabled?: boolean;
+}
+
+class TestForm extends Component<ITestFormProps> {
   static childContextTypes = {
     muiTheme: PropTypes.object.isRequired,
   };
@@ -74,40 +81,48 @@ function makeTestParent(props) {
   return { parent, formWrapper, formsyTextWrapper };
 }
 
-const fillInText = (wrapper, text) => {
-  const inputDOM = wrapper.find('input').node;
-  inputDOM.value = text;
-  Simulate.change(inputDOM);
-  Simulate.blur(inputDOM);
+const getFormInstance = (wrapper): any => {
+  return wrapper.find(Form).instance();
+};
+
+const getInputInstance = (wrapper): any => {
+  return wrapper.find('input').instance();
+};
+
+const fillInText = (wrapper, value) => {
+  const input = wrapper.find('input').first();
+  input.simulate('focus');
+  input.instance().value = value;
+  input.simulate('blur');
 };
 
 describe('FormsyText', () => {
   it('renders a material-ui TextField', () => {
     const { formsyTextWrapper } = setup();
-    expect(formsyTextWrapper).to.have.descendants(TextField);
+    expect(formsyTextWrapper.exists(TextField)).toEqual(true);
   });
 
   it('sends input to the form', () => {
     const { formsyTextWrapper, formWrapper } = setup();
     fillInText(formsyTextWrapper, 'some text');
-    const formsyForm = formWrapper.find(Form).node;
+    const formsyForm = getFormInstance(formWrapper);
     const formValues = formsyForm.getCurrentValues();
-    expect(formValues.text).to.eq('some text');
+    expect(formValues.text).toEqual('some text');
   });
 
   it('renders validation information', () => {
     const { formsyTextWrapper, formWrapper } = setup();
 
-    expect(formsyTextWrapper).to.not.contain.text('Text is too long');
+    expect(formsyTextWrapper.text()).not.toContain('Text is too long');
 
-    const formsyForm = formWrapper.find(Form).node;
+    const formsyForm = getFormInstance(formWrapper);
     fillInText(formsyTextWrapper, 'toooooooo loooooong');
     formsyForm.validateForm();
-    expect(formsyTextWrapper).to.contain.text('Text is too long');
+    expect(formsyTextWrapper.text()).toContain('Text is too long');
 
     fillInText(formsyTextWrapper, 'just fine');
     formsyForm.validateForm();
-    expect(formsyTextWrapper).to.not.contain.text('Text is too long');
+    expect(formsyTextWrapper.text()).not.toContain('Text is too long');
   });
 
   describe('value properties handle', () => {
@@ -116,24 +131,24 @@ describe('FormsyText', () => {
         const { formsyTextWrapper, formWrapper } = setup({
           value: 'VALUE',
         });
-        const formsyForm = formWrapper.find(Form).node;
+        const formsyForm = getFormInstance(formWrapper);
         let formValues = formsyForm.getCurrentValues();
-        expect(formValues.text).to.eq('VALUE');
+        expect(formValues.text).toEqual('VALUE');
         fillInText(formsyTextWrapper, 'some text');
         formValues = formsyForm.getCurrentValues();
-        expect(formValues.text).to.eq('some text');
+        expect(formValues.text).toEqual('some text');
       });
 
       it('defaultValue', () => {
         const { formsyTextWrapper, formWrapper } = setup({
           defaultValue: 'DEFAULT-VALUE',
         });
-        const formsyForm = formWrapper.find(Form).node;
+        const formsyForm = getFormInstance(formWrapper);
         let formValues = formsyForm.getCurrentValues();
-        expect(formValues.text).to.eq('DEFAULT-VALUE');
+        expect(formValues.text).toEqual('DEFAULT-VALUE');
         fillInText(formsyTextWrapper, 'some text');
         formValues = formsyForm.getCurrentValues();
-        expect(formValues.text).to.eq('some text');
+        expect(formValues.text).toEqual('some text');
       });
 
       it('value + defaultValue', () => {
@@ -141,12 +156,12 @@ describe('FormsyText', () => {
           value: 'VALUE',
           defaultValue: 'DEFAULT-VALUE',
         });
-        const formsyForm = formWrapper.find(Form).node;
+        const formsyForm = getFormInstance(formWrapper);
         let formValues = formsyForm.getCurrentValues();
-        expect(formValues.text).to.eq('VALUE');
+        expect(formValues.text).toEqual('VALUE');
         fillInText(formsyTextWrapper, 'some text');
         formValues = formsyForm.getCurrentValues();
-        expect(formValues.text).to.eq('some text');
+        expect(formValues.text).toEqual('some text');
       });
 
       it('propagates disabled status', () => {
@@ -156,14 +171,14 @@ describe('FormsyText', () => {
           </TestForm>,
         );
 
-        const inputDOM = wrapper.find('input').node;
-        expect(inputDOM.disabled).to.eq(true);
+        const inputDOM = getInputInstance(wrapper);
+        expect(inputDOM.disabled).toEqual(true);
 
         // Next, we set `disabled` to false and check the DOM node updates accordingly
         wrapper.setProps({
           disabled: false,
         });
-        expect(inputDOM.disabled).to.eq(false);
+        expect(inputDOM.disabled).toEqual(false);
       });
 
       it('allows overriding disabled status locally', () => {
@@ -174,8 +189,8 @@ describe('FormsyText', () => {
         );
 
         // Here we check we can disable a single input in a globally enabled form
-        let inputDOM = wrapper.find('input').node;
-        expect(inputDOM.disabled).to.eq(false);
+        let inputDOM = getInputInstance(wrapper);
+        expect(inputDOM.disabled).toEqual(false);
 
         wrapper = mount(
           <TestForm disabled={false}>
@@ -184,8 +199,8 @@ describe('FormsyText', () => {
         );
 
         // Likewise, we are able to keep a specific input enabled even if the form is marked as disabled
-        inputDOM = wrapper.find('input').node;
-        expect(inputDOM.disabled).to.eq(true);
+        inputDOM = getInputInstance(wrapper);
+        expect(inputDOM.disabled).toEqual(true);
       });
     });
 
@@ -195,16 +210,16 @@ describe('FormsyText', () => {
           value: 'VALUE',
         };
         const { parent, formWrapper, formsyTextWrapper } = makeTestParent(props);
-        const formsyForm = formWrapper.node;
+        const formsyForm = getFormInstance(formWrapper);
         parent.setState({ value: 'NEW VALUE' });
         let formValues = formsyForm.getCurrentValues();
-        expect(formValues.text).to.eq('NEW VALUE');
+        expect(formValues.text).toEqual('NEW VALUE');
         fillInText(formsyTextWrapper, 'some text');
         formValues = formsyForm.getCurrentValues();
-        expect(formValues.text).to.eq('some text');
+        expect(formValues.text).toEqual('some text');
         parent.setState({ value: 'NEWER VALUE' });
         formValues = formsyForm.getCurrentValues();
-        expect(formValues.text).to.eq('NEWER VALUE');
+        expect(formValues.text).toEqual('NEWER VALUE');
       });
 
       it('defaultValue', () => {
@@ -212,17 +227,17 @@ describe('FormsyText', () => {
           defaultValue: 'VALUE',
         };
         const { parent, formWrapper, formsyTextWrapper } = makeTestParent(props);
-        const formsyForm = formWrapper.node;
+        const formsyForm = getFormInstance(formWrapper);
         parent.setState({ defaultValue: 'NEW VALUE' });
         let formValues = formsyForm.getCurrentValues();
-        expect(formValues.text).to.eq('NEW VALUE');
+        expect(formValues.text).toEqual('NEW VALUE');
         fillInText(formsyTextWrapper, 'some text');
         formValues = formsyForm.getCurrentValues();
-        expect(formValues.text).to.eq('some text');
+        expect(formValues.text).toEqual('some text');
         parent.setState({ defaultValue: 'NEWER VALUE' });
         // defaultValues does not override the typed in value.
         formValues = formsyForm.getCurrentValues();
-        expect(formValues.text).to.eq('some text');
+        expect(formValues.text).toEqual('some text');
       });
 
       it('calls onChange once per text update', () => {
@@ -232,11 +247,11 @@ describe('FormsyText', () => {
           value: 'initial',
         });
 
-        const inputDOM = formsyTextWrapper.find('input').node;
+        const inputDOM = getInputInstance(formsyTextWrapper);
         inputDOM.value = 'updated';
         parent.setState({ value: 'updated' });
 
-        expect(calls.length < 3).to.eq(true);
+        expect(calls.length < 3).toEqual(true);
       });
     });
 
@@ -245,22 +260,22 @@ describe('FormsyText', () => {
         const { formsyTextWrapper, formWrapper } = setup({
           value: 'VALUE',
         });
-        const formsyForm = formWrapper.find(Form).node;
+        const formsyForm = getFormInstance(formWrapper);
         fillInText(formsyTextWrapper, 'some text');
         formsyForm.reset();
         const formValues = formsyForm.getCurrentValues();
-        expect(formValues.text).to.eq('VALUE');
+        expect(formValues.text).toEqual('VALUE');
       });
 
       it('defaultValue', () => {
         const { formsyTextWrapper, formWrapper } = setup({
           defaultValue: 'VALUE',
         });
-        const formsyForm = formWrapper.find(Form).node;
+        const formsyForm = getFormInstance(formWrapper);
         fillInText(formsyTextWrapper, 'some text');
         formsyForm.reset();
         const formValues = formsyForm.getCurrentValues();
-        expect(formValues.text).to.eq('VALUE');
+        expect(formValues.text).toEqual('VALUE');
       });
 
       it('value + defaultValue', () => {
@@ -268,11 +283,11 @@ describe('FormsyText', () => {
           value: 'VALUE',
           defaultValue: 'DEFAULT-VALUE',
         });
-        const formsyForm = formWrapper.find(Form).node;
+        const formsyForm = getFormInstance(formWrapper);
         fillInText(formsyTextWrapper, 'some text');
         formsyForm.reset();
         const formValues = formsyForm.getCurrentValues();
-        expect(formValues.text).to.eq('VALUE');
+        expect(formValues.text).toEqual('VALUE');
       });
 
       it('updated value', () => {
@@ -280,13 +295,13 @@ describe('FormsyText', () => {
           value: 'VALUE',
         };
         const { parent, formWrapper, formsyTextWrapper } = makeTestParent(props);
-        const formsyForm = formWrapper.node;
+        const formsyForm = getFormInstance(formWrapper);
         parent.setState({ value: 'NEW VALUE' });
         fillInText(formsyTextWrapper, 'some text');
         formsyForm.reset();
         // Reset reverts to the last value that has been set.
         const formValues = formsyForm.getCurrentValues();
-        expect(formValues.text).to.eq('NEW VALUE');
+        expect(formValues.text).toEqual('NEW VALUE');
       });
     });
 
@@ -297,12 +312,12 @@ describe('FormsyText', () => {
           type: 'number',
           convertValue: v => Number(v),
         });
-        const formsyForm = formWrapper.find(Form).node;
+        const formsyForm = getFormInstance(formWrapper);
         let formValues = formsyForm.getCurrentValues();
-        expect(formValues.text).to.eq(1);
+        expect(formValues.text).toEqual(1);
         fillInText(formsyTextWrapper, '2');
         formValues = formsyForm.getCurrentValues();
-        expect(formValues.text).to.eq(2);
+        expect(formValues.text).toEqual(2);
       });
 
       it('and defaultValue', () => {
@@ -311,9 +326,9 @@ describe('FormsyText', () => {
           type: 'number',
           convertValue: v => Number(v),
         });
-        const formsyForm = formWrapper.find(Form).node;
+        const formsyForm = getFormInstance(formWrapper);
         const formValues = formsyForm.getCurrentValues();
-        expect(formValues.text).to.eq(1);
+        expect(formValues.text).toEqual(1);
       });
 
       it('and no value', () => {
@@ -321,9 +336,9 @@ describe('FormsyText', () => {
           type: 'number',
           convertValue: v => Number(v),
         });
-        const formsyForm = formWrapper.find(Form).node;
+        const formsyForm = getFormInstance(formWrapper);
         const formValues = formsyForm.getCurrentValues();
-        expect(formValues.text).to.eq(0);
+        expect(formValues.text).toEqual(0);
       });
     });
   });

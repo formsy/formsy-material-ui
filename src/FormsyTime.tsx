@@ -2,15 +2,14 @@ import React from 'react';
 import createClass from 'create-react-class';
 import PropTypes from 'prop-types';
 import Formsy from 'formsy-react';
-import DatePicker from 'material-ui/DatePicker';
+import TimePicker from 'material-ui/TimePicker';
 import { setMuiComponentAndMaybeFocus } from './utils';
 
-const FormsyDate = createClass({
+const FormsyTime = createClass<any, any>({
   propTypes: {
-    defaultDate: PropTypes.object,
+    defaultTime: PropTypes.object,
     name: PropTypes.string.isRequired,
     onChange: PropTypes.func,
-    requiredError: PropTypes.string,
     validationError: PropTypes.string,
     validationErrors: PropTypes.object,
     validations: PropTypes.oneOfType([PropTypes.string, PropTypes.object]),
@@ -20,36 +19,32 @@ const FormsyDate = createClass({
   mixins: [Formsy.Mixin],
 
   componentDidMount() {
-    const { defaultDate } = this.props;
+    const { defaultTime } = this.props;
     const value = this.getValue();
 
-    if (typeof value === 'undefined' && typeof defaultDate !== 'undefined') {
-      this.setValue(defaultDate);
+    if (typeof value === 'undefined' && typeof defaultTime !== 'undefined') {
+      this.setValue(defaultTime);
     }
   },
 
   componentWillReceiveProps(newProps) {
     if (newProps.value) {
-      if (!this.props.value || !datesEq(this.props.value, newProps.value)) {
+      if (!this.props.value || !timesEq(this.props.value, newProps.value)) {
         this.setValue(newProps.value);
       }
-    } else if (!this.props.value && newProps.defaultDate) {
-      if (!datesEq(this.props.defaultDate, newProps.defaultDate)) {
-        this.setValue(newProps.defaultDate);
+    } else if (!this.props.value && newProps.defaultTime) {
+      if (!timesEq(this.props.defaultTime, newProps.defaultTime)) {
+        this.setValue(newProps.defaultTime);
       }
     }
 
     /**
-     * Check date equality by year, month and day
+     * Check time equality by hours and minutes
      * @param {Date} date1
      * @param {Date} date2
      */
-    function datesEq(date1, date2) {
-      return (
-        date1.getFullYear() === date2.getFullYear() &&
-        date1.getDate() === date2.getDate() &&
-        date1.getDay() === date2.getDay()
-      );
+    function timesEq(date1, date2) {
+      return date1.getHours() === date2.getHours() && date1.getMinutes() === date2.getMinutes();
     }
   },
 
@@ -62,21 +57,18 @@ const FormsyDate = createClass({
 
   render() {
     const {
-      defaultDate, // eslint-disable-line no-unused-vars
+      defaultTime, // eslint-disable-line no-unused-vars
       validations, // eslint-disable-line no-unused-vars
-      validationErrors, // eslint-disable-line no-unused-vars
       validationError, // eslint-disable-line no-unused-vars
-      requiredError,
+      validationErrors, // eslint-disable-line no-unused-vars
       ...rest
     } = this.props;
-    const { isRequired, isPristine, isValid, isFormSubmitted } = this;
-    const isRequiredError = isRequired() && !isPristine() && !isValid() && isFormSubmitted() && requiredError;
-    const errorText = this.getErrorMessage() || isRequiredError;
+
     return (
-      <DatePicker
+      <TimePicker
         disabled={this.isFormDisabled()}
         {...rest}
-        errorText={errorText}
+        errorText={this.getErrorMessage()}
         onChange={this.handleChange}
         ref={this.setMuiComponentAndMaybeFocus}
         value={this.getValue()}
@@ -85,4 +77,4 @@ const FormsyDate = createClass({
   },
 });
 
-export default FormsyDate;
+export default FormsyTime;

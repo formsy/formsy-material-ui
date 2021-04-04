@@ -4,9 +4,10 @@ import PropTypes from 'prop-types';
 import keycode from 'keycode';
 import Formsy from 'formsy-react';
 import TextField from 'material-ui/TextField';
+
 import { setMuiComponentAndMaybeFocus, debounce } from './utils';
 
-const FormsyText = createClass({
+const FormsyText = createClass<any, any>({
   propTypes: {
     convertValue: PropTypes.func,
     defaultValue: PropTypes.any,
