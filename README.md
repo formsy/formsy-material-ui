@@ -10,8 +10,8 @@ In the meantime, here are some alternatives:
 
 # formsy-material-ui [![npm version](https://badge.fury.io/js/formsy-material-ui.svg)](https://badge.fury.io/js/formsy-material-ui) [![Build Status](https://travis-ci.org/mbrookes/formsy-material-ui.svg?branch=master)](https://travis-ci.org/mbrookes/formsy-material-ui)
 
-This library is a wrapper for [Material-UI](http://material-ui.com/) form components to allow them to be used
-with [formsy-react](https://github.com/christianalfoni/formsy-react), a form validation component for React forms.
+This library is a wrapper for [Material-UI](http://material-ui.com/) form components to allow them to be used with
+[formsy-react](https://github.com/christianalfoni/formsy-react), a form validation component for React forms.
 
 ## Installation
 
@@ -48,18 +48,27 @@ import FormsyAutoComplete from 'formsy-material-ui/lib/FormsyAutoComplete';
 OR:
 
 ```js
-import { FormsyCheckbox, FormsyDate, FormsyRadio, FormsyRadioGroup, 
-  FormsySelect, FormsyText, FormsyTime, FormsyToggle, FormsyAutoComplete } from 'formsy-material-ui/lib';
+import {
+  FormsyCheckbox,
+  FormsyDate,
+  FormsyRadio,
+  FormsyRadioGroup,
+  FormsySelect,
+  FormsyText,
+  FormsyTime,
+  FormsyToggle,
+  FormsyAutoComplete,
+} from 'formsy-material-ui/lib';
 ```
 
 ### Events
 
-Components allow for `onChange` event handlers in props. They are fired when the value of the 
-component changes, regardless of the underlying handler (eg, `FormsyToggle` uses `onToggle` internally, but we
-still use `onChange` in props to hook into the event.)
+Components allow for `onChange` event handlers in props. They are fired when the value of the component changes,
+regardless of the underlying handler (eg, `FormsyToggle` uses `onToggle` internally, but we still use `onChange` in
+props to hook into the event.)
 
-The call back signatures for all `onChange` handlers conform to 
- Material-UI's proposed [Standardized Callback Signatures](https://github.com/callemall/material-ui/issues/2957).  
+The call back signatures for all `onChange` handlers conform to Material-UI's proposed
+[Standardized Callback Signatures](https://github.com/callemall/material-ui/issues/2957).
 
 An example usage of this would be to use an `onChange` for the FormsySelect and receive notifications when it changes.
 
@@ -67,11 +76,14 @@ An example usage of this would be to use an `onChange` for the FormsySelect and 
 
 #### Example App
 
-The `formsy-material-ui` repo contains a [sample webpack SPA](https://github.com/formsy/formsy-material-ui/tree/master/examples/webpack-example).
+The `formsy-material-ui` repo contains a
+[sample webpack SPA](https://github.com/formsy/formsy-material-ui/tree/master/examples/webpack-example).
 
 #### Example Code
 
-You can find an [example form](https://github.com/formsy/formsy-material-ui/blob/master/examples/webpack-example/src/app/Main.js#L80) in the example app directory.
+You can find an
+[example form](https://github.com/formsy/formsy-material-ui/blob/master/examples/webpack-example/src/app/Main.js#L80) in
+the example app directory.
 
 ## Known Issues
 
@@ -83,12 +95,14 @@ See [CHANGELOG.md](https://github.com/formsy/formsy-material-ui/blob/master/CHAN
 
 ## Acknowledgements
 
-Originally started by [Matt Brookes](https://github.com/mbrookes), later transfered to [Ryan Blakeley](@rojobuffalo) before joining the Formsy Organization.
+Originally started by [Matt Brookes](https://github.com/mbrookes), later transfered to [Ryan Blakeley](@rojobuffalo)
+before joining the Formsy Organization.
 
 Thanks to our [contributors](https://github.com/formsy/formsy-material-ui/graphs/contributors).
 
 ## Alternatives
 
 Here are some alternative solutions you might also wish to consider:
-  - [react-material-ui-form-validator](https://github.com/NewOldMax/react-material-ui-form-validator)
-  - Redux Form [Material-UI example](http://redux-form.com/6.1.1/examples/material-ui/)
+
+- [react-material-ui-form-validator](https://github.com/NewOldMax/react-material-ui-form-validator)
+- Redux Form [Material-UI example](http://redux-form.com/6.1.1/examples/material-ui/)

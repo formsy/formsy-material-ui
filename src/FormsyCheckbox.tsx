@@ -2,13 +2,12 @@ import React from 'react';
 import createClass from 'create-react-class';
 import PropTypes from 'prop-types';
 import Formsy from 'formsy-react';
-import Toggle from 'material-ui/Toggle';
+import Checkbox from 'material-ui/Checkbox';
 import { setMuiComponentAndMaybeFocus } from './utils';
 
-const FormsyToggle = createClass({
-
+const FormsyCheckbox = createClass<any, any>({
   propTypes: {
-    defaultToggled: PropTypes.bool,
+    defaultChecked: PropTypes.bool,
     name: PropTypes.string.isRequired,
     onChange: PropTypes.func,
     validationError: PropTypes.string,
@@ -19,7 +18,7 @@ const FormsyToggle = createClass({
   mixins: [Formsy.Mixin],
 
   componentDidMount() {
-    this.setValue(this.muiComponent.isToggled());
+    this.setValue(this.muiComponent.isChecked());
   },
 
   handleChange(event, value) {
@@ -31,28 +30,27 @@ const FormsyToggle = createClass({
 
   render() {
     const {
-      defaultToggled,
+      defaultChecked, // eslint-disable-line no-unused-vars
       validations, // eslint-disable-line no-unused-vars
-      validationError, // eslint-disable-line no-unused-vars
       validationErrors, // eslint-disable-line no-unused-vars
-      ...rest } = this.props;
-
+      validationError, // eslint-disable-line no-unused-vars
+      ...rest
+    } = this.props;
     let value = this.getValue();
 
     if (typeof value === 'undefined') {
-      value = (typeof defaultToggled !== 'undefined') ? defaultToggled : false;
+      value = typeof defaultChecked !== 'undefined' ? defaultChecked : false;
     }
-
     return (
-      <Toggle
+      <Checkbox
         disabled={this.isFormDisabled()}
         {...rest}
-        onToggle={this.handleChange}
+        checked={value}
+        onCheck={this.handleChange}
         ref={this.setMuiComponentAndMaybeFocus}
-        toggled={value}
       />
     );
   },
 });
 
-export default FormsyToggle;
+export default FormsyCheckbox;

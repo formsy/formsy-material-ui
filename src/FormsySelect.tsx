@@ -5,8 +5,7 @@ import Formsy from 'formsy-react';
 import SelectField from 'material-ui/SelectField';
 import { setMuiComponentAndMaybeFocus } from './utils';
 
-const FormsySelect = createClass({
-
+const FormsySelect = createClass<any, any>({
   propTypes: {
     children: PropTypes.node,
     name: PropTypes.string.isRequired,

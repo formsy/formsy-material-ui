@@ -5,8 +5,7 @@ import Formsy from 'formsy-react';
 import { RadioButtonGroup, RadioButton } from 'material-ui/RadioButton';
 import { setMuiComponentAndMaybeFocus } from './utils';
 
-const FormsyRadioGroup = createClass({
-
+const FormsyRadioGroup = createClass<any, any>({
   propTypes: {
     children: PropTypes.node,
     defaultSelected: PropTypes.oneOfType([PropTypes.string, PropTypes.number, PropTypes.bool]),
@@ -38,15 +37,17 @@ const FormsyRadioGroup = createClass({
       validationErrors, // eslint-disable-line no-unused-vars, prefer-const
       defaultSelected, // eslint-disable-line prefer-const
       value,
-      ...rest } = this.props;
+      ...rest
+    } = this.props;
 
-      // remove unknown props from children
-    const children = React.Children.map(this.props.children, (radio) => {
+    // remove unknown props from children
+    const children = React.Children.map(this.props.children, radio => {
       const {
         validations, // eslint-disable-line no-unused-vars
         validationError, // eslint-disable-line no-unused-vars
         validationErrors, // eslint-disable-line no-unused-vars
-        ...rest } = radio.props;
+        ...rest
+      } = radio.props;
 
       return React.createElement(RadioButton, rest);
     });

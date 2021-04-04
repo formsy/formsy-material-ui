@@ -6,8 +6,7 @@ import Formsy from 'formsy-react';
 import AutoComplete from 'material-ui/AutoComplete';
 import { setMuiComponentAndMaybeFocus } from 'formsy-react/src/utils';
 
-const FormsyAutoComplete = createClass({
-
+const FormsyAutoComplete = createClass<any, any>({
   propTypes: {
     defaultValue: PropTypes.any,
     name: PropTypes.string.isRequired,
@@ -67,7 +66,8 @@ const FormsyAutoComplete = createClass({
       validations, // eslint-disable-line no-unused-vars
       validationError, // eslint-disable-line no-unused-vars
       validationErrors, // eslint-disable-line no-unused-vars
-      ...rest } = this.props;
+      ...rest
+    } = this.props;
     return (
       <AutoComplete
         disabled={this.isFormDisabled()}

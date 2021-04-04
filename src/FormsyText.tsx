@@ -4,10 +4,10 @@ import PropTypes from 'prop-types';
 import keycode from 'keycode';
 import Formsy from 'formsy-react';
 import TextField from 'material-ui/TextField';
+
 import { setMuiComponentAndMaybeFocus, debounce } from './utils';
 
-const FormsyText = createClass({
-
+const FormsyText = createClass<any, any>({
   propTypes: {
     convertValue: PropTypes.func,
     defaultValue: PropTypes.any,
@@ -59,8 +59,11 @@ const FormsyText = createClass({
   },
 
   componentWillUpdate(nextProps, nextState) {
-    if (nextState._isPristine && // eslint-disable-line no-underscore-dangle
-      nextState._isPristine !== this.state._isPristine) { // eslint-disable-line no-underscore-dangle
+    if (
+      nextState._isPristine && // eslint-disable-line no-underscore-dangle
+      nextState._isPristine !== this.state._isPristine
+    ) {
+      // eslint-disable-line no-underscore-dangle
       // Calling state here is valid, as it cannot cause infinite recursion.
       const value = this.controlledValue(nextProps);
       const isValid = this.isValidValue(value);
@@ -100,7 +103,10 @@ const FormsyText = createClass({
     }
 
     // Controlled component
-    this.setState({ value: event.currentTarget.value, isValid: this.isValidValue(event.currentTarget.value) });
+    this.setState({
+      value: event.currentTarget.value,
+      isValid: this.isValidValue(event.currentTarget.value),
+    });
     if (this.props.onChange) this.props.onChange(event, event.currentTarget.value);
   },
 
@@ -132,7 +138,8 @@ const FormsyText = createClass({
       validationErrors, // eslint-disable-line no-unused-vars
       value, // eslint-disable-line no-unused-vars
       validationColor,
-      ...rest } = this.props;
+      ...rest
+    } = this.props;
 
     const { isRequired, isPristine, isValid, isFormSubmitted } = this;
     const isRequiredError = isRequired() && !isPristine() && !isValid() && isFormSubmitted() && requiredError;
