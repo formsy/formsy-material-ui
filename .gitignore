@@ -3,3 +3,4 @@ coverage
 .DS_Store
 .idea
 yarn-error.log
+coverage/
