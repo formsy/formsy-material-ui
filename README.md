@@ -15,11 +15,13 @@ To and install formsy-material-ui and add it to your `package.json`, run:
 $ yarn add formsy-material-ui
 ```
 
-You will also need to add formsy-react if not already installed:
+You will also need to add these peer dependencies if not already installed:
 
-```
-$ yarn add formsy-react
-```
+- `create-react-class`
+- `formsy-react@0.19.5`
+- `material-ui@0.18.7`
+- `react-dom`
+- `react`
 
 ## Usage
 
